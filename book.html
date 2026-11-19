@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="common.css">
 <style>
 /* Book Now: five steps on the left, a pinned summary on the right. */
-.bwrap{padding:clamp(28px,4vw,56px) 0 clamp(80px,10vw,140px)}
+.bwrap{padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(80px,10vw,140px)}
 .bwrap h1{font-size:clamp(36px,4.6vw,64px)}
 .bsteps{list-style:none;padding:0;margin:26px 0 clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line)}
 .bsteps li{padding:14px 10px 0 0;border-top:2px solid transparent;margin-top:-1px;font-size:14px;color:var(--mute)}
@@ -51,7 +51,7 @@
 .trust span::before{content:"";display:inline-block;width:7px;height:9px;border:1.2px solid var(--brass);border-bottom:0;border-radius:var(--arch);margin-right:10px}
 .okp{text-align:center}
 .okp .arch{width:96px;height:112px;margin:6px auto 18px;background:var(--night);display:grid;place-items:center}
-@media(max-width:960px){.bgrid{grid-template-columns:1fr}.side2{position:static;order:-1}.sumc figure{display:none}}
+@media(max-width:960px){.bgrid{grid-template-columns:1fr}.side2{position:static}.sumc figure{display:none}}
 @media(max-width:640px){.bsteps li{font-size:0}.bsteps li span{font-size:20px}.dates{grid-template-columns:1fr 1fr}.dates .field:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}.ropt{grid-template-columns:1fr}.ropt figure{aspect-ratio:16/10}}
 @media print{.hdr,#ann,footer,.fline,.bsteps,.bacts .btn.line{display:none!important}}
 </style>
