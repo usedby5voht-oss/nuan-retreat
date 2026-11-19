@@ -37,8 +37,10 @@ nav.sc{border-color:var(--line)}
 .brand svg{width:30px;height:34px}
 .brand b{font:400 25px/1 Gloock,serif;letter-spacing:.08em}
 .brand small{display:block;font:400 10.5px Anuphan;letter-spacing:.24em;color:var(--soft);margin-top:5px}
-.links{display:flex;gap:28px}.links a{text-decoration:none;font-size:15px;color:#3b4747}
-.links a[aria-current]{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
+.tabsnav{display:flex;background:var(--stone);border-radius:999px;padding:4px;gap:2px}
+.tabsnav a{text-decoration:none;font-size:15px;color:#3b4747;padding:0 22px;min-height:40px;display:flex;align-items:center;justify-content:center;border-radius:999px;white-space:nowrap}
+.tabsnav a:hover{color:var(--ink)}
+.tabsnav a[aria-current]{background:var(--deep);color:#fff}
 .lang{display:flex}.lang button{background:none;border:0;color:var(--soft);min-width:38px;min-height:42px;font:500 13px Anuphan;cursor:pointer}
 .lang button[aria-pressed=true]{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;border:1px solid var(--deep);background:var(--deep);color:#fff;font:400 15px Anuphan;cursor:pointer;text-decoration:none;transition:background .2s}
@@ -126,8 +128,8 @@ footer{background:var(--deep);color:#a9bcba;font-size:14px;padding:48px 0 34px;b
 .ft{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:end}
 .ft .brand b{color:#fff}
 .credit{margin-top:28px;padding-top:16px;border-top:1px solid #ffffff22;font-size:12.5px}
-@media(max-width:960px){.links{display:none}.rooms{grid-template-columns:1fr 1fr}.pg,.hs,.gh{grid-template-columns:1fr}.pair figure:last-child{margin-bottom:0}}
-@media(max-width:720px){.nv>.btn{display:none}.brand b{font-size:21px}.hg{grid-template-columns:1fr}.hero .arch{aspect-ratio:4/4.4}
+@media(max-width:960px){.rooms{grid-template-columns:1fr 1fr}.pg,.hs,.gh{grid-template-columns:1fr}.pair figure:last-child{margin-bottom:0}}
+@media(max-width:720px){.nv{flex-wrap:wrap;height:auto;gap:8px 16px;padding:10px 0 12px}.nv>.btn{display:none}.tabsnav{order:3;width:100%}.tabsnav a{flex:1}.brand b{font-size:21px}.hg{grid-template-columns:1fr}.hero .arch{aspect-ratio:4/4.4}
 .tl::before{left:7px}.stop{grid-template-columns:1fr;gap:18px;padding:24px 0 24px 30px}.stop::after{left:7px;top:34px}.stop:nth-child(even) figure{order:0}.stop:nth-child(odd) figure{aspect-ratio:4/3.6}.time{font-size:36px}
 .rooms{grid-template-columns:1fr}.room figure{aspect-ratio:4/4.3}.mosaic figure:first-child{aspect-ratio:3/4.6}.facts b{font-size:34px}.near li{grid-template-columns:auto 1fr}.near span:last-child{grid-column:2;text-align:left;margin-top:-10px}}
 @media(prefers-reduced-motion:reduce){.hero .arch img{animation:none}.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -137,7 +139,7 @@ footer{background:var(--deep);color:#a9bcba;font-size:14px;padding:48px 0 34px;b
 <div class="demo" data-t="demo"></div>
 <nav id="nav"><div class="wrap nv">
   <a class="brand" href="index.html" aria-label="Nuan Retreat"><svg viewBox="0 0 30 34" aria-hidden="true"><path d="M2 34V15a13 13 0 0 1 26 0v19" fill="none" stroke="#0e2f33" stroke-width="2.2"/><path d="M9 34V17a6 6 0 0 1 12 0v17" fill="none" stroke="#d8642f" stroke-width="2.2"/></svg><span><b>NUAN</b><small>RETREAT · KRABI</small></span></a>
-  <div class="links"><a href="index.html" aria-current="page" data-t="navStory"></a><a href="#day" data-t="navDay"></a><a href="rooms.html" data-t="navRooms"></a><a href="#here" data-t="navHere"></a></div>
+  <div class="tabsnav"><a href="index.html" aria-current="page" data-t="navHome"></a><a href="rooms.html" data-t="navRooms"></a></div>
   <div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="true">TH</button><button type="button" data-l="en" aria-pressed="false">EN</button></div>
   <a class="btn" href="rooms.html" data-t="navBook"></a>
 </div></nav>
@@ -224,7 +226,7 @@ function sun(d){const rad=Math.PI/180,lat=8.032,lon=98.823,tz=7;
 const [RISE,SET]=sun(new Date());
 
 const T={
-th:{demo:"เว็บไซต์ตัวอย่าง: รีสอร์ตสมมติเพื่อสาธิตงานออกแบบ ไม่มีการจองหรือตัดเงินจริง",navStory:"เรื่องราว",navDay:"หนึ่งวันที่นวล",navRooms:"ห้องพัก",navHere:"การเดินทาง",navBook:"ดูห้องและจอง",
+th:{demo:"เว็บไซต์ตัวอย่าง: รีสอร์ตสมมติเพื่อสาธิตงานออกแบบ ไม่มีการจองหรือตัดเงินจริง",navHome:"หน้าแรก",navStory:"เรื่องราว",navDay:"หนึ่งวันที่นวล",navRooms:"ห้องพัก",navHere:"การเดินทาง",navBook:"ดูห้องและจอง",
 heroKick:"อ่าวนาง · กระบี่",heroH:"หนึ่งวันที่นวล",
 heroP:"ตื่นมาพร้อมแสงแรกเหนือผาหินปูน นั่งเรือหางยาวไปไร่เลย์ บ่ายนอนเล่นริมสระ แล้วกลับมาดูพระอาทิตย์ตกจากดาดฟ้า นี่คือวันธรรมดาของแขกที่มาพักกับเรา",
 heroA:"เลื่อนดูทั้งวัน",heroB:"ดูห้องพัก",rise:"พระอาทิตย์ขึ้นวันนี้",set:"พระอาทิตย์ตกวันนี้",
@@ -249,7 +251,7 @@ hereKick:"การเดินทาง",hereH:"มาถึงนวลได�
 near:[["30 นาที","สนามบินนานาชาติกระบี่","รถรับส่ง 600 บาท"],["6 นาที","หาดอ่าวนาง","เดิน"],["8 นาที","ท่าเรือไปไร่เลย์","เดิน"],["10 นาที","หาดนพรัตน์ธารา","ขับรถ"]],
 lineBtn:"แชทผ่าน LINE",ctaH:"พร้อมเริ่มวันของคุณที่นวลหรือยัง",ctaP:"ดูห้องพักทั้งสามแบบ เลือกวันที่ แล้วจองตรงกับเราในราคาที่ถูกกว่าเว็บเอเจนต์ 10%",ctaA:"ดูห้องและจอง",ctaB:"อ่านเรื่องราวอีกครั้ง",
 addr:"ถนนตัวอย่าง ตำบลอ่าวนาง อำเภอเมือง กระบี่ (ที่อยู่สมมติ)",foot:"เว็บไซต์สาธิต ออกแบบและพัฒนาโดย [ชื่อสตูดิโอของคุณ] · ภาพถ่ายจาก Unsplash"},
-en:{demo:"Demo website: a fictional resort built to show the design. No real bookings or charges.",navStory:"Our story",navDay:"A day at Nuan",navRooms:"Rooms",navHere:"Getting here",navBook:"Rooms & booking",
+en:{demo:"Demo website: a fictional resort built to show the design. No real bookings or charges.",navHome:"Home",navStory:"Our story",navDay:"A day at Nuan",navRooms:"Rooms",navHere:"Getting here",navBook:"Rooms & booking",
 heroKick:"Ao Nang · Krabi",heroH:"A day at Nuan",
 heroP:"Wake to first light over the limestone, take a longtail to Railay, laze by the pool all afternoon, then watch the sun go down from the roof. An ordinary day for our guests.",
 heroA:"Walk through the day",heroB:"See the rooms",rise:"Sunrise today",set:"Sunset today",
@@ -291,7 +293,7 @@ function render(){
   $("#season").innerHTML=t.season.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join("");
   $("#facts").innerHTML=t.facts.map(f=>`<div><b>${f[0]}</b><span>${f[1]}</span></div>`).join("");
   $("#tl").innerHTML=t.stops.map(s=>`<article class="stop ${s[0]} reveal"><figure><img loading="lazy" src="${U(s[4],1000)}" alt="${s[2]}"></figure><div><div class="time">${s[1]==="RISE"?RISE:s[1]==="SET"?SET:s[1]}</div><h3>${s[2]}</h3><p>${s[3]}</p><p class="note">${s[5]}</p></div></article>`).join("");
-  $("#roomList").innerHTML=rooms.map(r=>`<a class="room" href="rooms.html#${r[0]}"><figure><img loading="lazy" src="${U(r[2],900)}" alt="${r[1]}"></figure><h3>${r[1]}</h3><p>${r[4][L]}</p><p class="from">${t.from} <b>${baht(r[3])}</b> ${t.perN}</p></a>`).join("");
+  $("#roomList").innerHTML=rooms.map(r=>`<a class="room" href="room.html?r=${r[0]}"><figure><img loading="lazy" src="${U(r[2],900)}" alt="${r[1]}"></figure><h3>${r[1]}</h3><p>${r[4][L]}</p><p class="from">${t.from} <b>${baht(r[3])}</b> ${t.perN}</p></a>`).join("");
   $("#near").innerHTML=t.near.map(n=>`<li><b>${n[0]}</b><span>${n[1]}</span><span>${n[2]}</span></li>`).join("");
   if(io)io.disconnect();
   if("IntersectionObserver" in window){io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});document.querySelectorAll(".reveal").forEach(el=>io.observe(el))}
