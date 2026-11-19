@@ -63,12 +63,7 @@
 </style>
 </head>
 <body>
-<div class="demo" data-t="demo"></div>
-<nav><div class="wrap nv">
-  <a class="brand" href="index.html" aria-label="Nuan Retreat"><svg viewBox="0 0 30 34" aria-hidden="true"><path d="M2 34V15a13 13 0 0 1 26 0v19" fill="none" stroke="#0e2f33" stroke-width="2.2"/><path d="M9 34V17a6 6 0 0 1 12 0v17" fill="none" stroke="#d8642f" stroke-width="2.2"/></svg><span><b>NUAN</b><small>RETREAT · KRABI</small></span></a>
-  <div class="tabsnav"><a href="index.html" data-t="navHome"></a><a href="rooms.html" aria-current="page" data-t="navRooms"></a></div>
-  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="true">TH</button><button type="button" data-l="en" aria-pressed="false">EN</button></div>
-</div></nav>
+<header id="hdr"></header>
 
 <main class="wrap" id="page"></main>
 
@@ -87,10 +82,11 @@ const id=new URLSearchParams(location.search).get("r");
 const R=ROOMS.find(r=>r.id===id);
 let cur=0;
 function render(){
+  header("rooms",false);onLang(render);
   const x=t();applyText();
   if(!R){$("#page").innerHTML=`<div class="nf"><h1>${x.notFound}</h1><a class="btn" href="rooms.html">${x.backList}</a></div>`;return}
   document.title=`${R.name} · Nuan Retreat Krabi`;
-  const g=R.gal,n=Math.max(nights(),1),d=dp(R.price),[st,bad]=status(R);
+  const g=R.gal,n=Math.max(nights(),1),d=rate(R),[st,bad]=status(R);
   const side=g.slice(1,5).map((p,i)=>`<button class="thumb" data-i="${i+1}" aria-label="${p[1][L]}"><img src="${U(p[0],600)}" alt="${p[1][L]}"><span class="cap">${p[1][L]}</span>${i===3&&g.length>5?`<span class="plus">${x.photos(g.length)}</span>`:""}</button>`).join("");
   $("#page").innerHTML=`<p class="crumb"><a href="rooms.html">${x.crumb}</a> / ${R.name}</p>
   <div class="gal"><button class="main" data-i="${cur}" aria-label="${x.photos(g.length)}"><img id="mainImg" src="${U(g[cur][0],1500)}" alt="${g[cur][1][L]}"><span class="cap" id="mainCap">${g[cur][1][L]} · ${cur+1}/${g.length}</span></button><div class="side">${side}</div></div>
@@ -102,13 +98,13 @@ function render(){
     <section class="sec"><h2>${x.specH}</h2><div class="spec"><div><span>${x.spec.size}</span><b>${R.size} ${x.sqm}</b></div><div><span>${x.spec.bed}</span><b>${R.bed[L]}</b></div><div><span>${x.spec.max}</span><b>${x.max(R.max)}</b></div><div><span>${x.spec.view}</span><b>${R.vw[L]}</b></div><div><span>${x.spec.floor}</span><b>${R.fl[L]}</b></div></div></section>
     <section class="sec"><h2>${x.polH}</h2><div class="pg">${x.pol.map(p=>`<div><b>${p[0]}</b><p>${p[1]}</p></div>`).join("")}</div></section>
   </div>
-  <aside class="bk" aria-label="${x.bookH}">
+  <aside class="bk" aria-label="${x.bookH}">${offerBar(R)}
     <p class="price"><span class="small">${x.night}</span><br><b>${baht(d)}</b><s>${baht(R.price)}</s></p>
     <form class="stay" onsubmit="return false"><div class="field"><label for="ci">${x.ci}</label><input type="date" id="ci"></div><div class="field"><label for="co">${x.co}</label><input type="date" id="co"></div><div class="field"><label for="gu">${x.gu}</label><select id="gu"></select></div></form>
-    <div class="bd"><div><span>${baht(R.price)} × ${n} ${x.nights}</span><span>${baht(R.price*n)}</span></div><div><span>${x.disc}</span><span>−${baht((R.price-d)*n)}</span></div><div class="tot"><span>${x.total}</span><span>${baht(d*n)}</span></div></div>
+    <div class="bd"><div><span>${baht(R.price)} × ${n} ${x.nights}</span><span>${baht(R.price*n)}</span></div><div><span>${discLabel(R)}</span><span>−${baht((R.price-d)*n)}</span></div><div class="tot"><span>${x.total}</span><span>${baht(d*n)}</span></div></div>
     ${st}<button class="btn sun wide" id="book" ${bad?"disabled":""}>${x.bookBtn}</button><p class="note">${x.bookNote}</p>
   </aside></div>
-  <section class="sec" style="margin-top:clamp(40px,6vw,80px)"><h2>${x.moreH}</h2><div class="more">${ROOMS.filter(r=>r.id!==R.id).map(r=>`<a class="mc" href="room.html?r=${r.id}"><figure><img loading="lazy" src="${U(r.gal[0][0],700)}" alt="${r.name}"></figure><h3>${r.name}</h3><p>${x.from} ${baht(dp(r.price))} ${x.night}</p></a>`).join("")}</div></section>`;
+  <section class="sec" style="margin-top:clamp(40px,6vw,80px)"><h2>${x.moreH}</h2><div class="more">${ROOMS.filter(r=>r.id!==R.id).map(r=>`<a class="mc" href="room.html?r=${r.id}"><figure><img loading="lazy" src="${U(r.gal[0][0],700)}" alt="${r.name}"></figure><h3>${r.name}</h3><p>${x.from} ${baht(rate(r))} ${x.night}</p></a>`).join("")}</div></section>`;
   bindStay($("#ci"),$("#co"),$("#gu"),render);
   $("#book").onclick=()=>openBook(R);
   document.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>openViewer(+b.dataset.i));
@@ -122,7 +118,7 @@ function openViewer(i){$("#vclose").textContent=t().close;$("#vprev").setAttribu
 $("#vclose").onclick=()=>V.close();$("#vprev").onclick=()=>show(cur-1);$("#vnext").onclick=()=>show(cur+1);
 V.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
 let sx=null;V.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});V.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));sx=null});
-onLang(render);render();
+window.__rerender=render;render();
 }
 </script>
 </body>

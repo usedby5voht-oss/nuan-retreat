@@ -46,12 +46,7 @@
 </style>
 </head>
 <body>
-<div class="demo" data-t="demo"></div>
-<nav><div class="wrap nv">
-  <a class="brand" href="index.html" aria-label="Nuan Retreat"><svg viewBox="0 0 30 34" aria-hidden="true"><path d="M2 34V15a13 13 0 0 1 26 0v19" fill="none" stroke="#0e2f33" stroke-width="2.2"/><path d="M9 34V17a6 6 0 0 1 12 0v17" fill="none" stroke="#d8642f" stroke-width="2.2"/></svg><span><b>NUAN</b><small>RETREAT · KRABI</small></span></a>
-  <div class="tabsnav"><a href="index.html" data-t="navHome"></a><a href="rooms.html" aria-current="page" data-t="navRooms"></a></div>
-  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="true">TH</button><button type="button" data-l="en" aria-pressed="false">EN</button></div>
-</div></nav>
+<header id="hdr"></header>
 
 <header class="top"><div class="wrap">
   <p class="kick" data-t="listKick"></p>
@@ -69,6 +64,7 @@
 </div></div>
 
 <main class="wrap">
+  <div id="offbar"></div>
   <div class="perks" id="perks"></div>
   <p class="count" id="count"></p>
   <div class="grid" id="grid"></div>
@@ -88,17 +84,19 @@ if(ROOMS.some(r=>r.id===h))location.replace("room.html?r="+h);
 let cat=CATS.includes(h)?h:"all";
 const refill=bindStay($("#ci"),$("#co"),$("#gu"),render);
 function render(){
+  header("rooms",false);onLang(render);
   const x=t();applyText();refill();
   $("#chips").innerHTML=CATS.map(c=>{const n=c==="all"?ROOMS.length:ROOMS.filter(r=>r.cats.includes(c)).length;return `<button type="button" data-c="${c}" aria-pressed="${c===cat}">${x.cats[c]}<span>${n}</span></button>`}).join("");
+  $("#offbar").innerHTML=offerBar(null);
   $("#perks").innerHTML=x.perks.map(p=>`<div><b>${p[0]}</b><span>${p[1]}</span></div>`).join("");
   const list=ROOMS.filter(r=>cat==="all"||r.cats.includes(cat)),n=Math.max(nights(),1);
   $("#count").textContent=`${x.count(list.length)} · ${nights()>0?x.stay(n,fmt(S.ci),fmt(S.co)):x.errDate}`;
   $("#grid").innerHTML=list.length?list.map(r=>`<a class="rc" href="room.html?r=${r.id}"><figure><img loading="lazy" src="${U(r.gal[0][0],800)}" alt="${r.name}"><span class="n">${r.gal.length} ${x.pics}</span></figure>
     <div><h2>${r.name}</h2><p class="s">${r.short[L]}</p><div class="tags"><span>${r.size} ${x.sqm}</span><span>${x.max(r.max)}</span><span>${r.vw[L]}</span></div>
-    <p class="p"><span class="small">${x.from}</span> <b>${baht(dp(r.price))}</b><s>${baht(r.price)}</s> <span class="small">${x.night}</span></p>${status(r)[0]}<span class="go">${x.details}</span></div></a>`).join(""):`<p class="empty">${x.empty}</p>`;
+    <p class="p"><span class="small">${x.from}</span> <b>${baht(rate(r))}</b><s>${baht(r.price)}</s> <span class="small">${x.night}</span></p>${OFF&&!offerOk(OFF,r)?`<p class="small">${t().offPct(10)} · ${t().disc}</p>`:""}${status(r)[0]}<span class="go">${x.details}</span></div></a>`).join(""):`<p class="empty">${x.empty}</p>`;
 }
 $("#chips").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;cat=b.dataset.c;history.replaceState(null,"",cat==="all"?"rooms.html":"#"+cat);render()};
-onLang(render);render();navH();
+window.__rerender=render;render();
 }
 </script>
 </body>

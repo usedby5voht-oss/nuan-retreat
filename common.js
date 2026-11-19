@@ -5,7 +5,12 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const dp=p=>Math.round(p*.9);
 
 const T={
-th:{demo:"เว็บไซต์ตัวอย่าง: รีสอร์ตสมมติเพื่อสาธิตงานออกแบบ ไม่มีการจองหรือตัดเงินจริง",navHome:"หน้าแรก",navRooms:"ห้องพัก",navBook:"จองห้องพัก",
+th:{nav:{home:"หน้าแรก",rooms:"ห้องพัก",offers:"โปรโมชัน",dining:"ห้องอาหาร",spa:"สปา",events:"งานแต่งและอีเวนต์",contact:"ติดต่อเรา"},
+navSub:{home:"เรื่องราวและหนึ่งวันที่นวล",rooms:"4 แบบ ดูรูปและจองได้ทันที",offers:"แพ็กเกจและส่วนลดจองตรง",dining:"ริมทะเลและดาดฟ้า",spa:"นวดไทยและทรีตเมนต์",events:"แต่งงานริมหาดและงานเลี้ยง",contact:"LINE โทร และการเดินทาง"},
+menu:"เมนู",closeMenu:"ปิดเมนู",bookNow:"จองเลย",ann:"จองตรงรับส่วนลด 10% และอาหารเช้าฟรีทุกห้อง",annLink:"ดูโปรโมชัน",annDemo:"(เว็บไซต์ตัวอย่าง ไม่มีการจองจริง)",
+offOn:o=>`กำลังใช้แพ็กเกจ: ${o}`,offOff:"เลิกใช้แพ็กเกจ",offNo:"ห้องหรือวันที่นี้ไม่ตรงเงื่อนไขแพ็กเกจ ใช้ส่วนลดจองตรง 10% แทน",offPct:p=>`ลด ${p}%`,
+oMin:n=>`พักขั้นต่ำ ${n} คืน`,oRooms:r=>`ใช้ได้กับ ${r}`,oAdv:n=>`จองล่วงหน้า ${n} วันขึ้นไป`,oAll:"ใช้ได้ทุกห้อง",oPick:"เลือกแพ็กเกจนี้",oValid:"เข้าพักได้ถึง 31 ต.ค. 2027",
+demo:"เว็บไซต์ตัวอย่าง: รีสอร์ตสมมติเพื่อสาธิตงานออกแบบ ไม่มีการจองหรือตัดเงินจริง",navHome:"หน้าแรก",navRooms:"ห้องพัก",navBook:"จองห้องพัก",
 addr:"ถนนตัวอย่าง ตำบลอ่าวนาง อำเภอเมือง กระบี่ (ที่อยู่สมมติ)",foot:"เว็บไซต์สาธิต ออกแบบและพัฒนาโดย [ชื่อสตูดิโอของคุณ] · ภาพถ่ายจาก Unsplash",
 ci:"เช็กอิน",co:"เช็กเอาต์",gu:"ผู้เข้าพัก",guest:"ท่าน",night:"ต่อคืน",total:"รวม",nights:"คืน",sqm:"ตร.ม.",max:n=>`พักได้ ${n} ท่าน`,from:"เริ่มต้น",
 stay:(n,a,b)=>`${a} – ${b} · ${n} คืน`,errDate:"วันเช็กเอาต์ต้องอยู่หลังวันเช็กอิน",
@@ -26,7 +31,12 @@ cno:"หมายเลขบัตร",cexp:"วันหมดอายุ (�
 errCard:"เดโมนี้รับเฉพาะเลขบัตรทดสอบ 4242 4242 4242 4242",errExp:"วันหมดอายุไม่ถูกต้อง",errCvc:"CVC ต้องเป็นตัวเลข 3 หลัก",errName:"กรุณากรอกชื่อบนบัตร",
 ppScan:"สแกนด้วยแอปธนาคารใดก็ได้",ppDemo:"QR ตัวอย่าง สแกนจ่ายไม่ได้",ppTime:t=>`QR หมดอายุใน ${t}`,ppPaid:"ฉันโอนเงินแล้ว",proc:"กำลังตรวจสอบการชำระเงิน…",
 okH:"ชำระเงินและจองเรียบร้อย",okP:(e,a)=>`ได้รับชำระ ${a} แล้ว ส่งใบยืนยันการจองไปที่ ${e}`,okDemo:"นี่คือระบบสาธิต ไม่มีการจองหรือตัดเงินจริง",paidBy:"ชำระด้วย"},
-en:{demo:"Demo website: a fictional resort built to show the design. No real bookings or charges.",navHome:"Home",navRooms:"Rooms",navBook:"Book a stay",
+en:{nav:{home:"Home",rooms:"Rooms",offers:"Offers",dining:"Dining",spa:"Spa",events:"Weddings & events",contact:"Contact"},
+navSub:{home:"Our story and a day at Nuan",rooms:"Four rooms, photos and instant booking",offers:"Packages and direct-booking savings",dining:"By the sea and on the roof",spa:"Thai massage and treatments",events:"Beach weddings and private dinners",contact:"LINE, phone and getting here"},
+menu:"Menu",closeMenu:"Close menu",bookNow:"Book now",ann:"Book direct for 10% off and free breakfast in every room",annLink:"See offers",annDemo:"(Demo website, no real bookings)",
+offOn:o=>`Package applied: ${o}`,offOff:"Remove package",offNo:"This room or these dates don't meet the package terms, so the 10% direct rate applies instead",offPct:p=>`${p}% off`,
+oMin:n=>`Minimum ${n} night${n>1?"s":""}`,oRooms:r=>`For ${r}`,oAdv:n=>`Book at least ${n} days ahead`,oAll:"Any room",oPick:"Choose this package",oValid:"Stay by 31 Oct 2027",
+demo:"Demo website: a fictional resort built to show the design. No real bookings or charges.",navHome:"Home",navRooms:"Rooms",navBook:"Book a stay",
 addr:"Sample Road, Ao Nang, Mueang Krabi (fictional address)",foot:"Demo website designed and built by [your studio name] · Photographs from Unsplash",
 ci:"Check-in",co:"Check-out",gu:"Guests",guest:"guests",night:"per night",total:"Total",nights:"nights",sqm:"m²",max:n=>`Sleeps ${n}`,from:"From",
 stay:(n,a,b)=>`${a} – ${b} · ${n} night${n>1?"s":""}`,errDate:"Check-out must be after check-in",
@@ -81,6 +91,28 @@ const ROOMS=[
  am:{th:["บันไดลงสระส่วนตัว","ฝักบัวกลางแจ้ง","ผ้าเช็ดตัวสระว่ายน้ำ","เครื่องชงกาแฟ","Wi-Fi ความเร็วสูง","มินิบาร์","ของเล่นน้ำสำหรับเด็ก","ตู้เซฟ","เตียงเด็กอ่อนตามคำขอ"],en:["Private pool steps","Outdoor shower","Pool towels","Coffee machine","Fast Wi-Fi","Minibar","Pool toys for kids","In-room safe","Cot on request"]},
  gal:[["photo-1669741043336-36eb9c3db071",{th:"ห้องติดสระ",en:"Rooms along the pool"}],SH.pool,SH.path,SH.bf,SH.roof]}];
 
+/* packages: pct replaces the standard 10% direct discount when the stay meets the terms */
+const OFFERS=[
+{id:"stay3",pct:.2,minN:3,img:"photo-1483683804023-6ccdb62f86ef",
+ n:{th:"พัก 3 คืน ลด 20%",en:"Stay 3 nights, save 20%"},d:{th:"อยู่ยาวขึ้นอีกนิด ได้ส่วนลดมากขึ้น พร้อมอาหารเช้าทุกวัน",en:"Stay a little longer and save more, with breakfast every day"},perks:{th:["อาหารเช้าสำหรับสองท่าน","เช็กเอาต์ 14:00"],en:["Breakfast for two","Check-out at 14:00"]}},
+{id:"honey",pct:.15,minN:2,rooms:["suite","deluxe"],img:"photo-1760533536461-714a23877e2d",
+ n:{th:"ฮันนีมูนริมอันดามัน",en:"Andaman honeymoon"},d:{th:"ดินเนอร์ใต้แสงเทียนริมทะเลหนึ่งคืน และสปาคู่ 60 นาที",en:"One candlelit dinner by the sea and a 60-minute couples' spa"},perks:{th:["ดินเนอร์ริมทะเล 1 คืน","สปาคู่ 60 นาที","ตกแต่งห้องวันแรก"],en:["One dinner by the sea","60-minute couples' spa","Room decorated on arrival"]}},
+{id:"family",pct:.15,minN:2,rooms:["pool","suite"],img:"photo-1669741043336-36eb9c3db071",
+ n:{th:"ครอบครัวสุขสันต์",en:"Family time"},d:{th:"เด็กอายุต่ำกว่า 12 ปีทานอาหารฟรี พร้อมทริปเรือหางยาวครึ่งวัน",en:"Under-12s eat free, plus a half-day longtail trip"},perks:{th:["เด็กทานฟรี","ทริปเรือครึ่งวัน","เตียงเสริมฟรี"],en:["Kids eat free","Half-day boat trip","Free extra bed"]}},
+{id:"early",pct:.18,minN:1,adv:30,img:"photo-1722483537725-3807a1bb78c7",
+ n:{th:"จองล่วงหน้า ลด 18%",en:"Book early, save 18%"},d:{th:"วางแผนล่วงหน้า 30 วัน รับส่วนลดมากกว่าราคาจองตรงปกติ",en:"Plan 30 days ahead for more than the usual direct rate"},perks:{th:["อาหารเช้าสำหรับสองท่าน","ยกเลิกฟรีก่อน 14 วัน"],en:["Breakfast for two","Free cancellation up to 14 days before"]}}];
+let OFF=null;
+try{const q=new URLSearchParams(location.search).get("offer");if(q==="none")localStorage.removeItem("nuan-offer");else if(q)localStorage.setItem("nuan-offer",q);OFF=OFFERS.find(o=>o.id===(q||localStorage.getItem("nuan-offer")))||null}catch(e){}
+function clearOffer(){OFF=null;try{localStorage.removeItem("nuan-offer")}catch(e){}}
+function setOffer(id){OFF=OFFERS.find(o=>o.id===id)||null;try{localStorage.setItem("nuan-offer",id)}catch(e){}}
+function offerOk(o,r){if(!o)return false;if(o.rooms&&!o.rooms.includes(r.id))return false;if(nights()<o.minN)return false;if(o.adv&&S.ci<addDays(null,o.adv))return false;return true}
+const pctOf=r=>offerOk(OFF,r)?OFF.pct:.1;
+const rate=r=>Math.round(r.price*(1-pctOf(r)));
+const discLabel=r=>offerOk(OFF,r)?`${OFF.n[L]} (${Math.round(OFF.pct*100)}%)`:t().disc;
+function offTerms(o){const x=t(),a=[x.oMin(o.minN)];a.push(o.rooms?x.oRooms(o.rooms.map(id=>ROOMS.find(r=>r.id===id).name).join(", ")):x.oAll);if(o.adv)a.push(x.oAdv(o.adv));return a}
+function offerBar(r){if(!OFF)return"";const x=t(),ok=r?offerOk(OFF,r):true;return `<div class="offbar"><b>${x.offOn(OFF.n[L])}</b><span>${offTerms(OFF).join(" · ")}</span>${ok?"":`<span class="no">${x.offNo}</span>`}<button type="button" data-clearoff>${x.offOff}</button></div>`}
+document.addEventListener("click",e=>{if(e.target.closest("[data-clearoff]")){clearOffer();if(window.__rerender)window.__rerender()}});
+
 /* language */
 let L="th";try{L=localStorage.getItem("nuan-lang")||"th"}catch(e){}
 const t=()=>T[L];
@@ -116,7 +148,7 @@ function status(r){const x=t();if(r.left===0)return[`<p class="status no">${x.ou
 let B={},timer=null;
 const dlg=()=>$("#dlg"),dbody=()=>$("#dlgBody");
 const steps=k=>{const x=t();return `<div class="steps">${[x.s1,x.s2,x.s3].map((s,i)=>`<span class="${i+1===k?"on":i+1<k?"done":""}"><i>${i+1<k?"✓":i+1}</i><b>${s}</b></span>`).join("<em></em>")}</div>`};
-const summary=()=>{const x=t(),r=B.room,n=B.n,d=dp(r.price);return `<div class="sum"><div><span>${x.room}</span><span>${r.name}</span></div><div><span>${x.dates}</span><span>${fmt(S.ci)} – ${fmt(S.co)} · ${n} ${x.nights}</span></div><div><span>${x.perN}</span><span>${baht(r.price)}</span></div><div><span>${x.disc}</span><span>−${baht((r.price-d)*n)}</span></div><div class="tot"><span>${x.total}</span><span>${baht(d*n)}</span></div></div>`};
+const summary=()=>{const x=t(),r=B.room,n=B.n,d=rate(r);return `<div class="sum"><div><span>${x.room}</span><span>${r.name}</span></div><div><span>${x.dates}</span><span>${fmt(S.ci)} – ${fmt(S.co)} · ${n} ${x.nights}</span></div><div><span>${x.perN}</span><span>${baht(r.price)}</span></div><div><span>${discLabel(r)}</span><span>−${baht((r.price-d)*n)}</span></div><div class="tot"><span>${x.total}</span><span>${baht(d*n)}</span></div></div>`};
 function step1(){
   const x=t(),v=k=>esc(B[k]||"");
   dbody().innerHTML=`${steps(1)}<h3>${x.sumTitle}</h3>${summary()}
@@ -135,7 +167,7 @@ function qrSvg(seed){let q=seed,c="";const r=()=>(q=(q*1103515245+12345)%2147483
   return `<svg viewBox="0 0 ${N*s} ${N*s}" width="190" height="190" role="img" aria-label="Sample QR">${c}${fin(0,0)}${fin(18,0)}${fin(0,18)}<rect x="${9*s}" y="${10.5*s}" width="${7*s}" height="${4*s}" rx="4" fill="#fff"/><text x="${12.5*s}" y="${13.3*s}" text-anchor="middle" font-size="11" font-family="Anuphan,sans-serif" fill="#a33a2b" font-weight="600">DEMO</text></svg>`}
 function step2(mode){
   clearInterval(timer);
-  const x=t(),amt=baht(dp(B.room.price)*B.n);
+  const x=t(),amt=baht(rate(B.room)*B.n);
   const tabs=`<div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="${mode==="card"}" data-m="card">${x.card}</button><button type="button" role="tab" aria-selected="${mode==="pp"}" data-m="pp">${x.pp}</button></div>`;
   let inner;
   if(mode==="card"){
@@ -178,7 +210,7 @@ function processPay(method){
   const x=t();
   dbody().innerHTML=`${steps(2)}<div class="spin" role="status" aria-label="${x.proc}"></div><p style="text-align:center">${x.proc}</p>`;
   setTimeout(()=>{
-    const ref="NR-"+Math.random().toString(36).slice(2,7).toUpperCase(),amt=baht(dp(B.room.price)*B.n);
+    const ref="NR-"+Math.random().toString(36).slice(2,7).toUpperCase(),amt=baht(rate(B.room)*B.n);
     dbody().innerHTML=`${steps(4)}<div class="ok"><div class="arch"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 21l7 7 14-15" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>${x.okH}</h3><div class="ref">${ref}</div><p>${x.okP(esc(B.email),amt)}</p></div>${summary()}<p class="small" style="text-align:center">${x.paidBy} ${method} · ${x.okDemo}</p><div class="acts" style="justify-content:center"><button class="btn" id="cl">${x.close}</button></div>`;
     $("#cl").onclick=()=>dlg().close();
   },1600);
@@ -187,5 +219,41 @@ function openBook(room){B={room,n:nights(),name:B.name,phone:B.phone,email:B.ema
 document.addEventListener("DOMContentLoaded",()=>{const d=dlg();if(d)d.addEventListener("close",()=>clearInterval(timer))});
 
 /* keep sticky elements under the nav whatever its height */
-function navH(){const n=document.querySelector("nav");if(n)document.documentElement.style.setProperty("--navh",n.offsetHeight+"px")}
+function navH(){const n=document.querySelector(".hdr");if(n)document.documentElement.style.setProperty("--navh",n.offsetHeight+"px")}
 addEventListener("resize",navH);document.addEventListener("DOMContentLoaded",navH);
+
+/* ---------- header, menu, carousels ---------- */
+const NAV=[["home","index.html"],["rooms","rooms.html"],["offers","offers.html"],["dining","index.html#dining"],["spa","index.html#spa"],["events","index.html#events"],["contact","index.html#contact"]];
+const MENU_IMG={home:"photo-1511265753106-52a8e3488b70",rooms:"photo-1729606188713-814d1b7bf893",offers:"photo-1760533536461-714a23877e2d",dining:"photo-1674216645383-afc4e42c227f",spa:"photo-1712725213051-8d7d6a52edaf",events:"photo-1718152219044-edc915854e70",contact:"photo-1648648777033-c833d650aea7"};
+const ARCH='<svg viewBox="0 0 30 34" aria-hidden="true"><path class="arc1" d="M2 34V15a13 13 0 0 1 26 0v19" fill="none" stroke-width="2.2"/><path d="M9 34V17a6 6 0 0 1 12 0v17" fill="none" stroke="#d8642f" stroke-width="2.2"/></svg>';
+const ICON={l:'<path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',r:'<path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'};
+function header(active,over){
+  const x=t();let h=$("#hdr");if(!h)return;
+  if(!$("#ann")){const a=document.createElement("div");a.id="ann";a.className="ann";document.body.prepend(a)}
+  $("#ann").innerHTML=`${x.ann} · <a href="offers.html">${x.annLink}</a><span class="dm">${x.annDemo}</span>`;
+  h.className="hdr"+(over?" over":"");
+  h.innerHTML=`<div class="wrap nv"><button class="burger" id="burger" aria-haspopup="dialog"><i></i><span>${x.menu}</span></button>
+  <a class="brand" href="index.html" aria-label="Nuan Retreat">${ARCH}<span><b>NUAN</b><small>RETREAT · KRABI</small></span></a>
+  <div class="links">${NAV.slice(1,5).map(([k,u])=>`<a href="${u}"${k===active?' aria-current="page"':""}>${x.nav[k]}</a>`).join("")}</div>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="${L==="th"}">TH</button><button type="button" data-l="en" aria-pressed="${L==="en"}">EN</button></div>
+  <a class="btn bookbtn" href="rooms.html">${x.bookNow}</a></div>`;
+  let m=$("#menu");if(!m){m=document.createElement("dialog");m.id="menu";document.body.append(m)}
+  m.innerHTML=`<div class="mw"><div class="ml"><div class="mtop"><a class="brand" href="index.html" style="color:#fff">${ARCH.replace('class="arc1"','class="arc1" stroke="#fff"')}<span><b>NUAN</b></span></a><button class="mclose" id="mclose">${x.closeMenu}</button></div>
+  <ul class="mlist">${NAV.map(([k,u])=>`<li><a href="${u}" data-k="${k}"${k===active?' aria-current="page"':""}><b>${x.nav[k]}</b><span>${x.navSub[k]}</span></a></li>`).join("")}</ul>
+  <div class="mfoot"><span>075-000-000</span><span>reservations@nuan-retreat.example</span><span>${x.addr}</span></div></div>
+  <div class="mr"><img id="mimg" src="${U(MENU_IMG[active]||MENU_IMG.home,1200)}" alt=""></div></div>`;
+  $("#burger").onclick=()=>m.showModal();$("#mclose").onclick=()=>m.close();
+  m.querySelectorAll("[data-k]").forEach(a=>{a.onmouseenter=a.onfocus=()=>{$("#mimg").src=U(MENU_IMG[a.dataset.k],1200)};a.onclick=()=>m.close()});
+  const ah=$("#ann").offsetHeight;document.documentElement.style.setProperty("--annh",ah+"px");
+  if(over){const f=()=>h.classList.toggle("solid",scrollY>ah+10);f();if(!window.__overBound){window.__overBound=1;addEventListener("scroll",f,{passive:true})}}
+  navH();
+}
+function carousel(root){
+  const tr=root.querySelector(".track"),p=root.querySelector("[data-prev]"),n=root.querySelector("[data-next]");if(!tr)return;
+  const step=()=>{const c=tr.children[0];return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(tr).columnGap||24):300};
+  const upd=()=>{if(p)p.disabled=tr.scrollLeft<4;if(n)n.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4};
+  if(p)p.onclick=()=>tr.scrollBy({left:-step(),behavior:"smooth"});if(n)n.onclick=()=>tr.scrollBy({left:step(),behavior:"smooth"});
+  tr.addEventListener("scroll",upd,{passive:true});upd();
+}
+const cbtns=()=>`<div class="cbtns"><button class="cbtn" data-prev aria-label="Previous">${'<svg viewBox="0 0 24 24">'+ICON.l+'</svg>'}</button><button class="cbtn" data-next aria-label="Next">${'<svg viewBox="0 0 24 24">'+ICON.r+'</svg>'}</button></div>`;
+function offerCard(o){const x=t();return `<a class="oc" href="offers.html#${o.id}"><figure><img loading="lazy" src="${U(o.img,800)}" alt="${o.n[L]}"><span class="pct">${x.offPct(Math.round(o.pct*100))}</span></figure><div class="ob"><h3>${o.n[L]}</h3><p>${o.d[L]}</p><p class="cond">${offTerms(o).join(" · ")}</p><span class="go">${x.oPick}</span></div></a>`}
