@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book a stay · Nuan Retreat Krabi</title>
+<meta name="description" content="Nuan Retreat — a small 24-room retreat in Ao Nang, Krabi. Demo website.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@300;400;500&family=IBM+Plex+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+/* Book Now: five steps on the left, a pinned summary on the right. */
+.bwrap{padding:clamp(28px,4vw,56px) 0 clamp(80px,10vw,140px)}
+.bwrap h1{font-size:clamp(36px,4.6vw,64px)}
+.bsteps{list-style:none;padding:0;margin:26px 0 clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line)}
+.bsteps li{padding:14px 10px 0 0;border-top:2px solid transparent;margin-top:-1px;font-size:14px;color:var(--mute)}
+.bsteps li span{display:block;font:300 22px/1.2 var(--f-d)}
+.bsteps li.on{border-color:var(--brass);color:var(--ink)}
+.bsteps li.done{border-color:var(--ink);color:var(--ink)}
+.bsteps button{all:unset;cursor:pointer}
+.bgrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(32px,5vw,72px);align-items:start}
+.panel{background:#fff;border:1px solid var(--line);padding:clamp(22px,3vw,40px)}
+.panel h2{font-size:clamp(26px,2.6vw,36px);margin-bottom:6px}
+.panel .hint{color:var(--mute);margin-bottom:24px}
+.dates{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--line)}
+.dates .field{padding:12px 16px}.dates .field+.field{border-left:1px solid var(--line)}
+.ninfo{margin-top:14px;color:var(--brassd);font-size:15px}
+.bacts{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:30px}
+.rlist{display:grid;gap:16px}
+.ropt{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;border:1px solid var(--line);padding:14px;align-items:center;transition:border-color .2s,background .2s}
+.ropt figure{aspect-ratio:4/3.4;border-radius:var(--arch)}
+.ropt h3{font-size:24px}
+.ropt .tags{margin:8px 0 10px}
+.ropt .pp{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.ropt .pp b{font:300 28px var(--f-d)}
+.ropt .row2{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px}
+.ropt.sel{border-color:var(--brass);background:#FBF8F2;box-shadow:inset 0 0 0 1px var(--brass)}
+.ropt.off{opacity:.5}
+.ropt .btn{min-height:44px;padding:0 20px}
+.side2{position:sticky;top:calc(var(--navh,84px) + 22px)}
+.sumc{background:var(--night);color:#E9ECE8;padding:28px}
+.sumc h3{font-size:24px;margin-bottom:16px}
+.sumc figure{aspect-ratio:16/10;border-radius:var(--arch);margin-bottom:18px}
+.sumc dl{margin:0;display:grid;gap:0}
+.sumc dl div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--dline);font-size:14.5px}
+.sumc dt{color:var(--fog)}.sumc dd{margin:0;text-align:right}
+.sumc .tot{font-size:18px;font-weight:500;border:0;padding-top:16px}.sumc .tot dd{color:var(--brass2);font:400 26px var(--f-d)}
+.sumc .offbar{background:transparent;border-color:var(--dline);border-left-color:var(--brass);color:#E9ECE8;margin:0 0 16px}
+.sumc .offbar button{color:#fff}
+.trust{margin-top:16px;font-size:13.5px;color:var(--mute);display:grid;gap:6px}
+.trust span::before{content:"";display:inline-block;width:7px;height:9px;border:1.2px solid var(--brass);border-bottom:0;border-radius:var(--arch);margin-right:10px}
+.okp{text-align:center}
+.okp .arch{width:96px;height:112px;margin:6px auto 18px;background:var(--night);display:grid;place-items:center}
+@media(max-width:960px){.bgrid{grid-template-columns:1fr}.side2{position:static;order:-1}.sumc figure{display:none}}
+@media(max-width:640px){.bsteps li{font-size:0}.bsteps li span{font-size:20px}.dates{grid-template-columns:1fr 1fr}.dates .field:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}.ropt{grid-template-columns:1fr}.ropt figure{aspect-ratio:16/10}}
+@media print{.hdr,#ann,footer,.fline,.bsteps,.bacts .btn.line{display:none!important}}
+</style>
+</head>
+<body>
+<header id="hdr"></header>
+<main class="wrap bwrap"><h1 id="bh"></h1><ol class="bsteps" id="bsteps"></ol>
+<div class="bgrid"><div class="panel" id="panel"></div><aside class="side2" id="side"></aside></div></main>
+<script src="common.js"></script>
+<script>
+{
+const P={th:{h:"จองห้องพัก",steps:["วันที่และผู้เข้าพัก","เลือกห้อง","ข้อมูลผู้จอง","ชำระเงิน","ยืนยันการจอง"],
+ s1h:"เลือกวันเข้าพัก",s1p:"เลือกวันเช็กอิน เช็กเอาต์ และจำนวนผู้เข้าพัก",nn:n=>`พัก ${n} คืน`,
+ s2h:"เลือกประเภทห้อง",s2p:"ราคาด้านล่างเป็นราคาจองตรงที่หักส่วนลดแล้ว",pick:"เลือกห้องนี้",picked:"เลือกแล้ว",tot:n=>`รวม ${n} คืน`,
+ s3h:"ข้อมูลผู้จอง",s3p:"เราจะส่งใบยืนยันการจองไปที่อีเมลนี้",country:"ประเทศ",arr:"เวลาที่คาดว่าจะมาถึง",arrO:["ยังไม่แน่ใจ","ก่อน 14:00","14:00–18:00","18:00–22:00","หลัง 22:00"],countries:["ไทย","สิงคโปร์","มาเลเซีย","จีน","สหราชอาณาจักร","สหรัฐอเมริกา","อื่นๆ"],
+ s4h:"ชำระเงิน",s4p:"เลือกวิธีชำระเงิน ระบบนี้เป็นการสาธิต ไม่มีการตัดเงินจริง",
+ s5p:"ขอบคุณที่เลือกพักกับนวล ทีมงานจะติดต่อทาง LINE หรืออีเมลก่อนวันเข้าพัก",ref:"หมายเลขการจอง",home:"กลับหน้าแรก",print:"พิมพ์ใบยืนยัน",
+ next:"ถัดไป",back:"ย้อนกลับ",sumH:"สรุปการจอง",dates:"วันที่",guests:"ผู้เข้าพัก",room:"ห้อง",perN:"ราคาต่อคืน",noRoom:"ยังไม่ได้เลือก",needRoom:"กรุณาเลือกห้องก่อน",
+ trust:["ยกเลิกฟรีก่อนเข้าพัก 7 วัน","อาหารเช้าสองท่านทุกเช้า","ราคาจองตรงดีที่สุด"]},
+ en:{h:"Book a stay",steps:["Dates & guests","Choose a room","Your details","Payment","Confirmed"],
+ s1h:"When are you coming?",s1p:"Pick your check-in and check-out dates and how many guests.",nn:n=>`${n} night${n>1?"s":""}`,
+ s2h:"Choose a room",s2p:"Prices below are our direct rate with discounts already applied.",pick:"Choose this room",picked:"Chosen",tot:n=>`${n} night${n>1?"s":""} total`,
+ s3h:"Your details",s3p:"We'll send your confirmation to this email.",country:"Country",arr:"Expected arrival",arrO:["Not sure yet","Before 14:00","14:00–18:00","18:00–22:00","After 22:00"],countries:["Thailand","Singapore","Malaysia","China","United Kingdom","United States","Other"],
+ s4h:"Payment",s4p:"Choose how to pay. This is a demo and no money is taken.",
+ s5p:"Thank you for choosing Nuan. We'll be in touch on LINE or by email before you arrive.",ref:"Booking reference",home:"Back to home",print:"Print confirmation",
+ next:"Continue",back:"Back",sumH:"Your stay",dates:"Dates",guests:"Guests",room:"Room",perN:"Per night",noRoom:"Not chosen yet",needRoom:"Choose a room first",
+ trust:["Free cancellation up to 7 days before","Breakfast for two every morning","Our best direct rate"]}};
+const q=new URLSearchParams(location.search);
+const BK={step:1,room:ROOMS.find(r=>r.id===q.get("r"))||null,name:"",phone:"",email:"",country:0,arr:0,req:"",method:"",ref:""};
+let tm=null;
+const p=()=>P[L];
+function side(){
+  const x=t(),r=BK.room,n=Math.max(nights(),1);
+  $("#side").innerHTML=`<div class="sumc">${r?`<figure><img src="${U(r.gal[0][0],800)}" alt=""></figure>`:""}<h3>${p().sumH}</h3>${offerBar(r)}
+  <dl><div><dt>${p().dates}</dt><dd>${nights()>0?`${fmt(S.ci)} – ${fmt(S.co)}<br>${p().nn(nights())}`:x.errDate}</dd></div><div><dt>${p().guests}</dt><dd>${S.g} ${x.guest}</dd></div>
+  <div><dt>${p().room}</dt><dd>${r?r.name:p().noRoom}</dd></div>
+  ${r?`<div><dt>${p().perN}</dt><dd>${baht(r.price)}</dd></div><div><dt>${discLabel(r)}</dt><dd>−${baht((r.price-rate(r))*n)}</dd></div><div class="tot"><dt>${x.total}</dt><dd>${baht(rate(r)*n)}</dd></div>`:""}</dl></div>
+  <div class="trust">${p().trust.map(s=>`<span>${s}</span>`).join("")}</div>`;
+}
+function drawSteps(){
+  $("#bsteps").innerHTML=p().steps.map((s,i)=>{const k=i+1,cl=k===BK.step?"on":k<BK.step?"done":"";const can=k<BK.step&&BK.step<5;
+    return `<li class="${cl}"${k===BK.step?' aria-current="step"':""}>${can?`<button data-go="${k}">`:""}<span>${k}</span>${s}${can?"</button>":""}</li>`}).join("");
+  $("#bsteps").querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(+b.dataset.go));
+}
+const acts=(back,next,nextLabel,dis)=>`<div class="bacts">${back?`<button type="button" class="btn line" id="bb">${p().back}</button>`:"<span></span>"}${next?`<button class="btn gold" id="bn" ${dis?"disabled":""}>${nextLabel||p().next}</button>`:""}</div>`;
+function go(k){BK.step=k;clearInterval(tm);render();scrollTo({top:0,behavior:"smooth"})}
+function step1(){
+  const x=t();
+  $("#panel").innerHTML=`<h2>${p().s1h}</h2><p class="hint">${p().s1p}</p><form id="f" onsubmit="return false"><div class="dates"><div class="field"><label for="ci">${x.ci}</label><input type="date" id="ci"></div><div class="field"><label for="co">${x.co}</label><input type="date" id="co"></div><div class="field"><label for="gu">${x.gu}</label><select id="gu"></select></div></div>
+  <p class="ninfo" id="ni"></p>${acts(false,true,null,nights()<1)}</form>`;
+  const upd=()=>{$("#ni").textContent=nights()>0?p().nn(nights()):x.errDate;$("#bn").disabled=nights()<1;side()};
+  bindStay($("#ci"),$("#co"),$("#gu"),upd);upd();
+  $("#bn").onclick=()=>go(2);
+}
+function step2(){
+  const x=t(),n=Math.max(nights(),1);
+  $("#panel").innerHTML=`<h2>${p().s2h}</h2><p class="hint">${p().s2p}</p><div class="rlist">${ROOMS.map(r=>{const [st,bad]=status(r),sel=BK.room&&BK.room.id===r.id;
+    return `<div class="ropt${sel?" sel":""}${bad?" off":""}"><figure><img loading="lazy" src="${U(r.gal[0][0],600)}" alt="${r.name}"></figure><div><h3>${r.name}</h3><div class="tags"><span>${r.size} ${x.sqm}</span><span>${x.max(r.max)}</span><span>${r.bed[L]}</span><span>${r.vw[L]}</span></div>
+    <div class="pp"><b>${baht(rate(r))}</b><s class="small">${baht(r.price)}</s><span class="small">${x.night} · ${p().tot(n)} ${baht(rate(r)*n)}</span></div>${st}
+    <div class="row2"><a class="small" href="room.html?r=${r.id}" target="_blank" rel="noopener">${x.details}</a><button type="button" class="btn ${sel?"":"line"}" data-r="${r.id}" ${bad?"disabled":""} aria-pressed="${!!sel}">${sel?p().picked:p().pick}</button></div></div></div>`}).join("")}</div>
+  <p class="err" id="err" role="alert"></p>${acts(true,true)}`;
+  $("#panel").querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{BK.room=ROOMS.find(r=>r.id===b.dataset.r);step2();side()});
+  $("#bb").onclick=()=>go(1);
+  $("#bn").onclick=()=>{if(!BK.room||status(BK.room)[1]){$("#err").textContent=p().needRoom;return}go(3)};
+}
+function step3(){
+  const x=t(),v=k=>esc(BK[k]||"");
+  $("#panel").innerHTML=`<h2>${p().s3h}</h2><p class="hint">${p().s3p}</p><form id="f" novalidate><div class="f2">
+  <div class="full"><label for="nm">${x.name} <span class="req">*</span></label><input id="nm" autocomplete="name" value="${v("name")}"></div>
+  <div><label for="ph">${x.phone} <span class="req">*</span></label><input id="ph" type="tel" autocomplete="tel" value="${v("phone")}"></div>
+  <div><label for="em">${x.email} <span class="req">*</span></label><input id="em" type="email" autocomplete="email" value="${v("email")}"></div>
+  <div><label for="cty">${p().country}</label><select id="cty" class="sel2">${p().countries.map((c,i)=>`<option value="${i}"${i==BK.country?" selected":""}>${c}</option>`).join("")}</select></div>
+  <div><label for="ar">${p().arr}</label><select id="ar" class="sel2">${p().arrO.map((c,i)=>`<option value="${i}"${i==BK.arr?" selected":""}>${c}</option>`).join("")}</select></div>
+  <div class="full"><label for="rq">${x.req}</label><input id="rq" value="${v("req")}"></div></div>
+  <p class="err" id="err" role="alert"></p>${acts(true,true,x.next)}</form>`;
+  $("#bb").onclick=()=>{save();go(2)};
+  const save=()=>{BK.name=$("#nm").value.trim();BK.phone=$("#ph").value.trim();BK.email=$("#em").value.trim();BK.country=$("#cty").value;BK.arr=$("#ar").value;BK.req=$("#rq").value.trim()};
+  $("#f").onsubmit=e=>{e.preventDefault();save();if(!BK.name||!BK.phone||!/^\S+@\S+\.\S+$/.test(BK.email)){$("#err").textContent=x.errFill;return}go(4)};
+}
+function step4(mode="card"){
+  clearInterval(tm);
+  const x=t(),amt=baht(rate(BK.room)*Math.max(nights(),1));
+  const tabs=`<div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="${mode==="card"}" data-m="card">${x.card}</button><button type="button" role="tab" aria-selected="${mode==="pp"}" data-m="pp">${x.pp}</button></div>`;
+  let inner;
+  if(mode==="card"){
+    inner=`<p class="testnote">${x.test}</p><div class="card" aria-hidden="true"><div class="row"><span>Nuan Retreat</span><span>VISA</span></div><div class="no" id="cv">4242 4242 4242 4242</div><div class="row"><span id="cvn">${esc(BK.name)}</span><span id="cve">12/30</span></div></div>
+    <form id="f2" novalidate><div class="f2"><div class="full"><label for="cn">${x.cno}</label><input id="cn" inputmode="numeric" autocomplete="off" value="4242 4242 4242 4242" maxlength="19"></div>
+    <div><label for="ce">${x.cexp}</label><input id="ce" inputmode="numeric" autocomplete="off" value="12/30" maxlength="5"></div><div><label for="cc">${x.ccvc}</label><input id="cc" inputmode="numeric" autocomplete="off" value="123" maxlength="3"></div>
+    <div class="full"><label for="cm">${x.cname}</label><input id="cm" autocomplete="off" value="${esc(BK.name)}"></div></div>
+    <p class="err" id="err" role="alert"></p>${acts(true,true,x.pay(amt))}</form>`;
+  }else{
+    inner=`<div class="qr"><div class="box"><div class="pp">PromptPay</div>${qrSvg(nights()*7919+BK.room.price)}<div class="amt">${amt}</div></div><p>${x.ppScan}</p><p class="small" style="color:#9B3B2C">${x.ppDemo}</p><p class="timer" id="tmr"></p></div>${acts(true,true,x.ppPaid)}`;
+  }
+  $("#panel").innerHTML=`<h2>${p().s4h}</h2><p class="hint">${p().s4p}</p>${tabs}${inner}`;
+  $("#panel").querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>step4(b.dataset.m));
+  $("#bb").onclick=()=>go(3);
+  if(mode==="card"){
+    const cn=$("#cn"),ce=$("#ce"),cc=$("#cc"),cm=$("#cm");
+    cn.oninput=()=>{cn.value=cn.value.replace(/\D/g,"").slice(0,16).replace(/(.{4})/g,"$1 ").trim();$("#cv").textContent=cn.value||"•••• •••• •••• ••••"};
+    ce.oninput=()=>{let v=ce.value.replace(/\D/g,"").slice(0,4);if(v.length>2)v=v.slice(0,2)+"/"+v.slice(2);ce.value=v;$("#cve").textContent=v||"MM/YY"};
+    cc.oninput=()=>{cc.value=cc.value.replace(/\D/g,"").slice(0,3)};cm.oninput=()=>{$("#cvn").textContent=cm.value};
+    $("#f2").onsubmit=e=>{e.preventDefault();[cn,ce,cc,cm].forEach(i=>i.classList.remove("bad"));
+      const fail=(el,msg)=>{el.classList.add("bad");el.focus();$("#err").textContent=msg};
+      if(cn.value.replace(/\s/g,"")!=="4242424242424242")return fail(cn,x.errCard);
+      const m=ce.value.match(/^(\d\d)\/(\d\d)$/);if(!m||+m[1]<1||+m[1]>12||new Date(2000+ +m[2],+m[1],0)<new Date())return fail(ce,x.errExp);
+      if(!/^\d{3}$/.test(cc.value))return fail(cc,x.errCvc);if(!cm.value.trim())return fail(cm,x.errName);pay(x.card)};
+  }else{
+    let left=900;const tick=()=>{const el=$("#tmr");if(!el){clearInterval(tm);return}el.textContent=x.ppTime(`${Math.floor(left/60)}:${String(left%60).padStart(2,"0")}`);if(--left<0)clearInterval(tm)};
+    tick();tm=setInterval(tick,1000);$("#bn").onclick=()=>pay("PromptPay");
+  }
+}
+function pay(method){
+  clearInterval(tm);const x=t();
+  $("#panel").innerHTML=`<div class="spin" role="status" aria-label="${x.proc}"></div><p style="text-align:center">${x.proc}</p>`;
+  setTimeout(()=>{BK.method=method;BK.ref="NR-"+Math.random().toString(36).slice(2,7).toUpperCase();go(5)},1600);
+}
+function step5(){
+  const x=t(),amt=baht(rate(BK.room)*Math.max(nights(),1));
+  $("#panel").innerHTML=`<div class="okp"><div class="arch"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 21l7 7 14-15" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <h2>${x.okH}</h2><p class="small" style="margin-top:12px">${p().ref}</p><div class="ref">${BK.ref}</div><p>${x.okP(esc(BK.email),amt)}</p><p class="lead" style="margin:14px auto 0">${p().s5p}</p>
+  <p class="small" style="margin-top:16px">${x.paidBy} ${BK.method} · ${x.okDemo}</p>
+  <div class="bacts" style="justify-content:center"><a class="btn" href="index.html">${p().home}</a><button type="button" class="btn line" onclick="print()">${p().print}</button></div></div>`;
+}
+function render(){
+  header("book",false);onLang(render);applyText();
+  document.title=`${p().h} · Nuan Retreat Krabi`;$("#bh").textContent=p().h;
+  drawSteps();side();[null,step1,step2,step3,step4,step5][BK.step]();
+}
+window.__rerender=render;render();
+}
+</script>
+</body>
+</html>

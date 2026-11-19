@@ -35,8 +35,6 @@
 .intro{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(40px,7vw,120px);align-items:center}
 .pair{display:grid;grid-template-columns:3fr 2fr;gap:18px;align-items:end}
 .pair figure:first-child{aspect-ratio:3/4.2;border-radius:var(--arch)}.pair figure:last-child{aspect-ratio:3/4;margin-bottom:72px}
-.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
-.facts b{display:block;font:300 clamp(30px,3vw,44px)/1.1 var(--f-d);color:var(--brassd)}.facts span{font-size:13.5px;color:var(--mute)}
 .rcard{text-decoration:none;display:block;color:#fff}
 .rcard figure{aspect-ratio:3/4;border-radius:var(--arch)}
 .rcard img{transition:transform 1.1s ease}.rcard:hover img{transform:scale(1.045)}
@@ -44,19 +42,6 @@
 .rcard h3{font-size:26px;font-weight:300}
 .rcard p{color:var(--fog);font-size:14.5px;margin-top:6px}
 .rcard .pr{white-space:nowrap;font-size:14px;color:var(--fog)}.rcard .pr b{font:400 22px var(--f-d);color:var(--brass2)}
-.day .dayh{max-width:760px;margin:0 auto clamp(56px,7vw,96px)}
-.tl{position:relative}
-.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line)}
-.stop{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,8vw,140px);align-items:center;padding:30px 0;position:relative}
-.stop::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:11px;border-radius:50%;background:var(--paper);border:1.5px solid var(--brass);transform:translate(-50%,-50%)}
-.stop.sun::after{background:var(--brass)}
-.stop figure{aspect-ratio:4/3.2}
-.stop:nth-child(odd) figure{border-radius:var(--arch);aspect-ratio:4/4.6}
-.stop:nth-child(even) figure{order:2}
-.time{font:300 48px/1 var(--f-d);color:var(--ink);margin-bottom:14px;white-space:nowrap}
-.stop.sun .time{color:var(--brassd)}
-.stop p{color:var(--mute);margin-top:10px;max-width:42ch}
-.stop .note{font-size:13.5px;color:var(--brassd);margin-top:14px}
 .xgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .xt{position:relative;display:block;aspect-ratio:3/4.4;overflow:hidden;color:#fff;text-decoration:none;background:var(--night)}
 .xt:nth-child(even){margin-top:56px}
@@ -67,22 +52,13 @@
 .xt h3{font-size:clamp(22px,2vw,28px);font-weight:300}
 .xt p{font-size:14px;color:#D9E0DC;margin-top:6px}
 .xt .tlink{margin-top:14px;color:#fff;border-color:var(--brass2)}
-.mos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,250px);gap:14px}
-.mos figure:nth-child(1){grid-column:span 2;grid-row:span 2;border-radius:var(--arch)}
-.mos figure:nth-child(4){grid-row:span 2}
-.near{list-style:none;padding:0;margin:28px 0 32px}
-.near li{display:grid;grid-template-columns:96px 1fr auto;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
-.near li:first-child{border-top:1px solid var(--line)}
-.near b{font:300 24px var(--f-d);color:var(--brassd);white-space:nowrap}
-.near span:last-child{color:var(--mute);font-size:14px;text-align:right}
 @media(max-width:1100px){.sctl .cbtn,.count{display:none}}
 @media(max-width:1080px){.xgrid{grid-template-columns:1fr 1fr}.xt:nth-child(even){margin-top:0}.xt:nth-child(odd){margin-top:0}}
-@media(max-width:960px){.intro{grid-template-columns:1fr}.pair figure:last-child{margin-bottom:0}.facts{grid-template-columns:1fr 1fr}
- .bkf{grid-template-columns:1fr 1fr 1fr}.bkf .btn{grid-column:1/-1;min-height:56px}.mos{grid-template-columns:1fr 1fr}.mos figure:nth-child(1){grid-column:span 2}.mos figure:nth-child(4){grid-row:auto}}
+@media(max-width:960px){.intro{grid-template-columns:1fr}.pair figure:last-child{margin-bottom:0}
+ .bkf{grid-template-columns:1fr 1fr 1fr}.bkf .btn{grid-column:1/-1;min-height:56px}}
 @media(max-width:720px){.cap{bottom:auto;top:calc(var(--annh,40px) + 130px)}.sctl{bottom:auto;top:calc(var(--annh,40px) + 84px);right:auto;left:max(5vw,20px)}.sctl .cbtn,.count{display:none}
  .bkf{grid-template-columns:1fr 1fr}.bkf .field{padding:14px 18px;border-bottom:1px solid var(--line)}.bkf .field:nth-child(2){border-right:0}.bkf .field:nth-child(3){grid-column:1/-1;border-right:0}
- .tl::before{left:5px}.stop{grid-template-columns:1fr;gap:18px;padding:24px 0 24px 32px}.stop::after{left:5px;top:36px}.stop:nth-child(even) figure{order:0}.stop:nth-child(odd) figure{aspect-ratio:4/3.6}.time{font-size:38px}
- .xgrid{grid-template-columns:1fr}.xt{aspect-ratio:4/4.4}.near li{grid-template-columns:80px 1fr}.near span:last-child{grid-column:2;text-align:left;margin-top:-10px}}
+ .xgrid{grid-template-columns:1fr}.xt{aspect-ratio:4/4.4}}
 @media(prefers-reduced-motion:reduce){.slide,.slide img{transition:none}}
 </style>
 </head>
@@ -107,80 +83,56 @@
 
 <section class="sec tight white" style="padding-top:0;padding-bottom:0"><div class="wrap"><div class="bens" id="bens"></div></div></section>
 
+<section class="sec"><div class="wrap">
+  <div class="intro rv"><div><span class="mark"></span><h2 id="inH"></h2><p class="lead" style="margin-top:22px" id="inP"></p><div style="margin-top:30px"><a class="tlink" href="about.html" id="inA"></a></div></div>
+  <div class="pair"><figure><img loading="lazy" src="https://images.unsplash.com/photo-1762425430465-0d9f08d64147?auto=format&fit=crop&w=1000&q=80" alt=""></figure><figure><img loading="lazy" src="https://images.unsplash.com/photo-1596436891234-ab1fbd9353e5?auto=format&fit=crop&w=700&q=80" alt=""></figure></div></div>
+  <div class="hl6 rv" id="hl6" style="margin-top:clamp(48px,6vw,80px)"></div>
+</div></section>
+
 <section class="sec dark"><div class="wrap"><div class="car" id="roomsCar">
   <div class="sh"><div><span class="mark"></span><h2 id="rmH"></h2><p class="lead" id="rmP"></p></div><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><a class="btn line" href="rooms.html" id="rmAll"></a><span class="cbslot"></span></div></div>
   <div class="track" id="roomTrack"></div></div></div></section>
 
-<section class="sec day" id="day"><div class="wrap">
-  <div class="dayh center"><span class="mark"></span><h2 id="dayH"></h2><p class="lead" style="margin-top:18px" id="dayP"></p></div>
-  <div class="tl" id="tl"></div>
-</div></section>
-
-<section class="sec stoneb"><div class="wrap">
-  <div class="sh"><div><span class="mark"></span><h2 id="exH"></h2><p class="lead" id="exP"></p></div></div>
-  <div class="xgrid" id="xgrid"></div>
-</div></section>
-
-<section class="sec dark" id="offers"><div class="wrap"><div class="car" id="offCar">
+<section class="sec" id="offers"><div class="wrap"><div class="car" id="offCar">
   <div class="sh"><div><span class="mark"></span><h2 id="ofH"></h2><p class="lead" id="ofP"></p></div><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><a class="btn line" href="offers.html" id="ofAll"></a><span class="cbslot"></span></div></div>
   <div class="track" id="offTrack"></div></div></div></section>
 
-<section class="sec"><div class="wrap">
-  <div class="sh"><div><span class="mark"></span><h2 id="gaH"></h2></div><a class="tlink" href="gallery.html" id="gaA"></a></div>
-  <div class="mos rv" id="mos"></div>
+<section class="sec dark2"><div class="wrap">
+  <div class="sh"><div><span class="mark"></span><h2 id="rvH"></h2><p class="lead" id="rvP"></p></div></div>
+  <div class="rvw" id="rvw"></div>
 </div></section>
 
-<section class="sec stoneb"><div class="wrap split rv">
-  <figure><img loading="lazy" src="https://images.unsplash.com/photo-1708820760437-5a5020e8e50d?auto=format&fit=crop&w=1100&q=80" alt=""></figure>
-  <div><span class="mark"></span><h2 id="ctH"></h2><p class="lead" style="margin-top:18px" id="ctP"></p><ul class="near" id="near"></ul><a class="btn" href="contact.html" id="ctA"></a></div>
+<section class="sec stoneb"><div class="wrap">
+  <div class="sh"><div><span class="mark"></span><h2 id="exH"></h2><p class="lead" id="exP"></p></div><a class="tlink" href="facilities.html" id="exA"></a></div>
+  <div class="xgrid" id="xgrid"></div>
 </div></section>
 
 <script src="common.js"></script>
 <script>
 {
-/* Sunrise/sunset for Ao Nang (8.03N, 98.82E, UTC+7), NOAA approximation */
-function sunT(d){const rad=Math.PI/180,lat=8.032,lon=98.823,tz=7;
-  const N=Math.floor((d-new Date(d.getFullYear(),0,0))/864e5),g=2*Math.PI/365*(N-1);
-  const eq=229.18*(.000075+.001868*Math.cos(g)-.032077*Math.sin(g)-.014615*Math.cos(2*g)-.040849*Math.sin(2*g));
-  const de=.006918-.399912*Math.cos(g)+.070257*Math.sin(g)-.006758*Math.cos(2*g)+.000907*Math.sin(2*g)-.002697*Math.cos(3*g)+.00148*Math.sin(3*g);
-  const ha=Math.acos(Math.cos(90.833*rad)/(Math.cos(lat*rad)*Math.cos(de))-Math.tan(lat*rad)*Math.tan(de))/rad;
-  const f=m=>{m=Math.round(((m%1440)+1440)%1440);return `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`};
-  return [f(720-4*(lon+ha)-eq+tz*60),f(720-4*(lon-ha)-eq+tz*60)]}
-const [RISE,SET]=sunT(new Date());
 const IC={tag:'<path d="M4 12V5a1 1 0 0 1 1-1h7l8 8-8 8z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/>',
 cup:'<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3c0 2 2 2 2 4M12 3c0 2 2 2 2 4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>',
 clock:'<circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>',
 chat:'<path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H6a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>'};
 const H={
 th:{slides:[["photo-1511265753106-52a8e3488b70","อ่าวนาง กระบี่","พักผ่อนท่ามกลางผาหินปูนแห่งอันดามัน"],["photo-1648648777033-c833d650aea7","ไร่เลย์ 15 นาทีด้วยเรือ","หาดที่ไปได้ทางเรือเท่านั้น"],["photo-1483683804023-6ccdb62f86ef","ทัวร์เกาะ","ทะเลแหวก เกาะไก่ และเกาะปอดะ"],["photo-1729606188713-814d1b7bf893","Andaman Suite","ตื่นมาพร้อมทะเลตรงปลายเตียง"],["photo-1760533536461-714a23877e2d","ดินเนอร์ริมทะเล","มื้อค่ำใต้แสงเทียน ฟังเสียงคลื่น"]],
- bookA:"ดูห้องพัก",storyA:"หนึ่งวันที่นวล",find:"ค้นหาห้องว่าง",
+ bookA:"จองห้องพัก",storyA:"ดูห้องพัก",find:"ค้นหาห้องว่าง",
  bens:[["tag","ราคาดีที่สุด","ลด 10% จากเว็บเอเจนต์"],["cup","อาหารเช้าฟรี","สองท่าน ทุกการจองตรง"],["clock","เช็กเอาต์ 14:00","ขอได้ตามห้องว่าง"],["chat","คุยกับเราโดยตรง","ทาง LINE ตลอดการเข้าพัก"]],
- inH:"บ้านหลังเล็กริมอ่าวนาง ห้องพักเพียง 24 ห้อง",inP:"นวลตั้งอยู่ในซอยเงียบหลังถนนเลียบหาด ตัวอาคารปูนสีดินเผา ทางเดินร่มรื่น และสระว่ายน้ำกลางสวน เราตั้งใจให้มีห้องไม่มาก ทุกคนจึงได้ใช้สระ สวน และดาดฟ้าโดยไม่ต้องรอคิว",inA:"ดูภาพรอบรีสอร์ต",
+ inH:"บ้านหลังเล็กริมอ่าวนาง ห้องพักเพียง 24 ห้อง",inP:"นวลตั้งอยู่ในซอยเงียบหลังถนนเลียบหาด ตัวอาคารปูนสีดินเผา ทางเดินร่มรื่น และสระว่ายน้ำกลางสวน เราตั้งใจให้มีห้องไม่มาก ทุกคนจึงได้ใช้สระ สวน และดาดฟ้าโดยไม่ต้องรอคิว",inA:"อ่านเรื่องราวของเรา",hl:[["24","ห้องพักเท่านั้น","เงียบ ส่วนตัว และทีมงานจำชื่อคุณได้"],["6 นาที","เดินถึงหาดอ่าวนาง","ซอยเงียบหลังถนนเลียบหาด"],["Roof Bar","ดาดฟ้าวิวเกาะปอดะ","จุดชมพระอาทิตย์ตกที่ดีที่สุดในซอย"],["25 ม.","สระน้ำเกลือกลางสวน","ล้อมด้วยลีลาวดีอายุกว่า 30 ปี"],["30 นาที","จากสนามบินกระบี่","มีรถรับส่งถึงหน้าประตู"],["−10%","จองตรงถูกกว่า","พร้อมอาหารเช้าทุกเช้า"]],rvH:"รีวิวจากแขก",rvP:"ตัวอย่างการแสดงรีวิวบนเว็บไซต์ เมื่อใช้งานจริงจะดึงรีวิวจริงจาก Google หรือ TripAdvisor",rvTag:"รีวิวตัวอย่าง",rv:[["ทีมงานจำได้ว่าเราชอบกาแฟเย็นตั้งแต่เช้าแรก ห้องเงียบมากทั้งที่เดินไปหาดแค่ไม่กี่นาที","คุณ ก. · คู่รัก · Andaman Suite"],["สระกลางสวนสวยกว่าในรูป ลูกๆ ไม่อยากกลับบ้าน รถรับส่งสนามบินตรงเวลามาก","คุณ ข. · ครอบครัว · Pool Access Room"],["ดินเนอร์ริมหาดคือที่สุดของทริปนี้ ส่วนดาดฟ้าตอนพระอาทิตย์ตกต้องไปทุกเย็น","คุณ ค. · ฮันนีมูน · Cliff View Deluxe"]],exA:"ดูบริการทั้งหมด",
  facts:[["24","ห้องพักทั้งหมด"],["6 นาที","เดินถึงหาดอ่าวนาง"],["2","ห้องอาหารและบาร์"],["30 นาที","จากสนามบินกระบี่"]],
  rmH:"ห้องพัก",rmP:"สี่แบบ ตั้งแต่ห้องติดสวนไปจนถึงสวีทวิวทะเล ทุกห้องรวมอาหารเช้าเมื่อจองตรง",rmAll:"ดูห้องทั้งหมด",
- dayH:"หนึ่งวันที่นวล ตั้งแต่แสงแรกจนถึงดาวดวงแรก",dayP:"เวลาพระอาทิตย์ขึ้นและตกคำนวณตามวันที่จริงของอ่าวนาง",
- stops:[["sun","R","เดินเล่นริมหาดตอนเช้า","หาดยังเงียบ น้ำทะเลเย็น ผาหินค่อยๆ เปลี่ยนเป็นสีทอง","photo-1722483537725-3807a1bb78c7","เดินจากรีสอร์ต 6 นาที"],["","08:00","อาหารเช้าริมทะเล","ผลไม้จากตลาดเช้า ข้าวต้มปลา หรือไข่กระทะ เสิร์ฟบนชานไม้ถึง 11:00","photo-1568853810078-71e3a4868f61","รวมในการจองตรง"],["","09:30","เรือหางยาวไปไร่เลย์","ปีนผา เดินชมถ้ำ หรือว่ายน้ำใต้หน้าผา","photo-1648648777033-c833d650aea7","ทีมงานจองเรือและนัดรับให้"],["","15:00","บ่ายในศาลาสปา","นวดไทย 90 นาที แล้วงีบต่อใต้ร่มไม้ริมสระ","photo-1712725213051-8d7d6a52edaf","จองสปาผ่าน LINE"],["sun","S","ดริงก์บนดาดฟ้า","มองพระอาทิตย์ลับหลังเกาะ พร้อมค็อกเทลอัญชัน","photo-1753032507946-14ad6832b102","ทุกวัน เริ่ม 17:00"],["","19:30","ดินเนอร์ริมทะเล","อาหารทะเลย่างและแกงใต้ ใต้แสงเทียนริมหาด","photo-1760533536461-714a23877e2d","จองโต๊ะล่วงหน้า"]],
- exH:"ประสบการณ์ที่นวล",exP:"ทุกอย่างที่ทำให้การพักครั้งนี้มีมากกว่าห้องนอนดีๆ",
+ exH:"สิ่งอำนวยความสะดวกและบริการ",exP:"ทุกอย่างที่ทำให้การพักครั้งนี้มีมากกว่าห้องนอนดีๆ",
  ex:[["dining.html","photo-1760533536461-714a23877e2d","ห้องอาหารและบาร์","ซีฟู้ดจากเรือประมง และบาร์บนดาดฟ้า"],["spa.html","photo-1600334089648-b0d9d3028eb2","สปา","นวดไทยในศาลาริมสวน"],["experiences.html","photo-1516750445633-f290238745d2","กิจกรรมและทริป","เกาะ ไร่เลย์ คายัค ทำอาหาร"],["weddings.html","photo-1718152219044-edc915854e70","งานแต่งริมหาด","สำหรับไม่เกิน 60 ท่าน"]],
- ofH:"โปรโมชันและแพ็กเกจ",ofP:"ส่วนลดจะถูกใช้ให้อัตโนมัติในหน้าห้องพักและหน้าชำระเงิน",ofAll:"ดูโปรโมชันทั้งหมด",
- gaH:"ภาพจากรอบนวล",gaA:"เปิดแกลเลอรี",
- ctH:"มาถึงนวลได้ง่าย",ctP:"ส่งเวลาเครื่องลงมาทาง LINE แล้วเราจะไปรับที่สนามบิน",ctA:"การเดินทางและติดต่อ",
- near:[["30 นาที","สนามบินนานาชาติกระบี่","รถรับส่ง 600 บาท"],["6 นาที","หาดอ่าวนาง","เดิน"],["8 นาที","ท่าเรือไปไร่เลย์","เดิน"]]},
+ ofH:"โปรโมชันและแพ็กเกจ",ofP:"ข้อเสนอพิเศษ โปรโมชันตามฤดูกาล และแพ็กเกจที่พัก ส่วนลดคำนวณให้อัตโนมัติตอนจอง",ofAll:"ดูโปรโมชันทั้งหมด"},
 en:{slides:[["photo-1511265753106-52a8e3488b70","Ao Nang, Krabi","A quiet stay among the Andaman's limestone cliffs"],["photo-1648648777033-c833d650aea7","Railay, 15 minutes by boat","A beach you can only reach by sea"],["photo-1483683804023-6ccdb62f86ef","Island hopping","Talay Waek, Chicken Island and Koh Poda"],["photo-1729606188713-814d1b7bf893","Andaman Suite","Wake up with the sea at the foot of the bed"],["photo-1760533536461-714a23877e2d","Dinner by the sea","Candlelight and the sound of the waves"]],
- bookA:"See rooms",storyA:"A day at Nuan",find:"Find a room",
+ bookA:"Book a stay",storyA:"See rooms",find:"Find a room",
  bens:[["tag","Best rate","10% below travel sites"],["cup","Free breakfast","For two, every direct booking"],["clock","Check-out at 14:00","Subject to availability"],["chat","Talk to us directly","On LINE throughout your stay"]],
- inH:"A small house by Ao Nang, with just 24 rooms",inP:"Nuan sits on a quiet lane behind the beach road: clay-coloured walls, shaded paths and a pool in the middle of the garden. We keep the room count low, so the pool, garden and roof never feel crowded.",inA:"See pictures of the resort",
+ inH:"A small house by Ao Nang, with just 24 rooms",inP:"Nuan sits on a quiet lane behind the beach road: clay-coloured walls, shaded paths and a pool in the middle of the garden. We keep the room count low, so the pool, garden and roof never feel crowded.",inA:"Read our story",hl:[["24","rooms only","Quiet, private, and a team that knows your name"],["6 min","walk to Ao Nang beach","A quiet lane behind the beach road"],["Roof Bar","facing Koh Poda","The best sunset seat on the lane"],["25 m","saltwater garden pool","Ringed by 30-year-old frangipani"],["30 min","from Krabi airport","Transfers to the door"],["−10%","when you book direct","With breakfast every morning"]],rvH:"What guests say",rvP:"A sample of how reviews appear. On a live site these come from real Google or TripAdvisor reviews.",rvTag:"Sample review",rv:[["The team remembered we liked iced coffee from the first morning. The room was so quiet, yet the beach is minutes away.","K. · couple · Andaman Suite"],["The garden pool is even nicer than the photos and the kids didn't want to leave. The airport transfer was right on time.","N. · family · Pool Access Room"],["The beach dinner was the highlight of the trip, and we went up to the roof for sunset every evening.","P. · honeymoon · Cliff View Deluxe"]],exA:"See all facilities",
  facts:[["24","rooms in total"],["6 min","walk to Ao Nang beach"],["2","restaurant and bar"],["30 min","from Krabi airport"]],
  rmH:"Rooms",rmP:"Four kinds, from garden rooms to a sea-view suite. Breakfast is included when you book direct.",rmAll:"See all rooms",
- dayH:"A day at Nuan, from first light to first star",dayP:"Sunrise and sunset are calculated for Ao Nang on today's date.",
- stops:[["sun","R","A walk on the beach","The beach is still quiet, the water cool, the cliffs turning gold.","photo-1722483537725-3807a1bb78c7","6 min walk from the resort"],["","08:00","Breakfast by the sea","Market fruit, rice soup with fish or eggs in the pan, on the deck until 11:00.","photo-1568853810078-71e3a4868f61","Included when you book direct"],["","09:30","Longtail to Railay","Climb, explore the caves, or swim beneath the cliffs.","photo-1648648777033-c833d650aea7","We book the boat and your pick-up"],["","15:00","An afternoon at the spa","A 90-minute Thai massage, then a nap in the shade by the pool.","photo-1712725213051-8d7d6a52edaf","Book the spa on LINE"],["sun","S","Drinks on the roof","Watch the sun drop behind the islands with a butterfly-pea cocktail.","photo-1753032507946-14ad6832b102","Daily from 17:00"],["","19:30","Dinner by the sea","Grilled seafood and southern curries by candlelight on the sand.","photo-1760533536461-714a23877e2d","Book a table ahead"]],
- exH:"Experiences at Nuan",exP:"Everything that makes a stay more than a good room.",
+ exH:"Facilities & services",exP:"Everything that makes a stay more than a good room.",
  ex:[["dining.html","photo-1760533536461-714a23877e2d","Dining & bar","Seafood off the boats and a rooftop bar"],["spa.html","photo-1600334089648-b0d9d3028eb2","Spa","Thai massage in a garden pavilion"],["experiences.html","photo-1516750445633-f290238745d2","Experiences","Islands, Railay, kayaks, cooking"],["weddings.html","photo-1718152219044-edc915854e70","Beach weddings","For up to 60 guests"]],
- ofH:"Offers & packages",ofP:"Discounts are applied for you on the room and payment pages.",ofAll:"See all offers",
- gaH:"Pictures from around Nuan",gaA:"Open the gallery",
- ctH:"Easy to reach",ctP:"Send us your flight time on LINE and we'll meet you at the airport.",ctA:"Getting here & contact",
- near:[["30 min","Krabi International Airport","Transfer 600 THB"],["6 min","Ao Nang beach","On foot"],["8 min","Boats to Railay","On foot"]]}};
-const MOS=["photo-1511265753106-52a8e3488b70","photo-1681579289916-af960b852352","photo-1617325247661-675ab4b64ae2","photo-1504214208698-ea1916a2195a","photo-1679541946014-a47f1ec0dc1a","photo-1600334129128-685c5582fd35"];
+ ofH:"Offers & packages",ofP:"Special offers, seasonal promotions and stay packages. Discounts are applied for you when you book.",ofAll:"See all offers"}};
 
 let cur=0,timer=null;
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -192,29 +144,27 @@ function auto(){clearInterval(timer);if(!reduce)timer=setInterval(()=>go(cur+1),
 function render(){
   header("home",true);onLang(render);applyText();refill();
   const h=H[L],x=t(),set=(id,v)=>{const e=$("#"+id);if(e)e.textContent=v};
-  $("#slides").innerHTML=h.slides.map((s,i)=>`<div class="slide${i===cur?" on":""}" role="group" aria-roledescription="slide" aria-label="${i+1} / ${h.slides.length}"><img src="${U(s[0],2000)}" alt="" ${i?'loading="lazy"':'fetchpriority="high"'}><div class="cap"><div class="wrap"><p class="k">${s[1]}</p>${i?`<h2>${s[2]}</h2>`:`<h1>${s[2]}</h1>`}<div class="acts"><a class="btn gold" href="rooms.html">${h.bookA}</a><a class="btn line" href="#day">${h.storyA}</a></div></div></div></div>`).join("");
+  $("#slides").innerHTML=h.slides.map((s,i)=>`<div class="slide${i===cur?" on":""}" role="group" aria-roledescription="slide" aria-label="${i+1} / ${h.slides.length}"><img src="${U(s[0],2000)}" alt="" ${i?'loading="lazy"':'fetchpriority="high"'}><div class="cap"><div class="wrap"><p class="k">${s[1]}</p>${i?`<h2>${s[2]}</h2>`:`<h1>${s[2]}</h1>`}<div class="acts"><a class="btn gold" href="book.html">${h.bookA}</a><a class="btn line" href="rooms.html">${h.storyA}</a></div></div></div></div>`).join("");
   $("#dots").innerHTML=h.slides.map((s,i)=>`<button aria-label="${i+1}"></button>`).join("");
   $("#dots").querySelectorAll("button").forEach((b,i)=>b.onclick=()=>{go(i);auto()});
   $("#sprev").innerHTML='<svg viewBox="0 0 24 24">'+ICON.l+'</svg>';$("#snext").innerHTML='<svg viewBox="0 0 24 24">'+ICON.r+'</svg>';
   go(cur);
   set("lci",x.ci);set("lco",x.co);set("lgu",x.gu);set("find",h.find);
   $("#bens").innerHTML=h.bens.map(b=>`<div class="ben"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[b[0]]}</svg><b>${b[1]}</b><span>${b[2]}</span></div>`).join("");
-  ["inH","inP","rmH","rmP","rmAll","dayH","dayP","exH","exP","ofH","ofP","ofAll","gaH","ctH","ctP","ctA"].forEach(k=>set(k,h[k]));
-  $("#inA").innerHTML=h.inA+arr();$("#gaA").innerHTML=h.gaA+arr();
-  $("#facts").innerHTML=h.facts.map(f=>`<div><b>${f[0]}</b><span>${f[1]}</span></div>`).join("");
+  ["inH","inP","rmH","rmP","rmAll","exH","exP","ofH","ofP","ofAll","rvH","rvP"].forEach(k=>set(k,h[k]));
+  $("#inA").innerHTML=h.inA+arr();$("#exA").innerHTML=h.exA+arr();
+  $("#hl6").innerHTML=h.hl.map(f=>`<div><b>${f[0]}</b><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join("");
+  $("#rvw").innerHTML=h.rv.map(r=>`<figure class="rvc rv" style="margin:0"><span class="tag">${h.rvTag}</span><span class="st" aria-hidden="true">★★★★★</span><q>${r[0]}</q><figcaption class="who">${r[1]}</figcaption></figure>`).join("");
   $("#roomTrack").innerHTML=ROOMS.map(r=>`<a class="rcard" href="room.html?r=${r.id}"><figure><img loading="lazy" src="${U(r.gal[0][0],900)}" alt="${r.name}"></figure><div class="rm"><h3>${r.name}</h3><span class="pr">${x.from} <b>${baht(rate(r))}</b></span></div><p>${r.size} ${x.sqm} · ${r.vw[L]} · ${x.max(r.max)}</p></a>`).join("");
-  $("#tl").innerHTML=h.stops.map(s=>`<article class="stop ${s[0]} rv"><figure><img loading="lazy" src="${U(s[4],1000)}" alt=""></figure><div><div class="time">${s[1]==="R"?RISE:s[1]==="S"?SET:s[1]}</div><h3>${s[2]}</h3><p>${s[3]}</p><p class="note">${s[5]}</p></div></article>`).join("");
   $("#xgrid").innerHTML=h.ex.map(e=>`<a class="xt rv" href="${e[0]}"><img loading="lazy" src="${U(e[1],800)}" alt=""><div><h3>${e[2]}</h3><p>${e[3]}</p><span class="tlink">${x.more}${arr()}</span></div></a>`).join("");
   $("#offTrack").innerHTML=OFFERS.map(offerCard).join("");
-  $("#mos").innerHTML=MOS.map(m=>`<figure><img loading="lazy" src="${U(m,900)}" alt=""></figure>`).join("");
-  $("#near").innerHTML=h.near.map(n=>`<li><b>${n[0]}</b><span>${n[1]}</span><span>${n[2]}</span></li>`).join("");
   document.querySelectorAll(".car").forEach(c=>{c.querySelector(".cbslot").innerHTML=cbtns();carousel(c)});
   reveal();
 }
 $("#sprev").onclick=()=>{go(cur-1);auto()};$("#snext").onclick=()=>{go(cur+1);auto()};
 $("#hero").addEventListener("mouseenter",()=>clearInterval(timer));$("#hero").addEventListener("mouseleave",auto);
 let sx=null;$("#hero").addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});$("#hero").addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){go(cur+(dx<0?1:-1));auto()}sx=null});
-$("#bkf").onsubmit=e=>{e.preventDefault();location.href="rooms.html"};
+$("#bkf").onsubmit=e=>{e.preventDefault();location.href="book.html"};
 window.__rerender=render;render();auto();
 }
 </script>

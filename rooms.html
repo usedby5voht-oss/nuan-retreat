@@ -31,8 +31,10 @@
 .rc .s{color:var(--mute);font-size:17px;margin:14px 0 20px;max-width:44ch}
 .rc .p{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .rc .p b{font:300 38px var(--f-d);white-space:nowrap}.rc .p s{color:var(--mute);font-size:14px}
-.rc .tlink{margin-top:20px}
-.rc:hover .tlink{gap:16px}
+.rc h2 a{text-decoration:none}.rc h2 a:hover{color:var(--brassd)}.rc .fl{display:block}
+.am5{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:14.5px;color:var(--mute)}
+.am5 li{display:flex;gap:10px;align-items:baseline}.am5 li::before{content:"";flex:none;width:7px;height:9px;border:1.2px solid var(--brass);border-bottom:0;border-radius:var(--arch)}
+.rcb{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .empty{padding:80px 0;text-align:center;color:var(--mute)}
 @media(max-width:900px){.rc{grid-template-columns:1fr}.rc:nth-child(even) figure{order:0}.rc figure{aspect-ratio:4/3.6}}
 @media(max-width:820px){.stay{width:100%;grid-template-columns:1fr 1fr auto}.stay input,.stay select{width:100%}}
@@ -69,9 +71,11 @@ function render(){
   $("#offbar").innerHTML=offerBar(null);
   const list=ROOMS.filter(r=>cat==="all"||r.cats.includes(cat)),n=Math.max(nights(),1);
   $("#count").textContent=`${x.count(list.length)} · ${nights()>0?x.stay(n,fmt(S.ci),fmt(S.co)):x.errDate}`;
-  $("#grid").innerHTML=list.length?list.map(r=>`<a class="rc rv" href="room.html?r=${r.id}"><figure><img loading="lazy" src="${U(r.gal[0][0],1200)}" alt="${r.name}"><span class="n">${r.gal.length} ${x.pics}</span></figure>
-    <div><span class="mark"></span><h2>${r.name}</h2><p class="s">${r.short[L]}</p><div class="tags"><span>${r.size} ${x.sqm}</span><span>${x.max(r.max)}</span><span>${r.bed[L]}</span><span>${r.vw[L]}</span></div>
-    <p class="p"><span class="small">${x.from}</span> <b>${baht(rate(r))}</b><s>${baht(r.price)}</s> <span class="small">${x.night}</span></p>${OFF&&!offerOk(OFF,r)?`<p class="small">${t().offPct(10)} · ${t().disc}</p>`:""}${status(r)[0]}<span class="tlink">${x.details}${arr()}</span></div></a>`).join(""):`<p class="empty">${x.empty}</p>`;
+  $("#grid").innerHTML=list.length?list.map(r=>{const [st,bad]=status(r);return `<article class="rc rv"><a href="room.html?r=${r.id}" class="fl"><figure><img loading="lazy" src="${U(r.gal[0][0],1200)}" alt="${r.name}"><span class="n">${r.gal.length} ${x.pics}</span></figure></a>
+    <div><span class="mark"></span><h2><a href="room.html?r=${r.id}">${r.name}</a></h2><p class="s">${r.short[L]}</p><div class="tags"><span>${r.size} ${x.sqm}</span><span>${x.max(r.max)}</span><span>${r.bed[L]}</span><span>${r.vw[L]}</span></div>
+    <ul class="am5" aria-label="${x.amH}">${r.am[L].slice(0,6).map(a=>`<li>${a}</li>`).join("")}</ul>
+    <p class="p"><span class="small">${x.from}</span> <b>${baht(rate(r))}</b><s>${baht(r.price)}</s> <span class="small">${x.night}</span></p>${OFF&&!offerOk(OFF,r)?`<p class="small">${t().offPct(10)} · ${t().disc}</p>`:""}${st}
+    <div class="rcb"><a class="btn gold" href="book.html?r=${r.id}"${bad?' aria-disabled="true" style="opacity:.4;pointer-events:none"':""}>${x.bookNow}</a><a class="btn line" href="room.html?r=${r.id}">${x.details}</a></div></div></article>`}).join(""):`<p class="empty">${x.empty}</p>`;
   reveal();
 }
 $("#chips").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;cat=b.dataset.c;history.replaceState(null,"",cat==="all"?"rooms.html":"#"+cat);render()};
