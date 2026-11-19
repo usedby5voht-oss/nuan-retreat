@@ -4,30 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nuan Retreat Krabi</title>
+<meta name="description" content="Nuan Retreat — a small 24-room retreat in Ao Nang, Krabi. Demo website.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Trirong:wght@300;400;500&family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* VOICE: calm, confident, a little poetic — a small resort that knows its place.
-   IDEA: the limestone sea-caves of Railay — every photograph is seen through an arch, as if from inside a cave.
-   PICTURE: a tall arch-framed pool photograph beside the headline, with today's sunrise and sunset for Ao Nang beneath.
-   COLOUR and TYPE: white and pale limestone #f1ede6, deep Andaman #0e2f33, sunset #d8642f used only for the sun line and the pay button; Gloock display, Trirong for Thai headings, Anuphan for text.
-   LAYOUT: asymmetric two-column hero, a row of three arched room portals, then perks, experiences, destination, footer. */
+/* VOICE: a storyteller walking a guest through one day at the resort, calm and specific.
+   IDEA: the limestone sea-caves of Railay; each photograph is seen through an arch, and the page is one day told hour by hour.
+   PICTURE: a tall arched pool photograph opens the day; a timeline from today's real sunrise to after dark carries the story.
+   COLOUR and TYPE: white, limestone #f1ede6, deep Andaman #0e2f33, sunset #d8642f for times and the main action; Gloock, Trirong, Anuphan.
+   LAYOUT: hero, place, the house, a day timeline alternating left/right, rooms teaser, getting here, closing call to the rooms page. */
 :root{color-scheme:light;--bg:#fff;--stone:#f1ede6;--ink:#152224;--soft:#66706f;--deep:#0e2f33;--sun:#d8642f;--line:#e2ddd4;--arch:1000px 1000px 0 0}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{margin:0;background:var(--bg);color:var(--ink);font:300 16.5px/1.75 Anuphan,"IBM Plex Sans Thai",system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:Gloock,Trirong,serif;font-weight:400;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.005em}
-:lang(th) h1,:lang(th) h2,:lang(th) h3{font-family:Trirong,Gloock,serif;font-weight:400;line-height:1.35;letter-spacing:0}
-h2{font-size:clamp(32px,4vw,52px)}h3{font-size:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 16.5px/1.8 Anuphan,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Gloock,Trirong,serif;font-weight:400;line-height:1.08;margin:0;text-wrap:balance}
+:lang(th) h1,:lang(th) h2,:lang(th) h3{font-family:Trirong,Gloock,serif;line-height:1.35}
+h2{font-size:clamp(32px,4.2vw,54px)}h3{font-size:clamp(24px,2.4vw,30px)}
 p{margin:0}a{color:inherit}
 img{display:block;width:100%;height:100%;object-fit:cover;background:var(--stone)}
+figure{margin:0;overflow:hidden;position:relative}
 .wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,20px)}
-.band{padding:clamp(72px,10vw,136px) 0}
-.small{font-size:13.5px;color:var(--soft)}
-.arch{border-radius:var(--arch);overflow:hidden;margin:0;position:relative}
+.band{padding:clamp(72px,10vw,140px) 0}
+.arch{border-radius:var(--arch)}
+.kick{font-size:14px;color:var(--soft);letter-spacing:.06em;margin-bottom:16px}
+.body{color:#3b4747;font-size:17px;max-width:52ch}
 .demo{background:var(--deep);color:#c9d6d4;font-size:12.5px;text-align:center;padding:6px 14px}
-/* nav */
 nav{position:sticky;top:0;z-index:40;background:#ffffffeb;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
 nav.sc{border-color:var(--line)}
 .nv{display:flex;align-items:center;gap:30px;height:74px}
@@ -35,385 +37,270 @@ nav.sc{border-color:var(--line)}
 .brand svg{width:30px;height:34px}
 .brand b{font:400 25px/1 Gloock,serif;letter-spacing:.08em}
 .brand small{display:block;font:400 10.5px Anuphan;letter-spacing:.24em;color:var(--soft);margin-top:5px}
-.links{display:flex;gap:28px}.links a{text-decoration:none;font-size:15px;color:#3b4747}.links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
+.links{display:flex;gap:28px}.links a{text-decoration:none;font-size:15px;color:#3b4747}
+.links a[aria-current]{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
 .lang{display:flex}.lang button{background:none;border:0;color:var(--soft);min-width:38px;min-height:42px;font:500 13px Anuphan;cursor:pointer}
 .lang button[aria-pressed=true]{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:999px;border:1px solid var(--deep);background:var(--deep);color:#fff;font:400 15px Anuphan;cursor:pointer;text-decoration:none;transition:background .2s,transform .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;border:1px solid var(--deep);background:var(--deep);color:#fff;font:400 15px Anuphan;cursor:pointer;text-decoration:none;transition:background .2s}
 .btn:hover{background:#082024}
 .btn.line{background:transparent;color:var(--ink)}.btn.line:hover{background:var(--stone)}
 .btn.sun{background:var(--sun);border-color:var(--sun)}.btn.sun:hover{background:#bf5323}
-.btn[disabled]{opacity:.35;cursor:not-allowed}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+.btn.ghost{background:transparent;color:#fff;border-color:#ffffff88}.btn.ghost:hover{background:#ffffff1a}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
 /* hero */
-.hero{padding:clamp(28px,4vw,56px) 0 0}
-.hg{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:end}
-.hero .arch{aspect-ratio:4/5.2;box-shadow:0 40px 80px -40px #0e2f3366}
+.hero{padding:clamp(28px,4vw,56px) 0 clamp(56px,7vw,96px)}
+.hg{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:center}
+.hero h1{font-size:clamp(52px,7.4vw,108px)}
+:lang(th) .hero h1{font-size:clamp(46px,6.4vw,92px);line-height:1.2}
+.hero .body{margin-top:24px;font-size:18.5px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero .arch{aspect-ratio:4/5.3;box-shadow:0 40px 80px -40px #0e2f3366}
 .hero .arch img{animation:rise 1.8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{transform:scale(1.12)}}
-.place{font-size:14px;color:var(--soft);letter-spacing:.06em;margin-bottom:18px}
-.hero h1{font-size:clamp(46px,6.4vw,92px)}
-:lang(th) .hero h1{font-size:clamp(38px,5vw,70px);line-height:1.25}
-.hero .lead{margin-top:22px;font-size:18px;color:#3b4747;max-width:40ch}
-.sky{display:flex;gap:0;margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.sky div{flex:1;padding:16px 18px 16px 0}
-.sky div+div{padding-left:18px;border-left:1px solid var(--line)}
-.sky b{display:block;font:400 30px/1.1 Gloock,serif;white-space:nowrap}
-.sky .s b{color:var(--sun)}
-.sky span{font-size:13px;color:var(--soft)}
-/* booking */
-.book{margin-top:clamp(36px,5vw,64px);background:var(--stone);border-radius:999px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;align-items:center;padding:8px 8px 8px 34px}
-.book>div{padding:8px 18px 8px 0}
-.book>div+div{padding-left:18px;border-left:1px solid #d9d2c6}
-.book label{display:block;font-size:12.5px;color:var(--soft)}
-.book input,.book select{width:100%;border:0;background:transparent;font:400 16px Anuphan;color:var(--ink);padding:2px 0;min-height:32px}
-/* rooms */
-.rhead{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:52px}
-.rhead p{color:var(--soft);max-width:46ch}
+.today{display:flex;gap:28px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
+.today b{display:block;font:400 30px/1.1 Gloock,serif}.today .s b{color:var(--sun)}
+.today span{font-size:13px;color:var(--soft)}
+/* place */
+.place{background:var(--deep);color:#e8efee;overflow:hidden}
+.place .body{color:#b5c6c4}
+.pg{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
+.mosaic{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:auto auto;gap:16px}
+.mosaic figure:first-child{grid-row:1/3;aspect-ratio:3/4.4}
+.mosaic figure:nth-child(2){aspect-ratio:1;border-radius:22px}
+.mosaic figure:nth-child(3){aspect-ratio:1;border-radius:22px}
+.cap{position:absolute;left:12px;bottom:12px;background:#0e2f33cc;color:#fff;font-size:12.5px;border-radius:999px;padding:3px 12px;white-space:nowrap}
+.season{display:flex;gap:32px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid #ffffff2a}
+.season b{display:block;font:400 26px/1.2 Gloock,serif;color:#fff}:lang(th) .season b{font-family:Trirong,serif}
+.season span{font-size:13.5px;color:#9fb3b1}
+/* house */
+.hs{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:end}
+.pair{display:grid;grid-template-columns:3fr 2fr;gap:16px;align-items:end}
+.pair figure:first-child{aspect-ratio:3/4}.pair figure:last-child{aspect-ratio:3/4;border-radius:22px;margin-bottom:60px}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 32px;margin-top:36px}
+.facts div{border-top:1px solid var(--line);padding-top:14px}
+.facts b{display:block;font:400 40px/1 Gloock,serif}
+.facts span{font-size:14px;color:var(--soft)}
+/* day */
+.day{background:var(--stone)}
+.dayh{text-align:center;max-width:720px;margin:0 auto 64px}
+.dayh .body{margin:18px auto 0;text-align:center}
+.tl{position:relative}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#d6cec1}
+.stop{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,110px);align-items:center;padding:28px 0;position:relative}
+.stop::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;border-radius:50%;background:var(--stone);border:2px solid var(--deep);transform:translate(-50%,-50%)}
+.stop.sunrise::after,.stop.sunset::after{border-color:var(--sun);background:var(--sun)}
+.stop figure{aspect-ratio:4/3.4;border-radius:26px}
+.stop:nth-child(odd) figure{border-radius:var(--arch);aspect-ratio:4/4.6}
+.stop:nth-child(even) figure{order:2}
+.time{font:400 44px/1 Gloock,serif;color:var(--deep);margin-bottom:12px;white-space:nowrap}
+.sunrise .time,.sunset .time{color:var(--sun)}
+.stop p{color:#3b4747;margin-top:10px;max-width:44ch}
+.stop .note{font-size:14px;color:var(--soft);margin-top:12px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+/* rooms teaser */
+.rhead{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.rhead .body{color:var(--soft)}
 .rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
-.room .arch{aspect-ratio:3/4}
-.room .arch img{transition:transform .8s ease}
-.room:hover .arch img{transform:scale(1.04)}
-.room h3{margin-top:22px}
-.room .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--soft);margin:6px 0 10px}
-.room .desc{color:#3b4747;font-size:15.5px}
-.rp{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:18px 0 4px}
-.rp b{font:400 30px/1 Gloock,serif;white-space:nowrap}.rp s{color:var(--soft);font-size:14px;white-space:nowrap}
-.status{font-size:13.5px;color:#9a5a1c;min-height:22px;margin:4px 0 14px}.status.no{color:#a33a2b}
-.tag{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:#fffffff0;border-radius:999px;padding:4px 14px;font-size:13px;white-space:nowrap}
-/* perks */
-.perks{background:var(--deep);color:#e8efee;position:relative;overflow:hidden}
-.perks .ghost{position:absolute;right:-6vw;top:-10%;width:42vw;max-width:560px;height:120%;border:1px solid #ffffff1c;border-radius:var(--arch)}
-.perks .ghost+.ghost{right:2vw;width:30vw;max-width:400px;top:15%}
-.pk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;margin-top:52px;position:relative}
-.pk div{border-top:1px solid #ffffff33;padding-top:22px}
-.pk h3{font-size:22px;color:#fff}
-.pk p{color:#a9bcba;margin-top:8px;font-size:15px}
-.save{margin-top:56px;display:flex;gap:44px;flex-wrap:wrap;align-items:baseline;position:relative}
-.save div{font-size:14px;color:#a9bcba}.save b{display:block;font:400 34px/1.15 Gloock,serif;color:#fff}
-.save .us b{color:#f3a77f}
-/* experiences */
-.exg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:52px;align-items:start}
-.ex:nth-child(2){margin-top:70px}
-.ex figure{aspect-ratio:1/1.15;border-radius:24px;overflow:hidden;margin:0 0 18px}
-.ex p{color:var(--soft);font-size:15px;margin-top:6px}
-.ex .t{font-size:13.5px;color:var(--sun);margin-top:10px}
-/* destination */
-.dest{background:var(--stone)}
-.dgrid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:center}
-.dpics{display:grid;grid-template-columns:3fr 2fr;gap:16px;align-items:end}
-.dpics .arch:first-child{aspect-ratio:3/4.3}
-.dpics .stack{display:grid;gap:16px}.dpics .stack figure{aspect-ratio:1;border-radius:20px;overflow:hidden;margin:0}
-.near{list-style:none;padding:0;margin:30px 0}
-.near li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #d9d2c6;font-size:15.5px}
-.near li span:last-child{white-space:nowrap;color:var(--soft)}
-.lineb{background:#06c755;border-color:#06c755}.lineb:hover{background:#05a948}
-footer{background:var(--deep);color:#a9bcba;font-size:14px;padding:56px 0 36px}
+.room{text-decoration:none;display:block}
+.room figure{aspect-ratio:3/4;border-radius:var(--arch)}
+.room img{transition:transform .8s ease}.room:hover img{transform:scale(1.04)}
+.room h3{margin-top:20px}
+.room p{color:var(--soft);font-size:15px;margin-top:4px}
+.room .from{margin-top:10px;font-size:15px}.room .from b{font:400 24px Gloock,serif}
+/* getting here */
+.gh{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:start}
+.near{list-style:none;padding:0;margin:0}
+.near li{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.near li:first-child{border-top:1px solid var(--line)}
+.near b{font:400 22px Gloock,serif;color:var(--deep);white-space:nowrap;min-width:72px}
+.near span:last-child{color:var(--soft);font-size:14.5px;text-align:right}
+/* cta */
+.cta{position:relative;color:#fff;background:var(--deep);overflow:hidden}
+.cta img{position:absolute;inset:0;opacity:.45}
+.cta .wrap{position:relative;text-align:center;padding-top:clamp(90px,12vw,170px);padding-bottom:clamp(90px,12vw,170px)}
+.cta h2{font-size:clamp(36px,5vw,64px);max-width:16ch;margin:0 auto}
+.cta p{color:#dfe8e7;margin:18px auto 0;max-width:46ch}
+.cta .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+footer{background:var(--deep);color:#a9bcba;font-size:14px;padding:48px 0 34px;border-top:1px solid #ffffff1a}
 .ft{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:end}
 .ft .brand b{color:#fff}
-.credit{margin-top:34px;padding-top:18px;border-top:1px solid #ffffff22;font-size:12.5px}
-/* checkout */
-dialog{border:0;padding:0;width:min(560px,96vw);max-height:94vh;background:#fff;color:var(--ink);border-radius:28px;box-shadow:0 40px 90px #0007}
-dialog::backdrop{background:#0e2f33d9}
-.dl{padding:30px 32px 32px}
-.steps{display:flex;gap:8px;margin-bottom:20px;font-size:13px;color:var(--soft)}
-.steps span{display:flex;align-items:center;gap:6px}
-.steps i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:12px}
-.steps .on{color:var(--ink)}.steps .on i{background:var(--deep);border-color:var(--deep);color:#fff}
-.steps .done i{background:var(--stone)}
-.steps em{flex:1;height:1px;background:var(--line);align-self:center;min-width:12px}
-.dl h3{font-size:28px}
-.sum{margin:16px 0;font-size:15px;background:var(--stone);border-radius:18px;padding:6px 18px}
-.sum div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #ddd6ca}
-.sum div:last-child{border:0}
-.sum span:last-child{white-space:nowrap;text-align:right}
-.sum .tot{font-weight:500;font-size:17px}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.f2 .full{grid-column:1/-1}
-.f2 label{display:block;font-size:12.5px;color:var(--soft);margin-bottom:4px}
-.f2 input{width:100%;border:1px solid #d6d1c8;border-radius:12px;font:400 16px Anuphan;padding:0 14px;min-height:48px;background:#fff;color:var(--ink)}
-.f2 input.bad{border-color:#a33a2b}
-.err{color:#a33a2b;font-size:14px;min-height:22px;margin-top:8px}
-.acts{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:10px}
-.tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--stone);border-radius:999px;padding:4px;margin:16px 0 18px}
-.tabs button{border:0;background:transparent;border-radius:999px;min-height:42px;font:400 15px Anuphan;color:var(--soft);cursor:pointer}
-.tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 4px #0001}
-.card{position:relative;aspect-ratio:1.6;max-width:300px;margin:0 auto 18px;border-radius:18px;padding:18px 20px;color:#fff;background:linear-gradient(135deg,#0e2f33,#1d5a5f 60%,#d8642f);display:flex;flex-direction:column;justify-content:space-between;font-size:13px;overflow:hidden}
-.card::after{content:"";position:absolute;right:-30px;top:-40px;width:150px;height:200px;border:1px solid #ffffff33;border-radius:var(--arch)}
-.card .no{font:400 19px/1 Gloock,serif;letter-spacing:.12em;white-space:nowrap}
-.card .row{display:flex;justify-content:space-between;gap:8px;text-transform:uppercase}
-.testnote{font-size:13px;background:#fff6e8;border:1px solid #f0dcb8;border-radius:12px;padding:10px 12px;margin-bottom:14px;color:#6b4a14}
-.qr{display:grid;justify-items:center;gap:8px;text-align:center}
-.qr .box{width:220px;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff}
-.qr .pp{background:#113566;color:#fff;border-radius:8px;padding:4px 10px;font:500 13px Anuphan;margin-bottom:10px}
-.qr .amt{font:400 28px Gloock,serif}
-.qr .timer{font-size:13.5px;color:var(--soft)}
-.spin{width:44px;height:44px;border-radius:50%;border:3px solid var(--stone);border-top-color:var(--deep);margin:22px auto;animation:sp 1s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
-.ok{text-align:center}
-.ok .arch{width:96px;height:110px;margin:6px auto 16px;background:var(--deep);display:grid;place-items:center}
-.ref{font:400 30px Gloock,serif;letter-spacing:.1em;margin:8px 0 12px}
-@media(max-width:960px){.links{display:none}.rooms{grid-template-columns:1fr 1fr}.pk{grid-template-columns:1fr 1fr}.exg{grid-template-columns:1fr 1fr}.ex:nth-child(2){margin-top:0}.dgrid{grid-template-columns:1fr}}
-@media(max-width:720px){.nv>.btn{display:none}.hg{grid-template-columns:1fr}.hero .arch{aspect-ratio:4/4.6;order:2}.book{border-radius:26px;grid-template-columns:1fr 1fr;padding:14px 16px 16px}.book>div{padding:8px 10px 8px 0}.book>div+div{padding-left:10px}.book>div:nth-child(3){grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid #d9d2c6}.book .btn{grid-column:1/-1;margin-top:6px}
-.rooms,.pk,.exg{grid-template-columns:1fr}.room .arch{aspect-ratio:4/4.4}.f2{grid-template-columns:1fr}.dl{padding:22px 20px 24px}.brand b{font-size:21px}.sky{flex-wrap:wrap}.sky div{flex:1 1 40%}.sky div:nth-child(3){flex-basis:100%;border-left:0;padding-left:0;border-top:1px solid var(--line)}.sky b{font-size:25px}.steps b{display:none}}
-@media(prefers-reduced-motion:reduce){.hero .arch img,.spin{animation:none}html{scroll-behavior:auto}}
+.credit{margin-top:28px;padding-top:16px;border-top:1px solid #ffffff22;font-size:12.5px}
+@media(max-width:960px){.links{display:none}.rooms{grid-template-columns:1fr 1fr}.pg,.hs,.gh{grid-template-columns:1fr}.pair figure:last-child{margin-bottom:0}}
+@media(max-width:720px){.nv>.btn{display:none}.brand b{font-size:21px}.hg{grid-template-columns:1fr}.hero .arch{aspect-ratio:4/4.4}
+.tl::before{left:7px}.stop{grid-template-columns:1fr;gap:18px;padding:24px 0 24px 30px}.stop::after{left:7px;top:34px}.stop:nth-child(even) figure{order:0}.stop:nth-child(odd) figure{aspect-ratio:4/3.6}.time{font-size:36px}
+.rooms{grid-template-columns:1fr}.room figure{aspect-ratio:4/4.3}.mosaic figure:first-child{aspect-ratio:3/4.6}.facts b{font-size:34px}.near li{grid-template-columns:auto 1fr}.near span:last-child{grid-column:2;text-align:left;margin-top:-10px}}
+@media(prefers-reduced-motion:reduce){.hero .arch img{animation:none}.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <div class="demo" data-t="demo"></div>
 <nav id="nav"><div class="wrap nv">
-  <a class="brand" href="#top" aria-label="Nuan Retreat"><svg viewBox="0 0 30 34" aria-hidden="true"><path d="M2 34V15a13 13 0 0 1 26 0v19" fill="none" stroke="#0e2f33" stroke-width="2.2"/><path d="M9 34V17a6 6 0 0 1 12 0v17" fill="none" stroke="#d8642f" stroke-width="2.2"/></svg><span><b>NUAN</b><small>RETREAT · KRABI</small></span></a>
-  <div class="links"><a href="#rooms" data-t="navRooms"></a><a href="#direct" data-t="navDirect"></a><a href="#exp" data-t="navExp"></a><a href="#dest" data-t="navLoc"></a></div>
+  <a class="brand" href="index.html" aria-label="Nuan Retreat"><svg viewBox="0 0 30 34" aria-hidden="true"><path d="M2 34V15a13 13 0 0 1 26 0v19" fill="none" stroke="#0e2f33" stroke-width="2.2"/><path d="M9 34V17a6 6 0 0 1 12 0v17" fill="none" stroke="#d8642f" stroke-width="2.2"/></svg><span><b>NUAN</b><small>RETREAT · KRABI</small></span></a>
+  <div class="links"><a href="index.html" aria-current="page" data-t="navStory"></a><a href="#day" data-t="navDay"></a><a href="rooms.html" data-t="navRooms"></a><a href="#here" data-t="navHere"></a></div>
   <div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="true">TH</button><button type="button" data-l="en" aria-pressed="false">EN</button></div>
-  <a class="btn" href="#rooms" data-t="navBook"></a>
+  <a class="btn" href="rooms.html" data-t="navBook"></a>
 </div></nav>
 
-<header class="hero" id="top"><div class="wrap">
-  <div class="hg">
-    <figure class="arch"><img src="https://images.unsplash.com/photo-1511265753106-52a8e3488b70?auto=format&fit=crop&w=1400&q=80" alt="Villa pool among palm trees" fetchpriority="high"></figure>
-    <div>
-      <p class="place" data-t="place"></p>
-      <h1 data-t="h1"></h1>
-      <p class="lead" data-t="lead"></p>
-      <div class="sky" id="sky"></div>
-    </div>
+<header class="hero"><div class="wrap hg">
+  <div>
+    <p class="kick" data-t="heroKick"></p>
+    <h1 data-t="heroH"></h1>
+    <p class="body" data-t="heroP"></p>
+    <div class="acts"><a class="btn" href="#day" data-t="heroA"></a><a class="btn line" href="rooms.html" data-t="heroB"></a></div>
+    <div class="today" id="today"></div>
   </div>
-  <form class="book" id="search" aria-label="Check availability">
-    <div><label for="ci" data-t="ci"></label><input type="date" id="ci" required></div>
-    <div><label for="co" data-t="co"></label><input type="date" id="co" required></div>
-    <div><label for="gu" data-t="gu"></label><select id="gu"></select></div>
-    <button class="btn" data-t="check"></button>
-  </form>
+  <figure class="arch"><img src="https://images.unsplash.com/photo-1511265753106-52a8e3488b70?auto=format&fit=crop&w=1400&q=80" alt="Pool pavilion among palm trees" fetchpriority="high"></figure>
 </div></header>
 
+<section class="band place"><div class="wrap pg">
+  <div>
+    <p class="kick" style="color:#9fb3b1" data-t="placeKick"></p>
+    <h2 data-t="placeH"></h2>
+    <p class="body" style="margin-top:22px" data-t="placeP"></p>
+    <div class="season" id="season"></div>
+  </div>
+  <div class="mosaic">
+    <figure class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1648648777033-c833d650aea7?auto=format&fit=crop&w=1000&q=80" alt="Limestone cliff at Railay"><span class="cap" data-t="cap1"></span></figure>
+    <figure><img loading="lazy" src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=700&q=80" alt="Islands off Ao Nang from above"><span class="cap" data-t="cap2"></span></figure>
+    <figure><img loading="lazy" src="https://images.unsplash.com/photo-1722483537725-3807a1bb78c7?auto=format&fit=crop&w=700&q=80" alt="Ao Nang beach at dusk"><span class="cap" data-t="cap3"></span></figure>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap hs">
+  <div class="pair">
+    <figure class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1762425430465-0d9f08d64147?auto=format&fit=crop&w=1000&q=80" alt="Terracotta stairs at the resort"></figure>
+    <figure><img loading="lazy" src="https://images.unsplash.com/photo-1650201777491-c5baae006026?auto=format&fit=crop&w=700&q=80" alt="Breakfast table with fresh juice"></figure>
+  </div>
+  <div>
+    <p class="kick" data-t="houseKick"></p>
+    <h2 data-t="houseH"></h2>
+    <p class="body" style="margin-top:22px" data-t="houseP"></p>
+    <div class="facts" id="facts"></div>
+  </div>
+</div></section>
+
+<section class="band day" id="day"><div class="wrap">
+  <div class="dayh"><p class="kick" data-t="dayKick"></p><h2 data-t="dayH"></h2><p class="body" data-t="dayP"></p></div>
+  <div class="tl" id="tl"></div>
+</div></section>
+
 <section class="band" id="rooms"><div class="wrap">
-  <div class="rhead"><h2 data-t="roomsH"></h2><p id="stay"></p></div>
+  <div class="rhead"><div><p class="kick" data-t="roomsKick"></p><h2 data-t="roomsH"></h2></div><a class="btn line" href="rooms.html" data-t="roomsAll"></a></div>
   <div class="rooms" id="roomList"></div>
 </div></section>
 
-<section class="band perks" id="direct"><span class="ghost"></span><span class="ghost"></span><div class="wrap" style="position:relative">
-  <h2 data-t="directH"></h2>
-  <div class="pk" id="perkList"></div>
-  <div class="save" id="save"></div>
-</div></section>
-
-<section class="band" id="exp"><div class="wrap">
-  <div class="rhead" style="margin-bottom:0"><h2 data-t="expH"></h2><p data-t="expP"></p></div>
-  <div class="exg" id="expList"></div>
-</div></section>
-
-<section class="band dest" id="dest"><div class="wrap dgrid">
-  <div class="dpics">
-    <figure class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1648648777033-c833d650aea7?auto=format&fit=crop&w=1000&q=80" alt="Limestone cliff at Railay"></figure>
-    <div class="stack">
-      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=700&q=80" alt="Islands off Ao Nang from above"></figure>
-      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1722483537725-3807a1bb78c7?auto=format&fit=crop&w=700&q=80" alt="Evening over Ao Nang beach"></figure>
-    </div>
-  </div>
+<section class="band" id="here" style="padding-top:0"><div class="wrap gh">
   <div>
-    <h2 data-t="locH"></h2>
-    <p style="margin-top:16px;color:#3b4747" data-t="locP"></p>
-    <ul class="near" id="near"></ul>
-    <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn lineb" href="https://line.me/" target="_blank" rel="noopener" data-t="lineBtn"></a><span class="btn line" style="cursor:default">075-000-000</span></div>
-    <p class="small" style="margin-top:14px" data-t="contactNote"></p>
+    <p class="kick" data-t="hereKick"></p>
+    <h2 data-t="hereH"></h2>
+    <p class="body" style="margin-top:20px" data-t="hereP"></p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="btn" style="background:#06c755;border-color:#06c755" href="https://line.me/" target="_blank" rel="noopener" data-t="lineBtn"></a><span class="btn line" style="cursor:default">075-000-000</span></div>
   </div>
+  <ul class="near" id="near"></ul>
 </div></section>
+
+<section class="cta">
+  <img loading="lazy" src="https://images.unsplash.com/photo-1753032507946-14ad6832b102?auto=format&fit=crop&w=1800&q=70" alt="">
+  <div class="wrap"><h2 data-t="ctaH"></h2><p data-t="ctaP"></p><div class="acts"><a class="btn sun" href="rooms.html" data-t="ctaA"></a><a class="btn ghost" href="#day" data-t="ctaB"></a></div></div>
+</section>
 
 <footer><div class="wrap">
   <div class="ft"><div><span class="brand"><b>NUAN</b></span><p style="margin-top:12px" data-t="addr"></p></div><p>reservations@nuan-retreat.example · 075-000-000</p></div>
-  <div class="credit"><span data-t="foot"></span> <span data-t="photoCredit"></span></div>
+  <div class="credit"><span data-t="foot"></span></div>
 </div></footer>
-
-<dialog id="dlg" aria-label="Booking"><div class="dl" id="dlgBody"></div></dialog>
 
 <script>
 {
 const U=(id,w)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
-const T={
-th:{demo:"เว็บไซต์ตัวอย่าง: รีสอร์ตสมมติเพื่อสาธิตงานออกแบบ ไม่มีการจองหรือตัดเงินจริง",navRooms:"ห้องพัก",navDirect:"จองตรง",navExp:"ประสบการณ์",navLoc:"อ่าวนาง",navBook:"จองห้องพัก",
-place:"อ่าวนาง · กระบี่",h1:"มองทะเลอันดามัน ผ่านซุ้มผาหินปูน",lead:"รีสอร์ตเล็กๆ เพียง 24 ห้อง ซ่อนตัวอยู่ในซอยเงียบ เดินถึงหาดอ่าวนางได้ในไม่กี่นาที",
-rise:"พระอาทิตย์ขึ้นวันนี้",set:"พระอาทิตย์ตกวันนี้",boat:"เรือไปไร่เลย์",boatT:"08:00–18:00",
-ci:"เช็กอิน",co:"เช็กเอาต์",gu:"ผู้เข้าพัก",guest:"ท่าน",check:"ดูห้องว่าง",
-roomsH:"ห้องพัก",stay:(n,a,b)=>`${a} – ${b} · ${n} คืน · แสดงราคาจองตรงแล้ว`,night:"ต่อคืน",total:"รวม",nights:"คืน",
-left:n=>`เหลือ ${n} ห้องในวันที่เลือก`,out:"ห้องเต็มในวันที่เลือก",tooMany:"รองรับผู้เข้าพักไม่ถึงจำนวนที่เลือก",book:"จองห้องนี้",sqm:"ตร.ม.",max:n=>`พักได้ ${n} ท่าน`,
-directH:"จองตรงกับเรา ได้มากกว่า",cmpA:"ราคาบนเว็บเอเจนต์",cmpB:"ราคาจองตรง",cmpC:"ส่วนต่าง (Cliff View Deluxe 2 คืน)",
-expH:"ระหว่างเข้าพัก",expP:"จองพร้อมห้องพัก หรือแจ้งทีมงานทาง LINE ได้ตลอดการเข้าพัก",
-locH:"อ่าวนาง กระบี่",locP:"อยู่ในซอยเงียบ ห่างจากถนนเลียบชายหาด ไปไร่เลย์หรือเกาะต่างๆ ได้ด้วยเรือหางยาวจากหน้าหาด",
-lineBtn:"แชทผ่าน LINE",contactNote:"ทีมงานตอบทุกวัน 07:00–22:00",addr:"ถนนตัวอย่าง ตำบลอ่าวนาง อำเภอเมือง กระบี่ (ที่อยู่สมมติ)",
-foot:"เว็บไซต์สาธิต ออกแบบและพัฒนาโดย [ชื่อสตูดิโอของคุณ]",photoCredit:"ภาพถ่ายจาก Unsplash",
-s1:"รายละเอียด",s2:"ชำระเงิน",s3:"ยืนยัน",
-sumTitle:"รายละเอียดการจอง",room:"ห้อง",dates:"วันที่",perN:"ราคาปกติต่อคืน",disc:"ส่วนลดจองตรง 10%",
-name:"ชื่อ-นามสกุล",phone:"เบอร์โทร",email:"อีเมล",req:"คำขอพิเศษ (ถ้ามี)",cancel:"ยกเลิก",back:"ย้อนกลับ",next:"ไปหน้าชำระเงิน",
-errFill:"กรุณากรอกชื่อ เบอร์โทร และอีเมลให้ครบ",errDate:"วันเช็กเอาต์ต้องอยู่หลังวันเช็กอิน",
-payTitle:"ชำระเงิน",card:"บัตรเครดิต/เดบิต",pp:"พร้อมเพย์",
-test:"โหมดสาธิต: ใช้ได้เฉพาะเลขบัตรทดสอบ 4242 4242 4242 4242 ห้ามใส่บัตรจริง ข้อมูลไม่ถูกส่งไปที่ใด",
-cno:"หมายเลขบัตร",cexp:"วันหมดอายุ (ดด/ปป)",ccvc:"CVC",cname:"ชื่อบนบัตร",pay:a=>`ชำระ ${a}`,
-errCard:"เดโมนี้รับเฉพาะเลขบัตรทดสอบ 4242 4242 4242 4242",errExp:"วันหมดอายุไม่ถูกต้อง",errCvc:"CVC ต้องเป็นตัวเลข 3 หลัก",errName:"กรุณากรอกชื่อบนบัตร",
-ppScan:"สแกนด้วยแอปธนาคารใดก็ได้",ppDemo:"QR ตัวอย่าง สแกนจ่ายไม่ได้",ppTime:t=>`QR หมดอายุใน ${t}`,ppPaid:"ฉันโอนเงินแล้ว",
-proc:"กำลังตรวจสอบการชำระเงิน…",
-okH:"ชำระเงินและจองเรียบร้อย",okP:(e,a)=>`ได้รับชำระ ${a} แล้ว ส่งใบยืนยันการจองไปที่ ${e}`,okDemo:"นี่คือระบบสาธิต ไม่มีการจองหรือตัดเงินจริง",close:"ปิด",paidBy:"ชำระด้วย"},
-en:{demo:"Demo website: a fictional resort built to show the design. No real bookings or charges.",navRooms:"Rooms",navDirect:"Book direct",navExp:"Experiences",navLoc:"Ao Nang",navBook:"Book a stay",
-place:"Ao Nang · Krabi",h1:"See the Andaman through a limestone arch",lead:"A small retreat of just 24 rooms, tucked down a quiet lane, a few minutes' walk from Ao Nang beach.",
-rise:"Sunrise today",set:"Sunset today",boat:"Boats to Railay",boatT:"08:00–18:00",
-ci:"Check-in",co:"Check-out",gu:"Guests",guest:"guests",check:"Check availability",
-roomsH:"Rooms",stay:(n,a,b)=>`${a} – ${b} · ${n} night${n>1?"s":""} · direct prices shown`,night:"per night",total:"Total",nights:"nights",
-left:n=>`${n} left for your dates`,out:"Sold out for your dates",tooMany:"Too small for your group",book:"Book this room",sqm:"m²",max:n=>`Sleeps ${n}`,
-directH:"Book direct and get more",cmpA:"Price on travel sites",cmpB:"Direct price",cmpC:"You save (Cliff View Deluxe, 2 nights)",
-expH:"During your stay",expP:"Add these when you book, or message the team on LINE during your stay.",
-locH:"Ao Nang, Krabi",locP:"On a quiet lane away from the beach road. Longtail boats to Railay and the islands leave from the beach.",
-lineBtn:"Chat on LINE",contactNote:"The team replies daily, 07:00–22:00",addr:"Sample Road, Ao Nang, Mueang Krabi (fictional address)",
-foot:"Demo website designed and built by [your studio name].",photoCredit:"Photographs from Unsplash.",
-s1:"Details",s2:"Payment",s3:"Confirmed",
-sumTitle:"Your booking",room:"Room",dates:"Dates",perN:"Standard rate per night",disc:"Direct booking 10% off",
-name:"Full name",phone:"Phone",email:"Email",req:"Special requests (optional)",cancel:"Cancel",back:"Back",next:"Continue to payment",
-errFill:"Enter your name, phone and email to continue",errDate:"Check-out must be after check-in",
-payTitle:"Payment",card:"Credit / debit card",pp:"PromptPay",
-test:"Demo mode: only the test card 4242 4242 4242 4242 works. Never enter a real card. Nothing is sent anywhere.",
-cno:"Card number",cexp:"Expiry (MM/YY)",ccvc:"CVC",cname:"Name on card",pay:a=>`Pay ${a}`,
-errCard:"This demo only accepts the test card 4242 4242 4242 4242",errExp:"Check the expiry date",errCvc:"CVC must be 3 digits",errName:"Enter the name on the card",
-ppScan:"Scan with any Thai banking app",ppDemo:"Sample QR, cannot be paid",ppTime:t=>`QR expires in ${t}`,ppPaid:"I've paid",
-proc:"Confirming your payment…",
-okH:"Paid and booked",okP:(e,a)=>`We received ${a}. Your confirmation was sent to ${e}.`,okDemo:"This is a demo. No booking or payment was made.",close:"Close",paidBy:"Paid by"}};
-
-const rooms=[
-{id:"deluxe",name:"Cliff View Deluxe",img:"photo-1617325247661-675ab4b64ae2",size:40,max:2,price:5200,left:2,
- th:"ห้องชั้นบน หน้าต่างสูงจรดเพดาน มองเห็นผาหินปูนตั้งแต่เตียงนอน",en:"Upstairs, with floor-to-ceiling windows framing the limestone cliffs from bed."},
-{id:"suite",name:"Andaman Suite",img:"photo-1729606188713-814d1b7bf893",size:62,max:3,price:8900,left:3,
- th:"ห้องสวีทพร้อมระเบียงกว้างและมุมนั่งเล่น เหมาะกับการพักยาว",en:"A suite with a wide balcony and living area, made for longer stays."},
-{id:"pool",name:"Pool Access Room",img:"photo-1669741043336-36eb9c3db071",size:48,max:3,price:11800,left:4,
- th:"ห้องชั้นล่าง ก้าวจากระเบียงลงสระว่ายน้ำได้ทันที ล้อมด้วยต้นไม้",en:"Ground floor, stepping straight from your terrace into the pool, shaded by trees."}];
-
-const perks={th:[["ลด 10% ทุกห้อง","ถูกกว่าราคาบนเว็บเอเจนต์เสมอ เพราะไม่มีค่าคอมมิชชัน"],["อาหารเช้าสำหรับสองท่าน","รวมอยู่ในทุกการจองตรง"],["เช็กเอาต์ 14:00","ตามห้องว่างในวันเช็กเอาต์"],["ชำระเงินได้ทันที","บัตรเครดิตหรือพร้อมเพย์ ยืนยันห้องในหน้าเดียว"]],
-en:[["10% off every room","Always below travel-site prices, with no commission in between"],["Breakfast for two","Included with every direct booking"],["Check-out at 14:00","Subject to availability on the day"],["Pay on the spot","Card or PromptPay, confirmed on one page"]]};
-const exps={th:[["photo-1753032507946-14ad6832b102","ดริงก์ยามเย็น","เครื่องดื่มบนดาดฟ้า มองพระอาทิตย์ลงหลังเกาะ","ทุกวัน 17:30"],["photo-1568853810078-71e3a4868f61","เช้าริมทะเล","อาหารเช้าบนชานไม้ เสิร์ฟถึง 11:00","รวมในการจองตรง"],["photo-1762425430465-0d9f08d64147","เรือหางยาวไปไร่เลย์","ทีมงานจองเรือและนัดเวลารับส่งให้","1,200 บาท ไป-กลับ"]],
-en:[["photo-1753032507946-14ad6832b102","Evening drinks","On the roof terrace, as the sun drops behind the islands","Daily from 17:30"],["photo-1568853810078-71e3a4868f61","Breakfast by the sea","Served on the wooden deck until 11:00","Included when you book direct"],["photo-1762425430465-0d9f08d64147","Longtail to Railay","We book the boat and arrange your pick-up","1,200 THB return"]]};
-const near={th:[["หาดอ่าวนาง","6 นาทีเดิน"],["ท่าเรือไปไร่เลย์","8 นาที"],["หาดนพรัตน์ธารา","10 นาทีขับรถ"],["สนามบินนานาชาติกระบี่","30 นาที"]],
-en:[["Ao Nang beach","6 min walk"],["Boats to Railay","8 min"],["Noppharat Thara beach","10 min drive"],["Krabi International Airport","30 min"]]};
-
-let L="th";try{L=localStorage.getItem("nuan-lang")||"th"}catch(e){}
-const $=s=>document.querySelector(s),ci=$("#ci"),co=$("#co"),gu=$("#gu"),dlg=$("#dlg"),body=$("#dlgBody");
-const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-const add=n=>{const d=new Date();d.setDate(d.getDate()+n);return iso(d)};
-ci.value=add(21);co.value=add(23);ci.min=add(0);co.min=add(1);
-const baht=n=>(L==="th"?"฿":"THB ")+n.toLocaleString("en-US");
-const fmt=s=>new Date(s+"T00:00").toLocaleDateString(L==="th"?"th-TH":"en-GB",{day:"numeric",month:"short"});
-const nights=()=>Math.round((new Date(co.value+"T00:00")-new Date(ci.value+"T00:00"))/864e5);
-const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const dp=p=>Math.round(p*.9);
-
 /* Sunrise/sunset for Ao Nang (8.03N, 98.82E, UTC+7), NOAA approximation */
 function sun(d){const rad=Math.PI/180,lat=8.032,lon=98.823,tz=7;
   const N=Math.floor((d-new Date(d.getFullYear(),0,0))/864e5),g=2*Math.PI/365*(N-1);
   const eq=229.18*(.000075+.001868*Math.cos(g)-.032077*Math.sin(g)-.014615*Math.cos(2*g)-.040849*Math.sin(2*g));
   const de=.006918-.399912*Math.cos(g)+.070257*Math.sin(g)-.006758*Math.cos(2*g)+.000907*Math.sin(2*g)-.002697*Math.cos(3*g)+.00148*Math.sin(3*g);
   const ha=Math.acos(Math.cos(90.833*rad)/(Math.cos(lat*rad)*Math.cos(de))-Math.tan(lat*rad)*Math.tan(de))/rad;
-  const t=m=>{m=((m%1440)+1440)%1440;return `${String(Math.floor(m/60)).padStart(2,"0")}:${String(Math.round(m%60)).padStart(2,"0")}`.replace(":60",":59")};
+  const t=m=>{m=Math.round(((m%1440)+1440)%1440);return `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`};
   return [t(720-4*(lon+ha)-eq+tz*60),t(720-4*(lon-ha)-eq+tz*60)]}
+const [RISE,SET]=sun(new Date());
 
+const T={
+th:{demo:"เว็บไซต์ตัวอย่าง: รีสอร์ตสมมติเพื่อสาธิตงานออกแบบ ไม่มีการจองหรือตัดเงินจริง",navStory:"เรื่องราว",navDay:"หนึ่งวันที่นวล",navRooms:"ห้องพัก",navHere:"การเดินทาง",navBook:"ดูห้องและจอง",
+heroKick:"อ่าวนาง · กระบี่",heroH:"หนึ่งวันที่นวล",
+heroP:"ตื่นมาพร้อมแสงแรกเหนือผาหินปูน นั่งเรือหางยาวไปไร่เลย์ บ่ายนอนเล่นริมสระ แล้วกลับมาดูพระอาทิตย์ตกจากดาดฟ้า นี่คือวันธรรมดาของแขกที่มาพักกับเรา",
+heroA:"เลื่อนดูทั้งวัน",heroB:"ดูห้องพัก",rise:"พระอาทิตย์ขึ้นวันนี้",set:"พระอาทิตย์ตกวันนี้",
+placeKick:"สถานที่",placeH:"ที่ที่ผาหินปูนพบทะเลอันดามัน",
+placeP:"อ่าวนางรายล้อมด้วยผาหินปูนสูงชันและเกาะเล็กเกาะน้อยกลางทะเล จากหน้าหาดมีเรือหางยาวไปไร่เลย์ เกาะปอดะ และทะเลแหวกตลอดวัน ตกเย็นถนนเลียบหาดเต็มไปด้วยร้านอาหารทะเลและแสงไฟ",
+cap1:"ผาหินที่ไร่เลย์",cap2:"เกาะหน้าอ่าวนาง",cap3:"หาดอ่าวนางยามเย็น",
+season:[["พ.ย. – เม.ย.","ฤดูท่องเที่ยว ทะเลเรียบ ฟ้าใส"],["พ.ค. – ต.ค.","หน้าฝน เขียวชอุ่ม ห้องว่างมากกว่า"]],
+houseKick:"ที่พัก",houseH:"บ้านหลังเล็ก ห้องพักเพียง 24 ห้อง",
+houseP:"นวลตั้งอยู่ในซอยเงียบหลังถนนเลียบหาด ตัวอาคารเป็นปูนสีดินเผา ทางเดินร่มรื่นด้วยต้นไม้ และมีสระว่ายน้ำกลางสวน เราตั้งใจให้มีห้องพักไม่มาก ทุกคนจึงได้ใช้สระ สวน และดาดฟ้าได้อย่างไม่ต้องรอคิว",
+facts:[["24","ห้องพักทั้งหมด"],["6 นาที","เดินถึงหาดอ่าวนาง"],["1","สระว่ายน้ำกลางสวน"],["30 นาที","จากสนามบินกระบี่"]],
+dayKick:"หนึ่งวันที่นวล",dayH:"ตั้งแต่แสงแรก จนถึงดาวดวงแรก",dayP:"เวลาพระอาทิตย์ขึ้นและตกบนหน้านี้คำนวณตามวันที่จริงของอ่าวนาง",
+stops:[
+ ["sunrise","RISE","เดินเล่นริมหาดตอนเช้า","หาดอ่าวนางยังเงียบ น้ำทะเลเย็น ผาหินค่อยๆ เปลี่ยนเป็นสีทอง เหมาะกับการเดินเท้าเปล่าก่อนคนอื่นตื่น","photo-1722483537725-3807a1bb78c7","เดินจากรีสอร์ต 6 นาที"],
+ ["","08:00","อาหารเช้าริมทะเล","ผลไม้จากตลาดเช้า ข้าวต้มปลา หรือไข่กระทะ เสิร์ฟบนชานไม้ถึง 11:00 รวมอยู่ในทุกการจองตรง","photo-1568853810078-71e3a4868f61","รวมในการจองตรง"],
+ ["","09:30","เรือหางยาวไปไร่เลย์","นั่งเรือ 15 นาทีไปหาดที่เข้าถึงได้ทางเรือเท่านั้น ปีนผา เดินชมถ้ำ หรือว่ายน้ำใต้หน้าผา","photo-1648648777033-c833d650aea7","ทีมงานจองเรือและนัดรับให้"],
+ ["","12:30","ทัวร์เกาะ","ทะเลแหวก เกาะไก่ และเกาะปอดะ น้ำใสจนเห็นพื้นทราย จัดเป็นทริปครึ่งวันหรือเหมาเรือส่วนตัวได้","photo-1483683804023-6ccdb62f86ef","เรือส่วนตัวเริ่มต้น 3,500 บาท"],
+ ["","15:00","บ่ายริมสระ","กลับมางีบใต้ร่มไม้ หรือแช่น้ำในสระกลางสวน ก่อนแสงบ่ายจะอ่อนลง","photo-1669741043336-36eb9c3db071","สระเปิด 07:00–21:00"],
+ ["sunset","SET","ดริงก์บนดาดฟ้า","มองพระอาทิตย์ลับหลังเกาะ พร้อมค็อกเทลอัญชันและน้ำผลไม้สด","photo-1753032507946-14ad6832b102","ทุกวัน เริ่ม 17:30"],
+ ["","20:00","ค่ำคืนในห้อง","อาบน้ำ ปิดไฟ ฟังเสียงลมจากระเบียง พรุ่งนี้ค่อยวางแผนใหม่","photo-1729606188713-814d1b7bf893","Andaman Suite"]],
+roomsKick:"เลือกห้องพัก",roomsH:"สามแบบ สำหรับสามจังหวะการพัก",roomsAll:"ดูห้องทั้งหมดและจอง",from:"เริ่มต้น",perN:"/ คืน",
+hereKick:"การเดินทาง",hereH:"มาถึงนวลได้ง่าย",hereP:"บอกเวลาเครื่องลงทาง LINE แล้วเราจะส่งรถไปรับที่สนามบิน หรือถ้าขับรถมาเอง มีที่จอดในรีสอร์ต",
+near:[["30 นาที","สนามบินนานาชาติกระบี่","รถรับส่ง 600 บาท"],["6 นาที","หาดอ่าวนาง","เดิน"],["8 นาที","ท่าเรือไปไร่เลย์","เดิน"],["10 นาที","หาดนพรัตน์ธารา","ขับรถ"]],
+lineBtn:"แชทผ่าน LINE",ctaH:"พร้อมเริ่มวันของคุณที่นวลหรือยัง",ctaP:"ดูห้องพักทั้งสามแบบ เลือกวันที่ แล้วจองตรงกับเราในราคาที่ถูกกว่าเว็บเอเจนต์ 10%",ctaA:"ดูห้องและจอง",ctaB:"อ่านเรื่องราวอีกครั้ง",
+addr:"ถนนตัวอย่าง ตำบลอ่าวนาง อำเภอเมือง กระบี่ (ที่อยู่สมมติ)",foot:"เว็บไซต์สาธิต ออกแบบและพัฒนาโดย [ชื่อสตูดิโอของคุณ] · ภาพถ่ายจาก Unsplash"},
+en:{demo:"Demo website: a fictional resort built to show the design. No real bookings or charges.",navStory:"Our story",navDay:"A day at Nuan",navRooms:"Rooms",navHere:"Getting here",navBook:"Rooms & booking",
+heroKick:"Ao Nang · Krabi",heroH:"A day at Nuan",
+heroP:"Wake to first light over the limestone, take a longtail to Railay, laze by the pool all afternoon, then watch the sun go down from the roof. An ordinary day for our guests.",
+heroA:"Walk through the day",heroB:"See the rooms",rise:"Sunrise today",set:"Sunset today",
+placeKick:"The place",placeH:"Where limestone meets the Andaman",
+placeP:"Ao Nang is ringed by sheer limestone cliffs and small islands. Longtail boats leave the beach all day for Railay, Koh Poda and the sandbar islands. In the evening the beach road fills with seafood grills and lights.",
+cap1:"Cliffs at Railay",cap2:"Islands off Ao Nang",cap3:"Ao Nang beach at dusk",
+season:[["Nov – Apr","High season, calm seas, clear skies"],["May – Oct","Green season, lush and quieter"]],
+houseKick:"The house",houseH:"A small house of 24 rooms",
+houseP:"Nuan sits on a quiet lane behind the beach road: clay-coloured walls, shaded paths and a pool in the middle of the garden. We keep the room count low, so the pool, garden and roof never feel crowded.",
+facts:[["24","rooms in total"],["6 min","walk to Ao Nang beach"],["1","garden pool"],["30 min","from Krabi airport"]],
+dayKick:"A day at Nuan",dayH:"From first light to first star",dayP:"Sunrise and sunset on this page are calculated for Ao Nang on today's date.",
+stops:[
+ ["sunrise","RISE","A walk on the beach","Ao Nang is still quiet, the water cool, the cliffs turning gold. Best done barefoot, before anyone else is up.","photo-1722483537725-3807a1bb78c7","6 min walk from the resort"],
+ ["","08:00","Breakfast by the sea","Fruit from the morning market, rice soup with fish or eggs in the pan, served on the deck until 11:00.","photo-1568853810078-71e3a4868f61","Included when you book direct"],
+ ["","09:30","Longtail to Railay","Fifteen minutes by boat to a beach you can only reach by sea. Climb, explore the caves, or swim beneath the cliffs.","photo-1648648777033-c833d650aea7","We book the boat and your pick-up"],
+ ["","12:30","Island hopping","The sandbar at Talay Waek, Chicken Island and Koh Poda, with water clear to the sand. Half-day trips or a private boat.","photo-1483683804023-6ccdb62f86ef","Private boat from 3,500 THB"],
+ ["","15:00","Afternoon by the pool","Back for a nap in the shade or a swim in the garden pool before the light softens.","photo-1669741043336-36eb9c3db071","Pool open 07:00–21:00"],
+ ["sunset","SET","Drinks on the roof","Watch the sun drop behind the islands with a butterfly-pea cocktail or fresh juice.","photo-1753032507946-14ad6832b102","Daily from 17:30"],
+ ["","20:00","Night in your room","Shower, lights low, the breeze from the balcony. Tomorrow can wait.","photo-1729606188713-814d1b7bf893","Andaman Suite"]],
+roomsKick:"Choose your room",roomsH:"Three rooms for three ways to stay",roomsAll:"See all rooms and book",from:"From",perN:"/ night",
+hereKick:"Getting here",hereH:"Easy to reach",hereP:"Send us your flight time on LINE and we'll meet you at the airport. Driving yourself? There's parking on site.",
+near:[["30 min","Krabi International Airport","Transfer 600 THB"],["6 min","Ao Nang beach","On foot"],["8 min","Boats to Railay","On foot"],["10 min","Noppharat Thara beach","By car"]],
+lineBtn:"Chat on LINE",ctaH:"Ready to start your day at Nuan?",ctaP:"See all three rooms, pick your dates and book direct for 10% less than on travel sites.",ctaA:"Rooms & booking",ctaB:"Read the story again",
+addr:"Sample Road, Ao Nang, Mueang Krabi (fictional address)",foot:"Demo website designed and built by [your studio name] · Photographs from Unsplash"}};
+
+const rooms=[["deluxe","Cliff View Deluxe","photo-1617325247661-675ab4b64ae2",4680,{th:"40 ตร.ม. · วิวผาหิน · 2 ท่าน",en:"40 m² · cliff view · sleeps 2"}],
+ ["suite","Andaman Suite","photo-1729606188713-814d1b7bf893",8010,{th:"62 ตร.ม. · ระเบียงกว้าง · 3 ท่าน",en:"62 m² · wide balcony · sleeps 3"}],
+ ["pool","Pool Access Room","photo-1669741043336-36eb9c3db071",10620,{th:"48 ตร.ม. · ลงสระจากระเบียง · 3 ท่าน",en:"48 m² · step into the pool · sleeps 3"}]];
+
+let L="th";try{L=localStorage.getItem("nuan-lang")||"th"}catch(e){}
+const $=s=>document.querySelector(s);
+const baht=n=>(L==="th"?"฿":"THB ")+n.toLocaleString("en-US");
+let io;
 function render(){
-  const t=T[L],n=Math.max(nights(),1),G=+(gu.value||2);
-  document.documentElement.lang=L;
+  const t=T[L];document.documentElement.lang=L;
   document.querySelectorAll("[data-t]").forEach(e=>{const v=t[e.dataset.t];if(typeof v==="string")e.textContent=v});
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
-  gu.innerHTML=[1,2,3,4].map(k=>`<option value="${k}">${k} ${t.guest}</option>`).join("");gu.value=G;
-  const [r,s]=sun(new Date());
-  $("#sky").innerHTML=`<div><b>${r}</b><span>${t.rise}</span></div><div class="s"><b>${s}</b><span>${t.set}</span></div><div><b>${t.boatT}</b><span>${t.boat}</span></div>`;
-  $("#stay").textContent=nights()>0?t.stay(n,fmt(ci.value),fmt(co.value)):t.errDate;
-  $("#roomList").innerHTML=rooms.map(r=>{
-    const out=r.left===0,small=r.max<G,bad=out||small||nights()<1;
-    const st=out?`<p class="status no">${t.out}</p>`:small?`<p class="status no">${t.tooMany}</p>`:r.left<=3?`<p class="status">${t.left(r.left)}</p>`:`<p class="status"></p>`;
-    return `<article class="room"><figure class="arch"><img loading="lazy" src="${U(r.img,900)}" alt="${r.name}"><span class="tag">${r.size} ${t.sqm} · ${t.max(r.max)}</span></figure><h3>${r.name}</h3><p class="desc" style="margin-top:8px">${r[L]}</p><div class="rp"><b>${baht(dp(r.price))}</b><s>${baht(r.price)}</s><span class="small">${t.night}</span></div><p class="small">${t.total} ${n} ${t.nights} · ${baht(dp(r.price)*n)}</p>${st}<button class="btn line" data-book="${r.id}" ${bad?"disabled":""}>${t.book}</button></article>`}).join("");
-  $("#perkList").innerHTML=perks[L].map(p=>`<div><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join("");
-  const g=rooms[0].price*2,d2=dp(rooms[0].price)*2;
-  $("#save").innerHTML=`<div>${t.cmpA}<b>${baht(g)}</b></div><div class="us">${t.cmpB}<b>${baht(d2)}</b></div><div>${t.cmpC}<b>${baht(g-d2)}</b></div>`;
-  $("#expList").innerHTML=exps[L].map(e=>`<article class="ex"><figure><img loading="lazy" src="${U(e[0],800)}" alt="${e[1]}"></figure><h3>${e[1]}</h3><p>${e[2]}</p><p class="t">${e[3]}</p></article>`).join("");
-  $("#near").innerHTML=near[L].map(x=>`<li><span>${x[0]}</span><span>${x[1]}</span></li>`).join("");
+  $("#today").innerHTML=`<div><b>${RISE}</b><span>${t.rise}</span></div><div class="s"><b>${SET}</b><span>${t.set}</span></div>`;
+  $("#season").innerHTML=t.season.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join("");
+  $("#facts").innerHTML=t.facts.map(f=>`<div><b>${f[0]}</b><span>${f[1]}</span></div>`).join("");
+  $("#tl").innerHTML=t.stops.map(s=>`<article class="stop ${s[0]} reveal"><figure><img loading="lazy" src="${U(s[4],1000)}" alt="${s[2]}"></figure><div><div class="time">${s[1]==="RISE"?RISE:s[1]==="SET"?SET:s[1]}</div><h3>${s[2]}</h3><p>${s[3]}</p><p class="note">${s[5]}</p></div></article>`).join("");
+  $("#roomList").innerHTML=rooms.map(r=>`<a class="room" href="rooms.html#${r[0]}"><figure><img loading="lazy" src="${U(r[2],900)}" alt="${r[1]}"></figure><h3>${r[1]}</h3><p>${r[4][L]}</p><p class="from">${t.from} <b>${baht(r[3])}</b> ${t.perN}</p></a>`).join("");
+  $("#near").innerHTML=t.near.map(n=>`<li><b>${n[0]}</b><span>${n[1]}</span><span>${n[2]}</span></li>`).join("");
+  if(io)io.disconnect();
+  if("IntersectionObserver" in window){io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});document.querySelectorAll(".reveal").forEach(el=>io.observe(el))}
+  else document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
 }
-
-/* ---------- checkout ---------- */
-let B={},timer=null;
-const steps=k=>{const t=T[L];return `<div class="steps">${[t.s1,t.s2,t.s3].map((s,i)=>`<span class="${i+1===k?"on":i+1<k?"done":""}"><i>${i+1<k?"✓":i+1}</i><b>${s}</b></span>`).join("<em></em>")}</div>`};
-const summary=()=>{const t=T[L],r=B.room,n=B.n,d=dp(r.price);return `<div class="sum"><div><span>${t.room}</span><span>${r.name}</span></div><div><span>${t.dates}</span><span>${fmt(ci.value)} – ${fmt(co.value)} · ${n} ${t.nights}</span></div><div><span>${t.perN}</span><span>${baht(r.price)}</span></div><div><span>${t.disc}</span><span>−${baht((r.price-d)*n)}</span></div><div class="tot"><span>${t.total}</span><span>${baht(d*n)}</span></div></div>`};
-
-function step1(){
-  const t=T[L],v=k=>esc(B[k]||"");
-  body.innerHTML=`${steps(1)}<h3>${t.sumTitle}</h3>${summary()}
-  <form id="f1" novalidate><div class="f2"><div class="full"><label for="bn">${t.name}</label><input id="bn" autocomplete="name" value="${v("name")}"></div><div><label for="bp">${t.phone}</label><input id="bp" type="tel" autocomplete="tel" value="${v("phone")}"></div><div><label for="be">${t.email}</label><input id="be" type="email" autocomplete="email" value="${v("email")}"></div><div class="full"><label for="br">${t.req}</label><input id="br" value="${v("req")}"></div></div>
-  <p class="err" id="err" role="alert"></p><div class="acts"><button type="button" class="btn line" id="x">${t.cancel}</button><button class="btn">${t.next}</button></div></form>`;
-  $("#x").onclick=()=>dlg.close();
-  $("#f1").onsubmit=e=>{e.preventDefault();
-    B.name=$("#bn").value.trim();B.phone=$("#bp").value.trim();B.email=$("#be").value.trim();B.req=$("#br").value.trim();
-    if(!B.name||!B.phone||!/^\S+@\S+\.\S+$/.test(B.email)){$("#err").textContent=t.errFill;return}
-    step2("card")};
-  setTimeout(()=>$("#bn").focus(),30);
-}
-
-function qrSvg(seed){let x=seed,c="";const r=()=>(x=(x*1103515245+12345)%2147483648)/2147483648,N=25,s=6;
-  const fin=(a,b)=>`<rect x="${a*s}" y="${b*s}" width="${7*s}" height="${7*s}" fill="#111"/><rect x="${(a+1)*s}" y="${(b+1)*s}" width="${5*s}" height="${5*s}" fill="#fff"/><rect x="${(a+2)*s}" y="${(b+2)*s}" width="${3*s}" height="${3*s}" fill="#111"/>`;
-  for(let i=0;i<N;i++)for(let j=0;j<N;j++){const f=(i<8&&j<8)||(i>16&&j<8)||(i<8&&j>16);if(!f&&r()>.52)c+=`<rect x="${i*s}" y="${j*s}" width="${s}" height="${s}" fill="#111"/>`}
-  return `<svg viewBox="0 0 ${N*s} ${N*s}" width="190" height="190" role="img" aria-label="Sample QR">${c}${fin(0,0)}${fin(18,0)}${fin(0,18)}<rect x="${9*s}" y="${10.5*s}" width="${7*s}" height="${4*s}" rx="4" fill="#fff"/><text x="${12.5*s}" y="${13.3*s}" text-anchor="middle" font-size="11" font-family="Anuphan,sans-serif" fill="#a33a2b" font-weight="600">DEMO</text></svg>`}
-
-function step2(mode){
-  clearInterval(timer);
-  const t=T[L],amt=baht(dp(B.room.price)*B.n);
-  const tabs=`<div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="${mode==="card"}" data-m="card">${t.card}</button><button type="button" role="tab" aria-selected="${mode==="pp"}" data-m="pp">${t.pp}</button></div>`;
-  let inner;
-  if(mode==="card"){
-    inner=`<p class="testnote">${t.test}</p>
-    <div class="card" aria-hidden="true"><div class="row"><span>Nuan Retreat</span><span>VISA</span></div><div class="no" id="cv">4242 4242 4242 4242</div><div class="row"><span id="cvn">${esc(B.name)}</span><span id="cve">12/30</span></div></div>
-    <form id="f2" novalidate><div class="f2"><div class="full"><label for="cn">${t.cno}</label><input id="cn" inputmode="numeric" autocomplete="off" value="4242 4242 4242 4242" maxlength="19"></div>
-    <div><label for="ce">${t.cexp}</label><input id="ce" inputmode="numeric" autocomplete="off" value="12/30" maxlength="5"></div><div><label for="cc">${t.ccvc}</label><input id="cc" inputmode="numeric" autocomplete="off" value="123" maxlength="3"></div>
-    <div class="full"><label for="cm">${t.cname}</label><input id="cm" autocomplete="off" value="${esc(B.name)}"></div></div>
-    <p class="err" id="err" role="alert"></p><div class="acts"><button type="button" class="btn line" id="bk">${t.back}</button><button class="btn sun">${t.pay(amt)}</button></div></form>`;
-  }else{
-    inner=`<div class="qr"><div class="box"><div class="pp">PromptPay</div>${qrSvg(B.n*7919+B.room.price)}<div class="amt">${amt}</div></div><p>${t.ppScan}</p><p class="small" style="color:#a33a2b">${t.ppDemo}</p><p class="timer" id="tm"></p></div>
-    <div class="acts"><button type="button" class="btn line" id="bk">${t.back}</button><button type="button" class="btn sun" id="paid">${t.ppPaid}</button></div>`;
-  }
-  body.innerHTML=`${steps(2)}<h3>${t.payTitle}</h3>${tabs}${inner}`;
-  body.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>step2(b.dataset.m));
-  $("#bk").onclick=step1;
-  if(mode==="card"){
-    const cn=$("#cn"),ce=$("#ce"),cc=$("#cc"),cm=$("#cm");
-    cn.oninput=()=>{cn.value=cn.value.replace(/\D/g,"").slice(0,16).replace(/(.{4})/g,"$1 ").trim();$("#cv").textContent=cn.value||"•••• •••• •••• ••••"};
-    ce.oninput=()=>{let v=ce.value.replace(/\D/g,"").slice(0,4);if(v.length>2)v=v.slice(0,2)+"/"+v.slice(2);ce.value=v;$("#cve").textContent=v||"MM/YY"};
-    cc.oninput=()=>{cc.value=cc.value.replace(/\D/g,"").slice(0,3)};
-    cm.oninput=()=>{$("#cvn").textContent=cm.value};
-    $("#f2").onsubmit=e=>{e.preventDefault();
-      [cn,ce,cc,cm].forEach(i=>i.classList.remove("bad"));
-      const fail=(el,msg)=>{el.classList.add("bad");el.focus();$("#err").textContent=msg};
-      if(cn.value.replace(/\s/g,"")!=="4242424242424242")return fail(cn,t.errCard);
-      const m=ce.value.match(/^(\d\d)\/(\d\d)$/),now=new Date();
-      if(!m||+m[1]<1||+m[1]>12||new Date(2000+ +m[2],+m[1],0)<now)return fail(ce,t.errExp);
-      if(!/^\d{3}$/.test(cc.value))return fail(cc,t.errCvc);
-      if(!cm.value.trim())return fail(cm,t.errName);
-      process(t.card)};
-  }else{
-    let left=900;const tick=()=>{const el=$("#tm");if(!el){clearInterval(timer);return}el.textContent=t.ppTime(`${Math.floor(left/60)}:${String(left%60).padStart(2,"0")}`);if(--left<0)clearInterval(timer)};
-    tick();timer=setInterval(tick,1000);
-    $("#paid").onclick=()=>process("PromptPay");
-  }
-}
-
-function process(method){
-  clearInterval(timer);
-  const t=T[L];
-  body.innerHTML=`${steps(2)}<div class="spin" role="status" aria-label="${t.proc}"></div><p style="text-align:center">${t.proc}</p>`;
-  setTimeout(()=>{
-    const ref="NR-"+Math.random().toString(36).slice(2,7).toUpperCase(),amt=baht(dp(B.room.price)*B.n);
-    body.innerHTML=`${steps(4)}<div class="ok"><div class="arch"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 21l7 7 14-15" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>${t.okH}</h3><div class="ref">${ref}</div><p>${t.okP(esc(B.email),amt)}</p></div>${summary()}<p class="small" style="text-align:center">${t.paidBy} ${method} · ${t.okDemo}</p><div class="acts" style="justify-content:center"><button class="btn" id="cl">${t.close}</button></div>`;
-    $("#cl").onclick=()=>dlg.close();
-  },1600);
-}
-
-function openBook(id){B={room:rooms.find(x=>x.id===id),n:nights(),name:B.name,phone:B.phone,email:B.email};step1();dlg.showModal()}
-dlg.addEventListener("close",()=>clearInterval(timer));
-
 const nav=$("#nav");addEventListener("scroll",()=>nav.classList.toggle("sc",scrollY>10),{passive:true});
 document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{L=b.dataset.l;try{localStorage.setItem("nuan-lang",L)}catch(e){}render()});
-$("#search").onsubmit=e=>{e.preventDefault();render();$("#rooms").scrollIntoView()};
-[ci,co,gu].forEach(i=>i.onchange=()=>{if(i===ci&&co.value<=ci.value){const d=new Date(ci.value+"T00:00");d.setDate(d.getDate()+1);co.value=iso(d)}co.min=ci.value;render()});
-$("#roomList").onclick=e=>{const b=e.target.closest("[data-book]");if(b&&!b.disabled)openBook(b.dataset.book)};
 render();
 }
 </script>
 </body>
 </html>
-<style>@media(max-width:1100px){.sky{flex-wrap:wrap}.sky div{flex:1 1 40%}.sky div:nth-child(3){flex-basis:100%;border-left:0;padding-left:0;border-top:1px solid var(--line)}}</style>
