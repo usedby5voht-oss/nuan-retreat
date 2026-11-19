@@ -4,74 +4,61 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Offers · Nuan Retreat Krabi</title>
+<meta name="description" content="Nuan Retreat — a small 24-room retreat in Ao Nang, Krabi. Demo website.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Trirong:wght@300;400;500&family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@300;400;500&family=IBM+Plex+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="common.css">
 <style>
-/* Offers: a deep-sea title band, then each package as a wide row with its photo in an arch, terms as a checklist and one action. */
-.ohero{background:var(--deep);color:#fff;padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px)}
-.ohero .kick{font-size:14px;color:#9fb3b1;letter-spacing:.06em;margin-bottom:12px}
-.ohero h1{font-size:clamp(40px,5.4vw,72px)}
-:lang(th) .ohero h1{font-size:clamp(36px,4.8vw,62px);line-height:1.25}
-.ohero p{color:#b9c6c4;max-width:58ch;margin-top:14px;font-size:17px}
-.std{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:26px;font-size:14.5px;color:#d8e3e1}
-.std b{font-weight:500;color:#f3a77f}
-.list{display:grid;gap:clamp(40px,6vw,72px);margin-top:clamp(40px,6vw,72px)}
-.of{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,72px);align-items:center;scroll-margin-top:110px}
+/* Offers: hero, the direct-booking promise, then each package as a wide row with its photo in an arch. */
+.std{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:26px;font-size:15px;color:#E3E8E5}
+.std b{font-weight:500;color:var(--brass2)}
+.olist{display:grid;gap:clamp(64px,9vw,128px)}
+.of{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(36px,6vw,100px);align-items:center;scroll-margin-top:120px}
 .of:nth-child(even) figure{order:2}
-.of figure{aspect-ratio:4/3.6;border-radius:var(--arch)}
-.of .pct{display:inline-block;background:var(--sun);color:#fff;border-radius:999px;padding:4px 14px;font-size:14px;font-weight:500;margin-bottom:14px}
-.of h2{font-size:clamp(30px,3.4vw,44px)}
-.of .d{color:#3b4747;margin:12px 0 18px;max-width:48ch}
-.ck{list-style:none;padding:0;margin:0 0 10px;display:grid;gap:8px}
-.ck li{display:flex;gap:10px;align-items:baseline;font-size:15.5px}
-.ck li::before{content:"";flex:none;width:9px;height:11px;border:1.5px solid var(--sun);border-bottom:0;border-radius:var(--arch);transform:translateY(1px)}
-.terms{font-size:14px;color:var(--soft);margin:12px 0 22px}
-.of.hl figure{outline:3px solid var(--sun);outline-offset:6px}
-.ex{font-size:14.5px;color:#3b4747;background:var(--stone);border-radius:14px;padding:10px 14px;margin-bottom:18px;display:inline-block}
-@media(max-width:820px){.of{grid-template-columns:1fr}.of:nth-child(even) figure{order:0}.of figure{aspect-ratio:4/3.4}}
+.of figure{aspect-ratio:4/4.2;border-radius:var(--arch)}
+.of .pct{display:inline-block;background:var(--brass);color:var(--night);padding:6px 16px;font-size:14px;font-weight:500;margin-bottom:20px}
+.of h2{font-size:clamp(34px,3.8vw,54px)}
+.of .d{color:var(--mute);margin:16px 0 24px;max-width:46ch;font-size:17px}
+.ck{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:10px}
+.ck li{display:flex;gap:12px;align-items:baseline;font-size:15.5px}
+.ck li::before{content:"";flex:none;width:8px;height:10px;border:1.2px solid var(--brass);border-bottom:0;border-radius:var(--arch);transform:translateY(1px)}
+.terms{font-size:14px;color:var(--mute);margin:16px 0 26px;padding-top:16px;border-top:1px solid var(--line)}
+.of.hl figure{outline:1px solid var(--brass);outline-offset:10px}
+.ex{font-size:15px;background:#fff;border-left:3px solid var(--brass);padding:12px 16px;margin-bottom:24px}
+@media(max-width:860px){.of{grid-template-columns:1fr}.of:nth-child(even) figure{order:0}.of figure{aspect-ratio:4/3.6}}
 </style>
 </head>
 <body>
 <header id="hdr"></header>
-<section class="ohero"><div class="wrap">
-  <p class="kick" id="kick"></p>
-  <h1 id="h1"></h1>
-  <p id="lead"></p>
-  <div class="std" id="std"></div>
-</div></section>
-<main class="wrap"><div class="list" id="list"></div></main>
-<footer><div class="wrap">
-  <div class="ft"><div><span class="brand"><b>NUAN</b></span><p style="margin-top:12px" data-t="addr"></p></div><p>reservations@nuan-retreat.example · 075-000-000</p></div>
-  <div class="credit"><span data-t="foot"></span></div>
-</div></footer>
+<section class="ph"><img src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=2000&q=80" alt="" fetchpriority="high"><div class="wrap"><p class="crumb"><a href="index.html" data-t="navHome"></a> / <span id="crumb"></span></p><h1 id="h1"></h1><p class="lead" id="lead"></p><div class="std" id="std"></div></div></section>
+<main class="sec"><div class="wrap"><div class="olist" id="list"></div></div></main>
 <script src="common.js"></script>
 <script>
 {
-const P={th:{kick:"โปรโมชันและแพ็กเกจ",h1:"คุ้มกว่าเมื่อจองตรงกับเรา",lead:"เลือกแพ็กเกจที่ตรงกับทริปของคุณ แล้วไปเลือกห้องได้เลย ส่วนลดจะถูกคำนวณให้ในหน้าห้องพักและหน้าชำระเงินโดยอัตโนมัติ",
- std:"ทุกการจองตรงได้อย่างน้อย",stdB:"ลด 10% + อาหารเช้าฟรี",perksH:"สิ่งที่ได้รับ",ex:(a,b)=>`ตัวอย่าง: Andaman Suite 3 คืน จาก ${a} เหลือ ${b}`,go:"เลือกแพ็กเกจนี้และดูห้อง",on:"กำลังใช้แพ็กเกจนี้"},
- en:{kick:"Offers & packages",h1:"More when you book with us",lead:"Pick the package that fits your trip, then choose a room. The discount is worked out for you on the room and payment pages.",
- std:"Every direct booking gets at least",stdB:"10% off + free breakfast",perksH:"What's included",ex:(a,b)=>`Example: Andaman Suite, 3 nights, from ${a} to ${b}`,go:"Choose this package and see rooms",on:"This package is applied"}};
+const P={th:{h1:"คุ้มกว่าเมื่อจองตรงกับเรา",lead:"เลือกแพ็กเกจที่ตรงกับทริปของคุณ แล้วไปเลือกห้องได้เลย ส่วนลดจะถูกคำนวณให้ในหน้าห้องพักและหน้าชำระเงินโดยอัตโนมัติ",
+ std:"ทุกการจองตรงได้อย่างน้อย",stdB:"ลด 10% + อาหารเช้าฟรี",ex:(a,b)=>`ตัวอย่าง: Andaman Suite 3 คืน จาก ${a} เหลือ ${b}`,go:"เลือกแพ็กเกจนี้และดูห้อง",on:"กำลังใช้แพ็กเกจนี้"},
+ en:{h1:"More when you book with us",lead:"Pick the package that fits your trip, then choose a room. The discount is worked out for you on the room and payment pages.",
+ std:"Every direct booking gets at least",stdB:"10% off + free breakfast",ex:(a,b)=>`Example: Andaman Suite, 3 nights, from ${a} to ${b}`,go:"Choose this package and see rooms",on:"This package is applied"}};
 function render(){
-  header("offers",false);onLang(render);applyText();
+  header("offers",true);onLang(render);applyText();
   const p=P[L],x=t();
-  $("#kick").textContent=p.kick;$("#h1").textContent=p.h1;$("#lead").textContent=p.lead;
+  $("#crumb").textContent=x.nav.offers;$("#h1").textContent=p.h1;$("#lead").textContent=p.lead;
   $("#std").innerHTML=`<span>${p.std} <b>${p.stdB}</b></span>`;
   const su=ROOMS.find(r=>r.id==="suite");
   $("#list").innerHTML=OFFERS.map(o=>{const full=su.price*3,after=Math.round(su.price*(1-o.pct))*3,okSuite=!o.rooms||o.rooms.includes("suite");
-    return `<article class="of" id="${o.id}"><figure><img loading="lazy" src="${U(o.img,1100)}" alt="${o.n[L]}"></figure><div>
+    return `<article class="of rv" id="${o.id}"><figure><img loading="lazy" src="${U(o.img,1200)}" alt=""></figure><div>
     <span class="pct">${x.offPct(Math.round(o.pct*100))}</span><h2>${o.n[L]}</h2><p class="d">${o.d[L]}</p>
     <ul class="ck">${o.perks[L].map(k=>`<li>${k}</li>`).join("")}</ul>
     <p class="terms">${offTerms(o).join(" · ")} · ${x.oValid}</p>
-    ${okSuite&&!o.adv?`<p class="ex">${p.ex(baht(full),baht(after))}</p><br>`:""}
-    ${OFF&&OFF.id===o.id?`<span class="btn line" style="cursor:default">${p.on}</span> <a class="btn" href="rooms.html">${x.nav.rooms}</a>`:`<a class="btn sun" href="rooms.html?offer=${o.id}" data-pick="${o.id}">${p.go}</a>`}
+    ${okSuite&&!o.adv?`<p class="ex">${p.ex(baht(full),baht(after))}</p>`:""}
+    <div>${OFF&&OFF.id===o.id?`<span class="btn line" style="cursor:default">${p.on}</span> <a class="btn" href="rooms.html">${x.nav.rooms}</a>`:`<a class="btn gold" href="rooms.html?offer=${o.id}" data-pick="${o.id}">${p.go}</a>`}</div>
     </div></article>`}).join("");
   document.querySelectorAll("[data-pick]").forEach(a=>a.onclick=()=>{setOffer(a.dataset.pick);
-    /* move the stay to meet the package terms so prices show the saving straight away */
     const o=OFF;if(o.adv&&S.ci<addDays(null,o.adv)){S.ci=addDays(null,o.adv+1);S.co=addDays(S.ci,Math.max(o.minN,2))}
     if(nights()<o.minN)S.co=addDays(S.ci,o.minN);saveS()});
-  const h=location.hash.slice(1),el=h&&document.getElementById(h);if(el){el.classList.add("hl");setTimeout(()=>el.scrollIntoView(),50)}
+  reveal();
+  const h=location.hash.slice(1),el=h&&document.getElementById(h);if(el){el.classList.add("hl");setTimeout(()=>el.scrollIntoView(),60)}
 }
 window.__rerender=render;render();
 }

@@ -4,77 +4,57 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Room · Nuan Retreat Krabi</title>
+<meta name="description" content="Nuan Retreat — a small 24-room retreat in Ao Nang, Krabi. Demo website.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Trirong:wght@300;400;500&family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@300;400;500&family=IBM+Plex+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="common.css">
 <style>
-/* Room detail: arched hero photo with a strip of thumbnails, full-screen viewer, details on the left, a pinned booking card on the right. */
-.crumb{padding:22px 0 0;font-size:14px;color:var(--soft)}
-.crumb a{color:var(--soft)}
-.gal{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:14px;margin-top:18px}
-.main{aspect-ratio:4/3.2;border-radius:var(--arch);cursor:zoom-in;border:0;padding:0;background:var(--stone);overflow:hidden;position:relative;display:block;width:100%}
-.main .cap,.thumb .cap{position:absolute;left:14px;bottom:14px;background:#0e2f33cc;color:#fff;font-size:13px;border-radius:999px;padding:3px 12px;white-space:nowrap}
+/* Room detail: gallery under a solid header, details on the left, a pinned booking card on the right. */
+.crumb2{padding:28px 0 0;font-size:13.5px;color:var(--mute)}
+.crumb2 a{color:var(--mute);text-decoration:none}.crumb2 a:hover{color:var(--ink)}
+.gal{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:14px;margin-top:20px}
+.main{aspect-ratio:4/3.1;border-radius:var(--arch);cursor:zoom-in;border:0;padding:0;background:var(--stone);overflow:hidden;position:relative;display:block;width:100%}
+.main .cap{position:absolute;left:18px;bottom:18px;background:#0F1D1Acc;color:#fff;font-size:13px;padding:4px 14px;white-space:nowrap}
 .side{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:14px}
-.thumb{border:0;padding:0;border-radius:18px;overflow:hidden;cursor:pointer;position:relative;background:var(--stone);opacity:.85;transition:opacity .2s;min-height:0}
-.thumb:hover,.thumb[aria-current=true]{opacity:1}
-.thumb[aria-current=true]{outline:2px solid var(--sun);outline-offset:2px}
-.thumb .plus{position:absolute;inset:0;display:grid;place-items:center;background:#0e2f33b3;color:#fff;font-size:14.5px;text-align:center;padding:8px}
-.lay{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(32px,5vw,72px);margin-top:clamp(28px,4vw,48px);align-items:start}
-.lay h1{font-size:clamp(38px,4.6vw,62px)}
-.lay .tags{margin:16px 0 24px}
-.sec{padding:28px 0;border-top:1px solid var(--line)}
-.sec h2{font-size:clamp(24px,2.4vw,30px);margin-bottom:14px}
-.sec p+p{margin-top:12px}
-.sec p{color:#3b4747;max-width:62ch}
-.am{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 22px;font-size:15.5px;color:#3b4747}
-.am li{display:flex;gap:10px;align-items:baseline}
-.am li::before{content:"";flex:none;width:9px;height:11px;border:1.5px solid var(--sun);border-bottom:0;border-radius:var(--arch);transform:translateY(1px)}
-.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
-.spec div{background:var(--stone);border-radius:16px;padding:14px 16px}
-.spec span{display:block;font-size:13px;color:var(--soft)}.spec b{font-weight:500}
-.pg{display:grid;gap:14px}.pg b{display:block;font-weight:500}.pg p{font-size:15px}
-.bk{position:sticky;top:calc(var(--navh,75px) + 18px);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 24px 50px -30px #0e2f3340;background:#fff}
-.bk .price b{font:400 36px/1 Gloock,serif}.bk .price s{color:var(--soft);font-size:14px;margin-left:8px}
-.bk .stay{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;margin:18px 0 6px}
-.bk .field{padding:8px 14px}.bk .field+.field{border-left:1px solid var(--line)}
+.thumb{border:0;padding:0;overflow:hidden;cursor:pointer;position:relative;background:var(--stone);min-height:0}
+.thumb img{transition:transform .8s ease}.thumb:hover img{transform:scale(1.05)}
+.thumb .plus{position:absolute;inset:0;display:grid;place-items:center;background:#0F1D1Ab3;color:#fff;font-size:14.5px;text-align:center;padding:8px}
+.lay{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(40px,6vw,96px);margin-top:clamp(40px,5vw,64px);align-items:start}
+.lay h1{font-size:clamp(42px,5vw,72px)}
+.lay .tags{margin:20px 0 10px}
+.blk{padding:40px 0;border-top:1px solid var(--line);margin-top:30px}
+.blk+.blk{margin-top:0}
+.blk h2{font-size:clamp(26px,2.4vw,34px);margin-bottom:18px}
+.blk p+p{margin-top:14px}
+.blk p{color:var(--mute);max-width:62ch}
+.am{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 26px;font-size:15.5px}
+.am li{display:flex;gap:12px;align-items:baseline}
+.am li::before{content:"";flex:none;width:8px;height:10px;border:1.2px solid var(--brass);border-bottom:0;border-radius:var(--arch);transform:translateY(1px)}
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.spec div{background:var(--paper);padding:16px 18px}
+.spec span{display:block;font-size:13px;color:var(--mute)}.spec b{font-weight:500}
+.pg{display:grid;gap:18px}.pg b{display:block;font-weight:500}.pg p{font-size:15.5px}
+.bk{position:sticky;top:calc(var(--navh,84px) + 22px);background:#fff;border:1px solid var(--line);padding:30px;box-shadow:0 30px 60px -36px #0F1D1A55}
+.bk .price b{font:300 42px/1.1 var(--f-d)}.bk .price s{color:var(--mute);font-size:14px;margin-left:8px}
+.bk .stay{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin:20px 0 8px}
+.bk .field{padding:10px 14px}.bk .field+.field{border-left:1px solid var(--line)}
 .bk .field:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}
-.bd{margin:14px 0 4px;font-size:15px}
-.bd div{display:flex;justify-content:space-between;gap:10px;padding:5px 0}
+.bd{margin:16px 0 6px;font-size:15px}
+.bd div{display:flex;justify-content:space-between;gap:10px;padding:6px 0}
 .bd span:last-child{white-space:nowrap}
-.bd .tot{border-top:1px solid var(--line);margin-top:6px;padding-top:12px;font-weight:500;font-size:17px}
-.bk .note{font-size:13px;color:var(--soft);text-align:center;margin-top:10px}
-.more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:20px}
-.mc{text-decoration:none}.mc figure{aspect-ratio:4/3.6;border-radius:var(--arch)}
-.mc h3{margin-top:14px;font-size:22px}.mc p{font-size:14.5px;color:var(--soft)}
-.nf{padding:90px 0;text-align:center}.nf h1{margin-bottom:20px}
-/* viewer */
-#viewer{border:0;padding:0;width:100vw;height:100vh;max-width:none;max-height:none;background:#071a1ced;color:#fff}
-#viewer::backdrop{background:#071a1c}
-.vw{position:relative;width:100%;height:100%;display:grid;grid-template-rows:auto 1fr auto;padding:16px max(3vw,14px) 20px}
-.vt{display:flex;justify-content:space-between;align-items:center;font-size:14px}
-.vimg{display:grid;place-items:center;min-height:0;padding:12px 0}
-.vimg img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:none;border-radius:14px}
-.vb{display:flex;justify-content:center;gap:12px}
-.vbtn{min-width:48px;min-height:48px;border-radius:999px;border:1px solid #ffffff55;background:transparent;color:#fff;font:400 15px Anuphan;cursor:pointer;padding:0 18px}
-.vbtn:hover{background:#ffffff1a}
-@media(max-width:960px){.lay{grid-template-columns:1fr}.bk{position:static}.am{grid-template-columns:1fr 1fr}.more{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){.gal{grid-template-columns:1fr}.main{aspect-ratio:4/4}.side{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:auto}.thumb{aspect-ratio:1}.thumb .cap{display:none}.am{grid-template-columns:1fr}.more{grid-template-columns:1fr}}
+.bd .tot{border-top:1px solid var(--line);margin-top:8px;padding-top:14px;font-weight:500;font-size:17px}
+.bk .note{font-size:13px;color:var(--mute);text-align:center;margin-top:12px}
+.nf{padding:120px 0;text-align:center}.nf h1{margin-bottom:24px}
+@media(max-width:960px){.lay{grid-template-columns:1fr}.bk{position:static}.am{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.gal{grid-template-columns:1fr}.main{aspect-ratio:4/4}.side{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:auto}.thumb{aspect-ratio:1}.am{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header id="hdr"></header>
-
 <main class="wrap" id="page"></main>
-
-<footer><div class="wrap">
-  <div class="ft"><div><span class="brand"><b>NUAN</b></span><p style="margin-top:12px" data-t="addr"></p></div><p>reservations@nuan-retreat.example · 075-000-000</p></div>
-  <div class="credit"><span data-t="foot"></span></div>
-</div></footer>
-
-<dialog id="viewer" aria-label="Photos"><div class="vw"><div class="vt"><span id="vcount"></span><button class="vbtn" id="vclose"></button></div><div class="vimg"><img id="vimg" alt=""></div><div class="vb"><button class="vbtn" id="vprev" aria-label="Previous">‹</button><span id="vcap" style="align-self:center;min-width:0;text-align:center"></span><button class="vbtn" id="vnext" aria-label="Next">›</button></div></div></dialog>
+<section class="sec dark" id="more" hidden><div class="wrap"><div class="sh"><div><span class="mark"></span><h2 id="moreH"></h2></div></div><div class="card3" id="moreL"></div></div></section>
 <dialog id="dlg" aria-label="Booking"><div class="dl" id="dlgBody"></div></dialog>
-
 <script src="common.js"></script>
 <script>
 {
@@ -87,37 +67,31 @@ function render(){
   if(!R){$("#page").innerHTML=`<div class="nf"><h1>${x.notFound}</h1><a class="btn" href="rooms.html">${x.backList}</a></div>`;return}
   document.title=`${R.name} · Nuan Retreat Krabi`;
   const g=R.gal,n=Math.max(nights(),1),d=rate(R),[st,bad]=status(R);
-  const side=g.slice(1,5).map((p,i)=>`<button class="thumb" data-i="${i+1}" aria-label="${p[1][L]}"><img src="${U(p[0],600)}" alt="${p[1][L]}"><span class="cap">${p[1][L]}</span>${i===3&&g.length>5?`<span class="plus">${x.photos(g.length)}</span>`:""}</button>`).join("");
-  $("#page").innerHTML=`<p class="crumb"><a href="rooms.html">${x.crumb}</a> / ${R.name}</p>
-  <div class="gal"><button class="main" data-i="${cur}" aria-label="${x.photos(g.length)}"><img id="mainImg" src="${U(g[cur][0],1500)}" alt="${g[cur][1][L]}"><span class="cap" id="mainCap">${g[cur][1][L]} · ${cur+1}/${g.length}</span></button><div class="side">${side}</div></div>
+  const side=g.slice(1,5).map((p,i)=>`<button class="thumb" data-i="${i+1}" aria-label="${p[1][L]}"><img src="${U(p[0],600)}" alt="${p[1][L]}">${i===3&&g.length>5?`<span class="plus">${x.photos(g.length)}</span>`:""}</button>`).join("");
+  $("#page").innerHTML=`<p class="crumb2"><a href="index.html">${x.navHome}</a> / <a href="rooms.html">${x.crumb}</a> / ${R.name}</p>
+  <div class="gal"><button class="main" data-i="0" aria-label="${x.photos(g.length)}"><img src="${U(g[0][0],1600)}" alt="${g[0][1][L]}"><span class="cap">${x.photos(g.length)}</span></button><div class="side">${side}</div></div>
   <div class="lay"><div>
-    <h1>${R.name}</h1>
+    <h1>${R.name}</h1><p class="lead" style="margin-top:14px">${R.short[L]}</p>
     <div class="tags"><span>${R.size} ${x.sqm}</span><span>${x.max(R.max)}</span><span>${R.bed[L]}</span><span>${R.vw[L]}</span><span>${R.fl[L]}</span></div>
-    <section class="sec"><h2>${x.aboutH}</h2>${R.long[L].map(p=>`<p>${p}</p>`).join("")}</section>
-    <section class="sec"><h2>${x.amH}</h2><ul class="am">${R.am[L].map(a=>`<li>${a}</li>`).join("")}</ul></section>
-    <section class="sec"><h2>${x.specH}</h2><div class="spec"><div><span>${x.spec.size}</span><b>${R.size} ${x.sqm}</b></div><div><span>${x.spec.bed}</span><b>${R.bed[L]}</b></div><div><span>${x.spec.max}</span><b>${x.max(R.max)}</b></div><div><span>${x.spec.view}</span><b>${R.vw[L]}</b></div><div><span>${x.spec.floor}</span><b>${R.fl[L]}</b></div></div></section>
-    <section class="sec"><h2>${x.polH}</h2><div class="pg">${x.pol.map(p=>`<div><b>${p[0]}</b><p>${p[1]}</p></div>`).join("")}</div></section>
+    <section class="blk"><h2>${x.aboutH}</h2>${R.long[L].map(p=>`<p>${p}</p>`).join("")}</section>
+    <section class="blk"><h2>${x.amH}</h2><ul class="am">${R.am[L].map(a=>`<li>${a}</li>`).join("")}</ul></section>
+    <section class="blk"><h2>${x.specH}</h2><div class="spec"><div><span>${x.spec.size}</span><b>${R.size} ${x.sqm}</b></div><div><span>${x.spec.bed}</span><b>${R.bed[L]}</b></div><div><span>${x.spec.max}</span><b>${x.max(R.max)}</b></div><div><span>${x.spec.view}</span><b>${R.vw[L]}</b></div><div><span>${x.spec.floor}</span><b>${R.fl[L]}</b></div></div></section>
+    <section class="blk"><h2>${x.polH}</h2><div class="pg">${x.pol.map(p=>`<div><b>${p[0]}</b><p>${p[1]}</p></div>`).join("")}</div></section>
   </div>
   <aside class="bk" aria-label="${x.bookH}">${offerBar(R)}
-    <p class="price"><span class="small">${x.night}</span><br><b>${baht(d)}</b><s>${baht(R.price)}</s></p>
+    <p class="price" style="margin-top:6px"><span class="small">${x.night}</span><br><b>${baht(d)}</b><s>${baht(R.price)}</s></p>
     <form class="stay" onsubmit="return false"><div class="field"><label for="ci">${x.ci}</label><input type="date" id="ci"></div><div class="field"><label for="co">${x.co}</label><input type="date" id="co"></div><div class="field"><label for="gu">${x.gu}</label><select id="gu"></select></div></form>
     <div class="bd"><div><span>${baht(R.price)} × ${n} ${x.nights}</span><span>${baht(R.price*n)}</span></div><div><span>${discLabel(R)}</span><span>−${baht((R.price-d)*n)}</span></div><div class="tot"><span>${x.total}</span><span>${baht(d*n)}</span></div></div>
-    ${st}<button class="btn sun wide" id="book" ${bad?"disabled":""}>${x.bookBtn}</button><p class="note">${x.bookNote}</p>
-  </aside></div>
-  <section class="sec" style="margin-top:clamp(40px,6vw,80px)"><h2>${x.moreH}</h2><div class="more">${ROOMS.filter(r=>r.id!==R.id).map(r=>`<a class="mc" href="room.html?r=${r.id}"><figure><img loading="lazy" src="${U(r.gal[0][0],700)}" alt="${r.name}"></figure><h3>${r.name}</h3><p>${x.from} ${baht(rate(r))} ${x.night}</p></a>`).join("")}</div></section>`;
+    ${st}<button class="btn gold wide" id="book" ${bad?"disabled":""}>${x.bookBtn}</button><p class="note">${x.bookNote}</p>
+  </aside></div><div style="height:clamp(60px,8vw,110px)"></div>`;
+  $("#more").hidden=false;$("#moreH").textContent=x.moreH;
+  $("#moreL").innerHTML=ROOMS.filter(r=>r.id!==R.id).map(r=>`<a class="xc arc" href="room.html?r=${r.id}"><figure><img loading="lazy" src="${U(r.gal[0][0],800)}" alt="${r.name}"></figure><p class="meta">${x.from} ${baht(rate(r))} ${x.night}</p><h3>${r.name}</h3><p>${r.short[L]}</p></a>`).join("");
   bindStay($("#ci"),$("#co"),$("#gu"),render);
   $("#book").onclick=()=>openBook(R);
-  document.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>openViewer(+b.dataset.i));
+  const list=g.map(p=>[p[0],p[1][L]]);
+  document.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>viewer(list,+b.dataset.i));
   navH();
 }
-/* full-screen photo viewer */
-const V=$("#viewer");
-function show(i){const g=R.gal;cur=(i+g.length)%g.length;$("#vimg").src=U(g[cur][0],1800);$("#vimg").alt=g[cur][1][L];$("#vcap").textContent=g[cur][1][L];$("#vcount").textContent=`${cur+1} / ${g.length}`;
-  const m=$("#mainImg");if(m){m.src=U(g[cur][0],1500);$("#mainCap").textContent=`${g[cur][1][L]} · ${cur+1}/${g.length}`;$(".main").dataset.i=cur}}
-function openViewer(i){$("#vclose").textContent=t().close;$("#vprev").setAttribute("aria-label",t().prev);$("#vnext").setAttribute("aria-label",t().next2);show(i);V.showModal()}
-$("#vclose").onclick=()=>V.close();$("#vprev").onclick=()=>show(cur-1);$("#vnext").onclick=()=>show(cur+1);
-V.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
-let sx=null;V.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});V.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));sx=null});
 window.__rerender=render;render();
 }
 </script>

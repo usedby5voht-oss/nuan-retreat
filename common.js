@@ -5,8 +5,9 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const dp=p=>Math.round(p*.9);
 
 const T={
-th:{nav:{home:"หน้าแรก",rooms:"ห้องพัก",offers:"โปรโมชัน",dining:"ห้องอาหาร",spa:"สปา",events:"งานแต่งและอีเวนต์",contact:"ติดต่อเรา"},
-navSub:{home:"เรื่องราวและหนึ่งวันที่นวล",rooms:"4 แบบ ดูรูปและจองได้ทันที",offers:"แพ็กเกจและส่วนลดจองตรง",dining:"ริมทะเลและดาดฟ้า",spa:"นวดไทยและทรีตเมนต์",events:"แต่งงานริมหาดและงานเลี้ยง",contact:"LINE โทร และการเดินทาง"},
+th:{nav:{home:"หน้าแรก",rooms:"ห้องพัก",offers:"โปรโมชันและแพ็กเกจ",dining:"ห้องอาหารและบาร์",spa:"สปา",experiences:"กิจกรรมและทริป",events:"งานแต่งและอีเวนต์",gallery:"แกลเลอรี",contact:"การเดินทางและติดต่อ",faq:"คำถามที่พบบ่อย"},
+navSub:{home:"เรื่องราวของนวล",rooms:"4 แบบ ดูรูปและจองได้ทันที",offers:"ส่วนลดเมื่อจองตรง",dining:"ริมทะเลและบาร์บนดาดฟ้า",spa:"นวดไทยในศาลาริมสวน",experiences:"เกาะ ไร่เลย์ พายเรือ ทำอาหาร",events:"พิธีริมหาดสำหรับไม่เกิน 60 ท่าน",gallery:"ภาพจากรอบรีสอร์ต",contact:"แผนที่ รถรับส่ง และ LINE",faq:"เช็กอิน การยกเลิก เด็ก"},
+gStay:"ที่พัก",gExp:"ประสบการณ์",gPlan:"วางแผนการเดินทาง",fctaH:"พร้อมมาพักผ่อนที่อ่าวนางหรือยัง",fctaP:"จองตรงกับเรา ได้ราคาดีที่สุดและอาหารเช้าทุกเช้า",lineChat:"แชทกับเรา",allRooms:"ห้องพักทั้งหมด",more:"ดูเพิ่มเติม",
 menu:"เมนู",closeMenu:"ปิดเมนู",bookNow:"จองเลย",ann:"จองตรงรับส่วนลด 10% และอาหารเช้าฟรีทุกห้อง",annLink:"ดูโปรโมชัน",annDemo:"(เว็บไซต์ตัวอย่าง ไม่มีการจองจริง)",
 offOn:o=>`กำลังใช้แพ็กเกจ: ${o}`,offOff:"เลิกใช้แพ็กเกจ",offNo:"ห้องหรือวันที่นี้ไม่ตรงเงื่อนไขแพ็กเกจ ใช้ส่วนลดจองตรง 10% แทน",offPct:p=>`ลด ${p}%`,
 oMin:n=>`พักขั้นต่ำ ${n} คืน`,oRooms:r=>`ใช้ได้กับ ${r}`,oAdv:n=>`จองล่วงหน้า ${n} วันขึ้นไป`,oAll:"ใช้ได้ทุกห้อง",oPick:"เลือกแพ็กเกจนี้",oValid:"เข้าพักได้ถึง 31 ต.ค. 2027",
@@ -31,8 +32,9 @@ cno:"หมายเลขบัตร",cexp:"วันหมดอายุ (�
 errCard:"เดโมนี้รับเฉพาะเลขบัตรทดสอบ 4242 4242 4242 4242",errExp:"วันหมดอายุไม่ถูกต้อง",errCvc:"CVC ต้องเป็นตัวเลข 3 หลัก",errName:"กรุณากรอกชื่อบนบัตร",
 ppScan:"สแกนด้วยแอปธนาคารใดก็ได้",ppDemo:"QR ตัวอย่าง สแกนจ่ายไม่ได้",ppTime:t=>`QR หมดอายุใน ${t}`,ppPaid:"ฉันโอนเงินแล้ว",proc:"กำลังตรวจสอบการชำระเงิน…",
 okH:"ชำระเงินและจองเรียบร้อย",okP:(e,a)=>`ได้รับชำระ ${a} แล้ว ส่งใบยืนยันการจองไปที่ ${e}`,okDemo:"นี่คือระบบสาธิต ไม่มีการจองหรือตัดเงินจริง",paidBy:"ชำระด้วย"},
-en:{nav:{home:"Home",rooms:"Rooms",offers:"Offers",dining:"Dining",spa:"Spa",events:"Weddings & events",contact:"Contact"},
-navSub:{home:"Our story and a day at Nuan",rooms:"Four rooms, photos and instant booking",offers:"Packages and direct-booking savings",dining:"By the sea and on the roof",spa:"Thai massage and treatments",events:"Beach weddings and private dinners",contact:"LINE, phone and getting here"},
+en:{nav:{home:"Home",rooms:"Rooms",offers:"Offers & packages",dining:"Dining & bar",spa:"Spa",experiences:"Experiences",events:"Weddings & events",gallery:"Gallery",contact:"Getting here & contact",faq:"FAQ"},
+navSub:{home:"The story of Nuan",rooms:"Four rooms, photos and instant booking",offers:"Savings when you book direct",dining:"By the sea and on the roof",spa:"Thai massage in a garden pavilion",experiences:"Islands, Railay, kayaks, cooking",events:"Beach ceremonies for up to 60",gallery:"Pictures from around the resort",contact:"Map, transfers and LINE",faq:"Check-in, cancellation, children"},
+gStay:"Stay",gExp:"Experiences",gPlan:"Plan your trip",fctaH:"Ready for a slower few days in Ao Nang?",fctaP:"Book direct for our best rate and breakfast every morning",lineChat:"Chat with us",allRooms:"All rooms",more:"Discover",
 menu:"Menu",closeMenu:"Close menu",bookNow:"Book now",ann:"Book direct for 10% off and free breakfast in every room",annLink:"See offers",annDemo:"(Demo website, no real bookings)",
 offOn:o=>`Package applied: ${o}`,offOff:"Remove package",offNo:"This room or these dates don't meet the package terms, so the 10% direct rate applies instead",offPct:p=>`${p}% off`,
 oMin:n=>`Minimum ${n} night${n>1?"s":""}`,oRooms:r=>`For ${r}`,oAdv:n=>`Book at least ${n} days ahead`,oAll:"Any room",oPick:"Choose this package",oValid:"Stay by 31 Oct 2027",
@@ -222,38 +224,70 @@ document.addEventListener("DOMContentLoaded",()=>{const d=dlg();if(d)d.addEventL
 function navH(){const n=document.querySelector(".hdr");if(n)document.documentElement.style.setProperty("--navh",n.offsetHeight+"px")}
 addEventListener("resize",navH);document.addEventListener("DOMContentLoaded",navH);
 
-/* ---------- header, menu, carousels ---------- */
-const NAV=[["home","index.html"],["rooms","rooms.html"],["offers","offers.html"],["dining","index.html#dining"],["spa","index.html#spa"],["events","index.html#events"],["contact","index.html#contact"]];
-const MENU_IMG={home:"photo-1511265753106-52a8e3488b70",rooms:"photo-1729606188713-814d1b7bf893",offers:"photo-1760533536461-714a23877e2d",dining:"photo-1674216645383-afc4e42c227f",spa:"photo-1712725213051-8d7d6a52edaf",events:"photo-1718152219044-edc915854e70",contact:"photo-1648648777033-c833d650aea7"};
-const ARCH='<svg viewBox="0 0 30 34" aria-hidden="true"><path class="arc1" d="M2 34V15a13 13 0 0 1 26 0v19" fill="none" stroke-width="2.2"/><path d="M9 34V17a6 6 0 0 1 12 0v17" fill="none" stroke="#d8642f" stroke-width="2.2"/></svg>';
-const ICON={l:'<path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',r:'<path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'};
-function header(active,over){
+/* ---------- header, menu, footer, carousels ---------- */
+const NAVG=[["gStay",[["rooms","rooms.html"],["offers","offers.html"]]],["gExp",[["dining","dining.html"],["spa","spa.html"],["experiences","experiences.html"],["events","weddings.html"]]],["gPlan",[["gallery","gallery.html"],["contact","contact.html"],["faq","contact.html#faq"]]]];
+const TOP=[["rooms","rooms.html"],["dining","dining.html"],["spa","spa.html"],["experiences","experiences.html"]];
+const MENU_IMG={home:"photo-1511265753106-52a8e3488b70",rooms:"photo-1729606188713-814d1b7bf893",offers:"photo-1483683804023-6ccdb62f86ef",dining:"photo-1760533536461-714a23877e2d",spa:"photo-1600334089648-b0d9d3028eb2",experiences:"photo-1516750445633-f290238745d2",events:"photo-1718152219044-edc915854e70",gallery:"photo-1648648777033-c833d650aea7",contact:"photo-1722483537725-3807a1bb78c7",faq:"photo-1762425430465-0d9f08d64147",garden:"photo-1750271334785-4f6008035021",deluxe:"photo-1617325247661-675ab4b64ae2",suite:"photo-1729606188713-814d1b7bf893",pool:"photo-1669741043336-36eb9c3db071"};
+const ARCH='<svg viewBox="0 0 26 30" aria-hidden="true"><path d="M1.5 30V13a11.5 11.5 0 0 1 23 0v17" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 30V15a5.5 5.5 0 0 1 11 0v15" fill="none" stroke="#B8925A" stroke-width="1.4"/></svg>';
+const ICON={l:'<path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',r:'<path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',ar:'<path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'};
+const LINE_ICO='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.2 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>';
+const arr=()=>'<svg viewBox="0 0 24 24" aria-hidden="true">'+ICON.ar+'</svg>';
+const BRAND=(sm=1)=>`<a class="brand" href="index.html" aria-label="Nuan Retreat">${ARCH}<b>NUAN</b>${sm?"<small>RETREAT · KRABI</small>":""}</a>`;
+function header(active,over=true){
   const x=t();let h=$("#hdr");if(!h)return;
   if(!$("#ann")){const a=document.createElement("div");a.id="ann";a.className="ann";document.body.prepend(a)}
   $("#ann").innerHTML=`${x.ann} · <a href="offers.html">${x.annLink}</a><span class="dm">${x.annDemo}</span>`;
   h.className="hdr"+(over?" over":"");
-  h.innerHTML=`<div class="wrap nv"><button class="burger" id="burger" aria-haspopup="dialog"><i></i><span>${x.menu}</span></button>
-  <a class="brand" href="index.html" aria-label="Nuan Retreat">${ARCH}<span><b>NUAN</b><small>RETREAT · KRABI</small></span></a>
-  <div class="links">${NAV.slice(1,5).map(([k,u])=>`<a href="${u}"${k===active?' aria-current="page"':""}>${x.nav[k]}</a>`).join("")}</div>
-  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="${L==="th"}">TH</button><button type="button" data-l="en" aria-pressed="${L==="en"}">EN</button></div>
-  <a class="btn bookbtn" href="rooms.html">${x.bookNow}</a></div>`;
-  let m=$("#menu");if(!m){m=document.createElement("dialog");m.id="menu";document.body.append(m)}
-  m.innerHTML=`<div class="mw"><div class="ml"><div class="mtop"><a class="brand" href="index.html" style="color:#fff">${ARCH.replace('class="arc1"','class="arc1" stroke="#fff"')}<span><b>NUAN</b></span></a><button class="mclose" id="mclose">${x.closeMenu}</button></div>
-  <ul class="mlist">${NAV.map(([k,u])=>`<li><a href="${u}" data-k="${k}"${k===active?' aria-current="page"':""}><b>${x.nav[k]}</b><span>${x.navSub[k]}</span></a></li>`).join("")}</ul>
-  <div class="mfoot"><span>075-000-000</span><span>reservations@nuan-retreat.example</span><span>${x.addr}</span></div></div>
+  h.innerHTML=`<div class="wrap nv"><div class="nl"><button class="burger" id="burger" aria-haspopup="dialog"><i></i><span>${x.menu}</span></button>
+  <nav class="links" aria-label="Main">${TOP.map(([k,u])=>`<a href="${u}"${k===active?' aria-current="page"':""}>${x.nav[k].split(/ และ | & /)[0]}</a>`).join("")}</nav></div>
+  ${BRAND()}
+  <div class="nr"><div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="${L==="th"}">TH</button><button type="button" data-l="en" aria-pressed="${L==="en"}">EN</button></div>
+  <a class="btn bookbtn" href="rooms.html">${x.bookNow}</a></div></div>`;
+  let m=$("#menu");if(!m){m=document.createElement("dialog");m.id="menu";m.setAttribute("aria-label",x.menu);document.body.append(m)}
+  const link=(k,u,sub)=>`<li><a href="${u}" data-k="${k}"${k===active?' aria-current="page"':""}${sub?' class="sub"':""}><b>${sub?k.name:x.nav[k]}</b>${sub?"":`<span>${x.navSub[k]}</span>`}</a></li>`;
+  m.innerHTML=`<div class="mw"><div class="ml"><div class="mtop">${BRAND(0)}<button class="mclose" id="mclose">${x.closeMenu}</button></div>
+  <div class="mcols">${NAVG.map(([g,items],gi)=>`<div class="mcol"><h4>${x[g]}</h4><ul>${items.map(([k,u])=>link(k,u)).join("")}${gi===0?ROOMS.map(r=>`<li><a class="sub" href="room.html?r=${r.id}" data-k="${r.id}"><b>${r.name}</b></a></li>`).join(""):""}</ul></div>`).join("")}</div>
+  <div class="lang mlang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="${L==="th"}">TH</button><button type="button" data-l="en" aria-pressed="${L==="en"}">EN</button></div>
+  <div class="mfoot"><a href="tel:075000000">075-000-000</a><span>reservations@nuan-retreat.example</span><span>${x.addr}</span></div></div>
   <div class="mr"><img id="mimg" src="${U(MENU_IMG[active]||MENU_IMG.home,1200)}" alt=""></div></div>`;
   $("#burger").onclick=()=>m.showModal();$("#mclose").onclick=()=>m.close();
-  m.querySelectorAll("[data-k]").forEach(a=>{a.onmouseenter=a.onfocus=()=>{$("#mimg").src=U(MENU_IMG[a.dataset.k],1200)};a.onclick=()=>m.close()});
+  m.querySelectorAll("[data-k]").forEach(a=>{a.onmouseenter=a.onfocus=()=>{const i=MENU_IMG[a.dataset.k];if(i)$("#mimg").src=U(i,1200)};a.onclick=()=>m.close()});
   const ah=$("#ann").offsetHeight;document.documentElement.style.setProperty("--annh",ah+"px");
   if(over){const f=()=>h.classList.toggle("solid",scrollY>ah+10);f();if(!window.__overBound){window.__overBound=1;addEventListener("scroll",f,{passive:true})}}
-  navH();
+  footer();navH();
+}
+function footer(){
+  let f=$("#ftr");if(!f){f=document.createElement("footer");f.id="ftr";const s=document.querySelector("script");document.body.insertBefore(f,s)}
+  const x=t();
+  f.innerHTML=`<div class="wrap"><div class="fcta"><div><span class="mark"></span><h2>${x.fctaH}</h2><p class="lead" style="margin-top:14px">${x.fctaP}</p></div><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn gold" href="rooms.html">${x.bookNow}</a><a class="btn line" href="https://line.me/" target="_blank" rel="noopener" style="color:#fff">${x.lineChat}</a></div></div>
+  <div class="fgrid"><div>${BRAND()}<p>${x.addr}</p><p style="margin-top:10px"><a href="tel:075000000">075-000-000</a><br>reservations@nuan-retreat.example</p></div>
+  ${NAVG.map(([g,items])=>`<div><h4>${x[g]}</h4><ul>${items.map(([k,u])=>`<li><a href="${u}">${x.nav[k]}</a></li>`).join("")}</ul></div>`).join("")}</div>
+  <div class="credit"><span>${x.foot}</span><span>© Nuan Retreat (demo)</span></div></div>`;
+  if(!$("#fline")){const a=document.createElement("a");a.id="fline";a.className="fline";a.href="https://line.me/";a.target="_blank";a.rel="noopener";document.body.append(a)}
+  $("#fline").innerHTML=`${LINE_ICO}<span>${x.lineChat}</span>`;$("#fline").setAttribute("aria-label",x.lineChat);
 }
 function carousel(root){
   const tr=root.querySelector(".track"),p=root.querySelector("[data-prev]"),n=root.querySelector("[data-next]");if(!tr)return;
-  const step=()=>{const c=tr.children[0];return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(tr).columnGap||24):300};
+  const step=()=>{const c=tr.children[0];return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(tr).columnGap||28):300};
   const upd=()=>{if(p)p.disabled=tr.scrollLeft<4;if(n)n.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4};
   if(p)p.onclick=()=>tr.scrollBy({left:-step(),behavior:"smooth"});if(n)n.onclick=()=>tr.scrollBy({left:step(),behavior:"smooth"});
   tr.addEventListener("scroll",upd,{passive:true});upd();
 }
-const cbtns=()=>`<div class="cbtns"><button class="cbtn" data-prev aria-label="Previous">${'<svg viewBox="0 0 24 24">'+ICON.l+'</svg>'}</button><button class="cbtn" data-next aria-label="Next">${'<svg viewBox="0 0 24 24">'+ICON.r+'</svg>'}</button></div>`;
-function offerCard(o){const x=t();return `<a class="oc" href="offers.html#${o.id}"><figure><img loading="lazy" src="${U(o.img,800)}" alt="${o.n[L]}"><span class="pct">${x.offPct(Math.round(o.pct*100))}</span></figure><div class="ob"><h3>${o.n[L]}</h3><p>${o.d[L]}</p><p class="cond">${offTerms(o).join(" · ")}</p><span class="go">${x.oPick}</span></div></a>`}
+const cbtns=()=>`<div class="cbtns"><button class="cbtn" data-prev aria-label="Previous"><svg viewBox="0 0 24 24">${ICON.l}</svg></button><button class="cbtn" data-next aria-label="Next"><svg viewBox="0 0 24 24">${ICON.r}</svg></button></div>`;
+function offerCard(o){const x=t();return `<a class="oc" href="offers.html#${o.id}"><figure><img loading="lazy" src="${U(o.img,800)}" alt=""><span class="pct">${x.offPct(Math.round(o.pct*100))}</span></figure><div class="ob"><h3>${o.n[L]}</h3><p>${o.d[L]}</p><p class="cond">${offTerms(o).join(" · ")}</p><span class="go">${x.oPick}</span></div></a>`}
+/* fade sections in as they scroll into view */
+let __io=null;
+function reveal(){if(__io)__io.disconnect();const els=document.querySelectorAll(".rv:not(.in)");
+  if(!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches){els.forEach(e=>e.classList.add("in"));return}
+  __io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");__io.unobserve(e.target)}}),{threshold:.1,rootMargin:"0px 0px -40px 0px"});els.forEach(e=>__io.observe(e))}
+/* shared full-screen photo viewer: list = [[photoId,caption],...] */
+const VW={list:[],i:0};
+function viewer(list,i){
+  let v=$("#viewer");if(!v){v=document.createElement("dialog");v.id="viewer";v.innerHTML=`<div class="vw"><div class="vt"><span id="vcount"></span><button class="vbtn" id="vclose"></button></div><div class="vimg"><img id="vimg" alt=""></div><div class="vb"><button class="vbtn" id="vprev"><svg width="18" height="18" viewBox="0 0 24 24">${ICON.l}</svg></button><span id="vcap" style="min-width:0;text-align:center;font-size:14.5px"></span><button class="vbtn" id="vnext"><svg width="18" height="18" viewBox="0 0 24 24">${ICON.r}</svg></button></div></div>`;document.body.append(v);
+    const show=k=>{VW.i=(k+VW.list.length)%VW.list.length;const p=VW.list[VW.i];$("#vimg").src=U(p[0],1800);$("#vimg").alt=p[1];$("#vcap").textContent=p[1];$("#vcount").textContent=`${VW.i+1} / ${VW.list.length}`;if(VW.on)VW.on(VW.i)};VW.show=show;
+    $("#vclose").onclick=()=>v.close();$("#vprev").onclick=()=>show(VW.i-1);$("#vnext").onclick=()=>show(VW.i+1);
+    v.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")show(VW.i-1);if(e.key==="ArrowRight")show(VW.i+1)});
+    let sx=null;v.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});v.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)show(VW.i+(dx<0?1:-1));sx=null})}
+  $("#vclose").textContent=t().close;$("#vprev").setAttribute("aria-label",t().prev);$("#vnext").setAttribute("aria-label",t().next2);
+  VW.list=list;VW.show(i);v.showModal();
+}
