@@ -248,15 +248,14 @@ function header(active,over=true){
   $("#ann").innerHTML=`${x.ann} · <a href="offers.html">${x.annLink}</a><span class="dm">${x.annDemo}</span>`;
   h.className="hdr"+(over?" over":"");
   const top=k=>{const u=MAIN.find(m=>m[0]===k)[1];return `<a href="${u}"${k===active?' aria-current="page"':""}>${x.navS[k]}</a>`};
-  h.innerHTML=`<div class="wrap nv"><div class="nl"><button class="burger" id="burger" aria-haspopup="dialog"><i></i><span>${x.menu}</span></button>
-  <nav class="links" aria-label="Main">${["about","rooms","facilities"].map(top).join("")}</nav></div>
+  h.innerHTML=`<div class="wrap nv"><div class="nl"><button class="burger" id="burger" aria-haspopup="dialog" aria-label="${x.menu}"><i></i><span>${x.menu}</span></button></div>
   ${BRAND()}
-  <div class="nr"><nav class="links" aria-label="More">${["offers","location","contact"].map(top).join("")}</nav><div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="${L==="th"}">TH</button><button type="button" data-l="en" aria-pressed="${L==="en"}">EN</button></div>
-  <a class="btn bookbtn" href="book.html">${x.bookNow}</a></div></div>`;
+  <div class="nr"><div class="lang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="${L==="th"}">TH</button><button type="button" data-l="en" aria-pressed="${L==="en"}">EN</button></div>
+  <a class="btn bookbtn" href="book.html">${x.bookNow}</a></div></div><span class="prog" id="prog" aria-hidden="true"></span>`;
   let m=$("#menu");if(!m){m=document.createElement("dialog");m.id="menu";m.setAttribute("aria-label",x.menu);document.body.append(m)}
   const sub=(k,u,label)=>`<li><a class="sub" href="${u}" data-k="${k}"${k===active?' aria-current="page"':""}><b>${label}</b></a></li>`;
   m.innerHTML=`<div class="mw"><div class="ml"><div class="mtop">${BRAND(0)}<button class="mclose" id="mclose">${x.closeMenu}</button></div>
-  <div class="mcols m2"><div class="mcol"><ul>${MAIN.map(([k,u])=>`<li><a href="${u}" data-k="${k}"${k===active?' aria-current="page"':""}><b>${x.nav[k]}</b><span>${x.navSub[k]}</span></a></li>`).join("")}</ul></div>
+  <div class="mcols m2"><div class="mcol"><ul>${MAIN.map(([k,u],i)=>`<li style="--i:${i}"><a href="${u}" data-k="${k}"${k===active?' aria-current="page"':""}><b>${x.nav[k]}</b><span>${x.navSub[k]}</span></a></li>`).join("")}</ul></div>
   <div class="mcol"><h4>${x.gStay}</h4><ul>${ROOMS.map(r=>sub(r.id,"room.html?r="+r.id,r.name)).join("")}</ul><h4 style="margin-top:30px">${x.gExp}</h4><ul>${SUBF.map(([k,u])=>sub(k,u,x.nav[k])).join("")}</ul>
   <a class="btn gold" href="book.html" style="margin-top:30px">${x.bookNow}</a></div></div>
   <div class="lang mlang" role="group" aria-label="Language"><button type="button" data-l="th" aria-pressed="${L==="th"}">TH</button><button type="button" data-l="en" aria-pressed="${L==="en"}">EN</button></div>
@@ -265,15 +264,17 @@ function header(active,over=true){
   $("#burger").onclick=()=>m.showModal();$("#mclose").onclick=()=>m.close();
   m.querySelectorAll("[data-k]").forEach(a=>{a.onmouseenter=a.onfocus=()=>{const i=MENU_IMG[a.dataset.k];if(i)$("#mimg").src=U(i,1200)};a.onclick=()=>m.close()});
   const ah=$("#ann").offsetHeight;document.documentElement.style.setProperty("--annh",ah+"px");
-  if(over){const f=()=>h.classList.toggle("solid",scrollY>ah+10);f();if(!window.__overBound){window.__overBound=1;addEventListener("scroll",f,{passive:true})}}
+  /* header: solid after the hero, hides while scrolling down, returns when scrolling up; thin progress line */
+  let last=scrollY;const f=()=>{const y=scrollY;if(over)h.classList.toggle("solid",y>ah+10);
+    h.classList.toggle("hide",y>last&&y>420&&!document.querySelector("dialog[open]"));last=y;
+    const p=$("#prog"),mx=document.documentElement.scrollHeight-innerHeight;if(p)p.style.transform=`scaleX(${mx>0?Math.min(y/mx,1):0})`};
+  f();window.__hdrScroll&&removeEventListener("scroll",window.__hdrScroll);window.__hdrScroll=f;addEventListener("scroll",f,{passive:true});
   footer();navH();
 }
 function footer(){
   let f=$("#ftr");if(!f){f=document.createElement("footer");f.id="ftr";const s=document.body.querySelector("script");document.body.insertBefore(f,s)}
   const x=t();
-  f.innerHTML=`<div class="wrap"><div class="fcta"><div><span class="mark"></span><h2>${x.fctaH}</h2><p class="lead" style="margin-top:14px">${x.fctaP}</p></div><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn gold" href="book.html">${x.bookNow}</a><a class="btn line" href="https://line.me/" target="_blank" rel="noopener" style="color:#fff">${x.lineChat}</a></div></div>
-  <div class="fgrid"><div>${BRAND()}<p>${x.addr}</p><p style="margin-top:10px"><a href="tel:075000000">075-000-000</a><br>reservations@nuan-retreat.example</p></div>
-  ${NAVG.map(([g,items])=>`<div><h4>${x[g]}</h4><ul>${items.map(([k,u])=>`<li><a href="${u}">${x.nav[k]}</a></li>`).join("")}</ul></div>`).join("")}</div>
+  f.innerHTML=`<div class="wrap"><div class="fmin"><div>${BRAND()}</div><p>${x.addr}</p><p><a href="tel:075000000">075-000-000</a><br>reservations@nuan-retreat.example</p></div>
   <div class="credit"><span>${x.foot}</span><span>© Nuan Retreat (demo)</span></div></div>`;
   if(!$("#fline")){const a=document.createElement("a");a.id="fline";a.className="fline";a.href="https://line.me/";a.target="_blank";a.rel="noopener";document.body.append(a)}
   $("#fline").innerHTML=`${LINE_ICO}<span>${x.lineChat}</span>`;$("#fline").setAttribute("aria-label",x.lineChat);

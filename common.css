@@ -379,3 +379,65 @@ dialog#dlg::backdrop{background:#0F1D1Ae0}
 @media(max-width:720px){.hl6,.rvw{grid-template-columns:1fr}.tl::before{left:5px}.stop{grid-template-columns:1fr;gap:18px;padding:24px 0 24px 32px}.stop::after{left:5px;top:36px}.stop:nth-child(even) figure{order:0}.stop:nth-child(odd) figure{aspect-ratio:4/3.6}.time{font-size:38px}}
 @media(max-width:480px){.svc{grid-template-columns:1fr}}
 .sel2{width:100%;border:1px solid var(--line);border-radius:var(--r);font:400 16px var(--f-t);padding:0 14px;min-height:50px;background:#fff;color:var(--ink)}
+/* v10: calmer header with motion, staggered menu, mixed image shapes, slim footer */
+.hdr{transition:background .4s,color .4s,border-color .4s,top .3s,transform .45s cubic-bezier(.2,.7,.2,1)}
+.hdr.hide{transform:translateY(-110%)}
+.hdr.over:not(.solid){border-color:transparent}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--brass);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+.hdr.over:not(.solid) .prog{opacity:0}
+.burger i,.burger i::before,.burger i::after{transition:width .35s ease,transform .35s ease}
+.burger:hover i::after{width:24px}
+.burger:hover i{width:16px}
+.burger span{position:relative}
+.burger span::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s ease}
+.burger:hover span::after{transform:scaleX(1)}
+.nr{gap:16px}
+.bookbtn{position:relative;overflow:hidden}
+.bookbtn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,#fff0 30%,#ffffff59 50%,#fff0 70%);transform:translateX(-120%);transition:transform .8s ease}
+.bookbtn:hover::after{transform:translateX(120%)}
+/* menu entrance */
+#menu[open] .mcol li{animation:mli .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*55ms + 120ms)}
+#menu[open] .mcol:last-child{animation:mfade .8s ease .5s both}
+#menu[open] .mr img{animation:mzoom 1.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes mli{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+@keyframes mzoom{from{transform:scale(1.12);opacity:.3}to{transform:none;opacity:1}}
+.mcol a b{transition:letter-spacing .4s ease}
+.mcol a:hover b{letter-spacing:.01em}
+/* slim footer */
+footer{padding:clamp(56px,7vw,88px) 0 30px}
+.fmin{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:24px 40px;align-items:center}
+.fmin .brand{align-items:flex-start;color:#fff}
+.fmin a{color:#DDE3E0;text-decoration:none}.fmin a:hover{color:var(--brass2)}
+footer .credit{margin-top:44px}
+@media(max-width:720px){.fmin{grid-template-columns:1fr}}
+/* mixed image shapes: arch, leaf, framed window — and they soften on hover */
+:root{--shA:999px 999px 0 0;--shB:clamp(56px,9vw,150px) 0 clamp(56px,9vw,150px) 0;--shC:22px;--shD:0 clamp(56px,9vw,150px) 0 clamp(56px,9vw,150px)}
+figure{transition:border-radius .9s cubic-bezier(.2,.7,.2,1)}
+.frame{outline:1px solid #ffffffa6;outline-offset:-14px}
+/* rooms list */
+.rc:nth-child(3n+2) figure{border-radius:var(--shB)!important}
+.rc:nth-child(3n) figure{border-radius:var(--shC)!important;outline:1px solid #ffffffa6;outline-offset:-14px}
+.rc:hover figure{border-radius:40px!important}
+/* home room carousel */
+.rcard:nth-child(3n+2) figure{border-radius:var(--shB)}
+.rcard:nth-child(3n) figure{border-radius:var(--shC);outline:1px solid #ffffffa6;outline-offset:-14px}
+.rcard:nth-child(4n) figure{border-radius:var(--shD)}
+.rcard:hover figure{border-radius:40px}
+/* cards on inner pages */
+.card3>.xc:nth-child(3n+1) figure{border-radius:var(--shA)}
+.card3>.xc:nth-child(3n+2) figure{border-radius:var(--shB)}
+.card3>.xc:nth-child(3n) figure{border-radius:var(--shC);outline:1px solid #ffffffa6;outline-offset:-14px}
+.card3>.xc:hover figure{border-radius:40px}
+/* features */
+.split.flip>figure{border-radius:var(--shB)}
+.pics figure+figure{border-radius:var(--shC);outline:1px solid #ffffffa6;outline-offset:-12px}
+.split.flip .pics figure:first-child{border-radius:var(--shD)}
+.olist .of:nth-child(even) figure{border-radius:var(--shB)}
+.olist .of:nth-child(3n) figure{border-radius:var(--shC);outline:1px solid #ffffffa6;outline-offset:-14px}
+.stop:nth-child(4n+3) figure{border-radius:var(--shB)}
+.stop:nth-child(4n+2) figure,.stop:nth-child(4n) figure{border-radius:var(--shC)}
+/* images unveil upward as their section scrolls in */
+.rv figure,.rv.xc figure,.rv .pics figure{clip-path:inset(14% 0 0 0);transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1),border-radius .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in figure,.rv.in .pics figure{clip-path:inset(0 0 0 0)}
+@media(prefers-reduced-motion:reduce){.rv figure{clip-path:none!important}.hdr.hide{transform:none}#menu[open] .mcol li,#menu[open] .mr img{animation:none}}

@@ -20,6 +20,28 @@
 .thumb{border:0;padding:0;overflow:hidden;cursor:pointer;position:relative;background:var(--stone);min-height:0}
 .thumb img{transition:transform .8s ease}.thumb:hover img{transform:scale(1.05)}
 .thumb .plus{position:absolute;inset:0;display:grid;place-items:center;background:#0F1D1Ab3;color:#fff;font-size:14.5px;text-align:center;padding:8px}
+/* photo slider: neighbours peek in at the sides, swipe or use arrows, click the centred photo for full screen */
+.gs{position:relative;margin-top:20px}
+.gtrack{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 11%;scroll-padding:0 11%}
+.gtrack::-webkit-scrollbar{display:none}
+.gsl{flex:0 0 100%;aspect-ratio:16/9.5;scroll-snap-align:center;border:0;padding:0;background:var(--stone);position:relative;overflow:hidden;cursor:pointer;border-radius:22px;opacity:.45;transform:scale(.94);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1),border-radius .8s ease}
+.gsl.on{opacity:1;transform:none;cursor:zoom-in}
+.gsl:nth-child(3n+1).on{border-radius:var(--shA)}.gsl:nth-child(3n+2).on{border-radius:var(--shB)}.gsl:nth-child(3n).on{border-radius:var(--shC)}
+.gsl img{transition:transform 6s ease-out}.gsl.on img{transform:scale(1.04)}
+.gsl .cap{position:absolute;left:24px;bottom:22px;color:#fff;font-size:15px;text-shadow:0 1px 12px #0008;opacity:0;transition:opacity .6s ease .2s}
+.gsl.on .cap{opacity:1}
+.gnav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;border:0;background:#F2F1EDe6;color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px #0F1D1A33;transition:background .2s,transform .2s;z-index:2}
+.gnav:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.gnav svg{width:20px;height:20px}
+.gprev{left:calc(11% - 27px)}.gnext{right:calc(11% - 27px)}
+.gbar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:16px 11% 0}
+.gcount{font:300 20px var(--f-d);letter-spacing:.06em;white-space:nowrap}
+.gthumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.gthumbs::-webkit-scrollbar{display:none}
+.gthumbs button{flex:none;width:64px;height:48px;border:0;padding:0;border-radius:8px;overflow:hidden;cursor:pointer;opacity:.45;transition:opacity .3s,outline-color .3s;outline:2px solid transparent;outline-offset:2px}
+.gthumbs button.on{opacity:1;outline-color:var(--brass)}
+.ghint{font-size:13px;color:var(--mute);white-space:nowrap}
+@media(max-width:720px){.gtrack{padding:0 6%;scroll-padding:0 6%;gap:10px}.gsl{aspect-ratio:4/3.6}.gnav{display:none}.gbar{margin:14px 6% 0}.ghint{display:none}}
 .lay{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(40px,6vw,96px);margin-top:clamp(40px,5vw,64px);align-items:start}
 .lay h1{font-size:clamp(42px,5vw,72px)}
 .lay .tags{margin:20px 0 10px}
@@ -67,9 +89,11 @@ function render(){
   if(!R){$("#page").innerHTML=`<div class="nf"><h1>${x.notFound}</h1><a class="btn" href="rooms.html">${x.backList}</a></div>`;return}
   document.title=`${R.name} · Nuan Retreat Krabi`;
   const g=R.gal,n=Math.max(nights(),1),d=rate(R),[st,bad]=status(R);
-  const side=g.slice(1,5).map((p,i)=>`<button class="thumb" data-i="${i+1}" aria-label="${p[1][L]}"><img src="${U(p[0],600)}" alt="${p[1][L]}">${i===3&&g.length>5?`<span class="plus">${x.photos(g.length)}</span>`:""}</button>`).join("");
+  const hint=L==="th"?"คลิกที่รูปเพื่อดูแบบเต็มจอ":"Click a photo to see it full screen";
   $("#page").innerHTML=`<p class="crumb2"><a href="index.html">${x.navHome}</a> / <a href="rooms.html">${x.crumb}</a> / ${R.name}</p>
-  <div class="gal"><button class="main" data-i="0" aria-label="${x.photos(g.length)}"><img src="${U(g[0][0],1600)}" alt="${g[0][1][L]}"><span class="cap">${x.photos(g.length)}</span></button><div class="side">${side}</div></div>
+  <div class="gs" aria-roledescription="carousel" aria-label="${x.photos(g.length)}"><div class="gtrack" id="gtrack">${g.map((p,i)=>`<button class="gsl${i===0?" on":""}" data-s="${i}" aria-label="${p[1][L]} (${i+1}/${g.length})"><img src="${U(p[0],1600)}" alt="${p[1][L]}"${i>1?' loading="lazy"':""}><span class="cap">${p[1][L]}</span></button>`).join("")}</div>
+  <button class="gnav gprev" id="gprev" aria-label="${x.prev}"><svg viewBox="0 0 24 24">${ICON.l}</svg></button><button class="gnav gnext" id="gnext" aria-label="${x.next2}"><svg viewBox="0 0 24 24">${ICON.r}</svg></button></div>
+  <div class="gbar"><span class="gcount" id="gcount">01 / ${String(g.length).padStart(2,"0")}</span><div class="gthumbs" id="gthumbs">${g.map((p,i)=>`<button data-t="${i}" class="${i===0?"on":""}" aria-label="${p[1][L]}"><img src="${U(p[0],200)}" alt=""></button>`).join("")}</div><span class="ghint">${hint}</span></div>
   <div class="lay"><div>
     <h1>${R.name}</h1><p class="lead" style="margin-top:14px">${R.short[L]}</p>
     <div class="tags"><span>${R.size} ${x.sqm}</span><span>${x.max(R.max)}</span><span>${R.bed[L]}</span><span>${R.vw[L]}</span><span>${R.fl[L]}</span></div>
@@ -89,7 +113,18 @@ function render(){
   bindStay($("#ci"),$("#co"),$("#gu"),render);
   $("#book").onclick=()=>{location.href="book.html?r="+R.id};
   const list=g.map(p=>[p[0],p[1][L]]);
-  document.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>viewer(list,+b.dataset.i));
+  /* photo slider */
+  const tr=$("#gtrack"),sl=[...tr.children],th=[...$("#gthumbs").children];let cur=0;
+  const goTo=i=>{i=(i+sl.length)%sl.length;const el=sl[i];tr.scrollTo({left:el.offsetLeft-(tr.clientWidth-el.clientWidth)/2,behavior:"smooth"})};
+  const mark=()=>{const c=tr.scrollLeft+tr.clientWidth/2;let best=0,d=1e9;sl.forEach((el,i)=>{const m=Math.abs(el.offsetLeft+el.clientWidth/2-c);if(m<d){d=m;best=i}});
+    if(best===cur&&sl[best].classList.contains("on"))return;cur=best;sl.forEach((el,i)=>el.classList.toggle("on",i===cur));th.forEach((b,i)=>b.classList.toggle("on",i===cur));
+    $("#gcount").textContent=`${String(cur+1).padStart(2,"0")} / ${String(sl.length).padStart(2,"0")}`;th[cur].scrollIntoView({block:"nearest",inline:"nearest"})};
+  let raf=0;tr.addEventListener("scroll",()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(mark)},{passive:true});
+  sl.forEach((el,i)=>el.onclick=()=>{if(i===cur)viewer(list,i);else goTo(i)});
+  th.forEach((b,i)=>b.onclick=()=>goTo(i));
+  $("#gprev").onclick=()=>goTo(cur-1);$("#gnext").onclick=()=>goTo(cur+1);
+  tr.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){e.preventDefault();goTo(cur-1)}if(e.key==="ArrowRight"){e.preventDefault();goTo(cur+1)}});
+  VW.on=i=>{if(i!==cur)goTo(i)};
   navH();
 }
 window.__rerender=render;render();
